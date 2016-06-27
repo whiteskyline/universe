@@ -6,10 +6,14 @@
   </head>
   <body>
     <div ng-app="universeApp">
-      <div ng-controller="skillTreeCtrl">{{name}}</div>
+      <div ng-controller="skillTreeCtrl">
+        <treechart data="data" diameter="960"></treechart>
+      </div>
     </div>
     <script src="js/d3.js" charset="utf-8"></script>
     <script src="js/angular.js" charset="utf-8"></script>
+    <script src="js/tree.js" charset="utf-8"></script>
     <script src="js/experiment.js" charset="utf-8"></script>
+    <script src="js/directive.js" charset="utf-8"></script>
   </body>
 </html>
