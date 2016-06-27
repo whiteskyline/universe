@@ -59,11 +59,13 @@ app.service("data", function($q, bus){
         {
           "name": "Website",
           "children": [
-            {
-              "name": "Home",
-              "url": "www.my-media-website.com",
-              "host": { "Amazon": ["fo-1", "fo-2"] }
-            }
+            { "name": "World" },
+            { "name": "Sport" },
+            { "name": "Politics" },
+            { "name": "Science" },
+            { "name": "Business" },
+            { "name": "Technology" },
+            { "name": "Health" }
           ]
         }
       ]
