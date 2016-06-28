@@ -25,9 +25,47 @@ d3.chart.architectureTree = function() {
         var nodes = tree.nodes(treeData),
             links = tree.links(nodes);
 
+        updateChildrenFinishedStatus(nodes);
+        console.log("status updated nodes", nodes)
         activeNode = null;
 
         svg.call(updateData, nodes, links);
+    }
+
+    var updateNodeFinishedStatus = function(node){
+      // 已经获得的，不再重复获得
+      if (typeof(node.total) !== 'undefined') {
+        return {'total': node.total, 'finished': node.finished}
+      }
+
+      if (typeof(node.children) !== 'undefined') {
+        var status = updateChildrenFinishedStatus(node.children)
+        node.total = status.total;
+        node.finished = status.finished;
+        return status;
+      }
+
+      if (node.hasOwnProperty("f") && node.f == true ) {
+        node.finished = 1
+        node.total = 1
+      } else {
+        node.finished = 0
+        node.total = 1
+      }
+
+      return {'total': node.total, 'finished': node.finished};
+
+    }
+
+    var updateChildrenFinishedStatus = function(nodes){
+      var total = 0;
+      var finished = 0;
+      nodes.map(function(node) {
+        var childStatus = updateNodeFinishedStatus(node);
+        total = total + childStatus.total;
+        finished = finished + childStatus.finished;
+      })
+      return {'total': total, 'finished': finished}
     }
 
     /**
@@ -82,18 +120,20 @@ d3.chart.architectureTree = function() {
                 select(d.name);
             });
 
+        var colors = ["#FF0033", "#E6109B", "#FFE3FB", "#F2FE28", "#00FF80"]
+        var ranges = [0.2, 0.4, 0.6, 0.8]
+
         node.append("circle")
             .attr("r", function(d) { return 4.5 * (d.size || 1); })
             .style('stroke', function(d) {
-                return d3.scale.linear()
-                    .domain([1, 0])
-                    .range(["steelblue", "red"])(typeof d.satisfaction !== "undefined" ? d.satisfaction : 1);
+                return d3.scale.threshold()
+                    .domain(ranges)
+                    .range(colors)(d.finished / d.total);
             })
             .style('fill', function(d) {
-                if (typeof d.satisfaction === "undefined") return '#fff';
-                return d3.scale.linear()
-                    .domain([1, 0])
-                    .range(["white", "#f66"])(typeof d.satisfaction !== "undefined" ? d.satisfaction : 1);
+                return d3.scale.threshold()
+                    .domain(ranges)
+                    .range(colors)(d.finished / d.total);
             });
 
         node.append("text")

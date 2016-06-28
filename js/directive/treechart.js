@@ -1,6 +1,6 @@
 app.directive('treechart', function(bus) {
     'use strict';
-
+    console.log("directive treechart is regestered");
     return {
         restrict: 'E',
         replace: true,
