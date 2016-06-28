@@ -84,6 +84,26 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
     initDetail(data);
     checkFinishStatus(data);
     checkTopIncompleteChildren(data, 3);
+    return data;
   }
+
+  var getNodeByName = function(name, data) {
+    if (data.name === name) {
+      return data;
+    }
+    if (!data.children) return null;
+    for (var i = data.children.length - 1; i >= 0; i--) {
+      var matchingNode = getNodeByName(name, data.children[i]);
+        if (matchingNode) return matchingNode;
+    }
+  };
+
+  // Events
+  container.on('hoverNode', function(event) {
+          $scope.node = getNodeByName(event.detail, $scope.data);
+          $scope.detail = true;
+          $scope.edit = false;
+          $scope.$digest();
+      });
 
 });
