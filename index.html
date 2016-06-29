@@ -7,13 +7,20 @@
   </head>
   <body>
     <div ng-app="universeApp">
+      <div ng-controller="deadlinePanelCtrl">
+        <div id="deadlinePanel">
+          <div ng-if="detail">
+            <ng-include src="'js/templates/panel-deadline.html'"></ng-include>
+          </div>
+        </div>
+      </div>
       <div ng-controller="skillTreeCtrl">
         <treechart data="data" diameter="960"></treechart>
       </div>
       <div ng-controller="skillInfoPanelCtrl">
         <div id="panel">
           <div ng-if="detail">
-            <ng-include src="'js/angular.architectureTree/templates/panel-detail.html'"></ng-include>
+            <ng-include src="'js/templates/panel-detail.html'"></ng-include>
           </div>
         </div>
       </div>
@@ -28,6 +35,7 @@
     <script src="js/directive/treechart.js" charset="utf-8"></script>
     <script src="js/controller/skillTree.js" charset="utf-8"></script>
     <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
+    <script src="js/controller/deadlinePanel.js" charset="utf-8"></script>
     <!-- load data -->
     <script src="data/core.js" charset="utf-8"></script>
 

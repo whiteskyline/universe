@@ -3,6 +3,8 @@
  * author:      linmingxing@xiaomi.com
  * date:        2016-6-28
  * comment:     控制skill面板的行为
+ * will add infos to node:
+ * node.detail.topsubs
  */
 app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, bus){
   'use strict';
@@ -15,7 +17,7 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
     $scope.data = formatData(clonedData);
   });
 
-  initData(data);
+  // initData(data);
 
   function formatData(data) {
 
@@ -48,7 +50,7 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
       node.children.map(function(child){
         var childNode = checkFinishStatus(child);
         node.total = childNode.total + node.total;
-        node.finished = childNode.totla + node.total;
+        node.finished = childNode.finished + node.finished;
       });
 
       return node;
@@ -73,6 +75,27 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
       console.log("top incomplete subs", node.detail.topsubs);
     }
 
+    // 检查每个节点的技术关键词属性
+    var checkTechniqueKeys = function(node) {
+      if (typeof(node.children) !== "undefined") {
+        node.children.map(function(child){
+          checkTechniqueKeys(child);
+        });
+      }
+
+      if (typeof(node.t) !== "undefined") node.detail.techkeys = node.t;
+    }
+
+    var checkDeadline = function(node) {
+      if (typeof(node.children) !== "undefined") {
+        node.children.map(function(child){
+          checkDeadline(child);
+        });
+      }
+
+      if (typeof(node.dl) !== "undefined") node.detail.deadline = node.dl;
+    }
+
     var nodesToString = function(nodes) {
       var result = [];
       nodes.map(function(node){
@@ -84,6 +107,8 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
     initDetail(data);
     checkFinishStatus(data);
     checkTopIncompleteChildren(data, 3);
+    checkTechniqueKeys(data);
+    checkDeadline(data);
     return data;
   }
 
