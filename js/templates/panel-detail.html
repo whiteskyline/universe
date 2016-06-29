@@ -1,10 +1,10 @@
 <div class="details panel panel-info">
     <div class="panel-heading">{{ node.name }}</div>
     <div class="panel-body">
-        <div class="url" ng-if="node.urls">
+        <div class="url" ng-if="node.detail.urls">
             <h5>相关网址</h5>
             <ul>
-              <li ng-repeat="url in node.urls">
+              <li ng-repeat="url in node.detail.urls">
                 <a href="{{ url }}" target="_blank">{{ url }}</a>
               </li>
             </ul>
@@ -19,10 +19,10 @@
             </ul>
         </div>
 
-        <div class="properties" ng-if="node.books">
+        <div class="properties" ng-if="node.detail.books">
             <h5>相关书籍</h5>
             <ul>
-                <li ng-repeat="book in node.books">
+                <li ng-repeat="book in node.detail.books">
                     《{{ book }}》
                 </li>
             </ul>
@@ -46,9 +46,9 @@
             </ul>
         </div>
 
-        <div class="comments panel panel-default" ng-if="node.comment">
+        <div class="comments panel panel-default" ng-if="node.detail.comment">
             <h5>详细</h5>
-            <div class="panel-body">{{ node.comment }}</div>
+            <div class="panel-body">{{ node.detail.comment }}</div>
         </div>
 
     </div>

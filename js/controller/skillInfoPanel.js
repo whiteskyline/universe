@@ -20,38 +20,30 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
   // initData(data);
 
   function formatData(data) {
-
-    var initDetail = function(node) {
-      if (typeof(node.children) !== 'undefined') {
-        node.children.map(function(child){
-          initDetail(child);
-        })
-      }
-
-      node.detail = {}
-    }
-
     // 递归检查所有的节点的完成情况
     var checkFinishStatus = function(node) {
+      var total = 0;
+      var finished = 0;
+
       if (typeof(node.children) == 'undefined') {
-        if (typeof(node.f) != 'undefined' && node.f == true) {
-          node.finished = 1;
-          node.total = 1;
+        total = 1;
+        finished = node.detail.finished;
+
+        if (typeof(finished) != 'undefined' && finished == true) {
+          finished = 1;
         } else {
-          node.finished = 0;
-          node.total = 1;
+          finished = 0;
         }
-        return node;
+      } else {
+        node.children.map(function(child){
+          var childNode = checkFinishStatus(child);
+          total = childNode.detail.total + total;
+          finished = childNode.detail.finished + finished;
+        });
       }
 
-      node.total = 0;
-      node.finished = 0;
-
-      node.children.map(function(child){
-        var childNode = checkFinishStatus(child);
-        node.total = childNode.total + node.total;
-        node.finished = childNode.finished + node.finished;
-      });
+      node.detail.finished = finished;
+      node.detail.total = total;
 
       return node;
     };
@@ -66,34 +58,13 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
         checkTopIncompleteChildren(child, n);
       })
 
-      var copied = angular.copy(node.children.filter(function(n){return n.finished < n.total;}));
+      var copied = angular.copy(node.children.filter(function(n){return n.detail.finished < n.detail.total;}));
       copied.sort(function(a, b){
-        return a.finished / a.total - b.finished / b.total;
+        return a.detail.finished / a.detail.total - b.detail.finished / b.detail.total;
       });
 
       node.detail.topsubs = nodesToString(copied.slice(0, n))
       console.log("top incomplete subs", node.detail.topsubs);
-    }
-
-    // 检查每个节点的技术关键词属性
-    var checkTechniqueKeys = function(node) {
-      if (typeof(node.children) !== "undefined") {
-        node.children.map(function(child){
-          checkTechniqueKeys(child);
-        });
-      }
-
-      if (typeof(node.t) !== "undefined") node.detail.techkeys = node.t;
-    }
-
-    var checkDeadline = function(node) {
-      if (typeof(node.children) !== "undefined") {
-        node.children.map(function(child){
-          checkDeadline(child);
-        });
-      }
-
-      if (typeof(node.dl) !== "undefined") node.detail.deadline = node.dl;
     }
 
     var nodesToString = function(nodes) {
@@ -104,11 +75,8 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
       return result;
     }
 
-    initDetail(data);
     checkFinishStatus(data);
     checkTopIncompleteChildren(data, 3);
-    checkTechniqueKeys(data);
-    checkDeadline(data);
     return data;
   }
 

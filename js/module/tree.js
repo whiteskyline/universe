@@ -34,26 +34,25 @@ d3.chart.architectureTree = function() {
 
     var updateNodeFinishedStatus = function(node){
       // 已经获得的，不再重复获得
-      if (typeof(node.total) !== 'undefined') {
-        return {'total': node.total, 'finished': node.finished}
+      if (typeof(node.detail.total) !== "undefined") {
+        return node.detail;
       }
 
       if (typeof(node.children) !== 'undefined') {
         var status = updateChildrenFinishedStatus(node.children)
-        node.total = status.total;
-        node.finished = status.finished;
-        return status;
+        node.detail.total = status.total;
+        node.detail.finished = status.finished;
+        return node.detail;
       }
 
-      if (node.hasOwnProperty("f") && node.f == true ) {
-        node.finished = 1
-        node.total = 1
+      node.detail.total = 1;
+      if (typeof(node.detail.finished) !== "undefined" && node.detail.finished == true ) {
+        node.detail.finished = 1
       } else {
-        node.finished = 0
-        node.total = 1
+        node.detail.finished = 0
       }
 
-      return {'total': node.total, 'finished': node.finished};
+      return node.detail;
 
     }
 
@@ -128,12 +127,12 @@ d3.chart.architectureTree = function() {
             .style('stroke', function(d) {
                 return d3.scale.threshold()
                     .domain(ranges)
-                    .range(colors)(d.finished / d.total);
+                    .range(colors)(d.detail.finished / d.detail.total);
             })
             .style('fill', function(d) {
                 return d3.scale.threshold()
                     .domain(ranges)
-                    .range(colors)(d.finished / d.total);
+                    .range(colors)(d.detail.finished / d.detail.total);
             });
 
         node.append("text")

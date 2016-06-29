@@ -26,7 +26,6 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
     });
 
     return deadlines;
-
   };
 
   var collectDeadlines = function(node, results) {
@@ -36,8 +35,8 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
       });
     }
 
-    if (typeof(node.dl) !== "undefined") {
-      results.push({"name": node.name, "deadline": node.dl});
+    if (typeof(node.detail.deadline) !== "undefined") {
+      results.push({"name": node.name, "deadline": node.detail.deadline});
     }
 
   }
