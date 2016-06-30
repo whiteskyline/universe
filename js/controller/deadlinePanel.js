@@ -14,7 +14,7 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
       $scope.data = angular.copy(data);
       $scope.detail = true;
       $scope.node = {"techniques":getDeadlines(data)};
-      $scope.$digest();
+      // $scope.$digest();
   });
 
   var getDeadlines = function(data) {

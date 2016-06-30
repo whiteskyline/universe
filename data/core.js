@@ -50,6 +50,14 @@ var dataCoreDataNewFormat = {
   }
 }
 
+var stockData = {
+  "股票理财": {
+    "MACD":{},
+    "BOLL":{},
+    "量能":{}
+  }
+}
+
 function transformRoot(data) {
   for (var key in data) {
     return transformDataFormat(key, data[key]);
@@ -129,14 +137,13 @@ app.service("storage", function(data){
 app.controller("fieldPanelCtrl", function($scope, storage, data){
   'use strict'
   storage.register("服务端开发", dataCoreDataNewFormat);
-  storage.register("前端开发", {});
+  storage.register("股票", stockData);
   $scope.fields = storage.getFields();
   $scope.selectedField = "";
   $scope.$watch('selectedField', function(newValue, oldValue, scope){
-    console.log(newValue, oldValue, scope);
     if (newValue === oldValue) {
       return;
     }
-    data.setData(transformRoot(newValue));
+    data.setData(transformRoot(newValue.data));
   }, true);
 });

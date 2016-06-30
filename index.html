@@ -10,7 +10,15 @@
 
       <!-- select panel -->
       <div ng-controller="fieldPanelCtrl">
-        <ng-include src="'js/templates/panel-select.html'"></ng-include>
+        <div class="fields panel panel-default">
+            <div class="panel-heading">领域选择</div>
+            <div class="panel-body">
+                <div class="url">
+                    <select class="form-control" ng-options="opt.key for opt in fields" ng-model="selectedField">
+                    </select>
+                </div>
+            </div>
+        </div>
       </div>
 
       <div ng-controller="deadlinePanelCtrl">
