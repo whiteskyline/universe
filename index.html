@@ -7,6 +7,12 @@
   </head>
   <body>
     <div ng-app="universeApp">
+
+      <!-- select panel -->
+      <div ng-controller="fieldPanelCtrl">
+        <ng-include src="'js/templates/panel-select.html'"></ng-include>
+      </div>
+
       <div ng-controller="deadlinePanelCtrl">
         <div id="deadlinePanel">
           <div ng-if="detail">

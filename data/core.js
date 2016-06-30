@@ -107,18 +107,36 @@ function collectDetail(key, value, detail) {
   return false;
 }
 
-/**
- * 正确初始化数据服务并且在文档载入后发布数据
- */
-var dataService;
-app.run(function(data){
-  console.log("data service is created", data)
-  dataService = data;
-})
+app.service("storage", function(data){
+  var registeredFields = [];
+  var register = function(key, data) {
+    registeredFields.push({"key": key, "data": data});
+  }
+  var getFields = function() {
+    return registeredFields;
+  }
+  var select = function(data) {
+    data.setData(transformRoot(data));
+  }
 
-window.onload = function(){
-  console.log("window loaded.");
-  var formattedData = transformRoot(dataCoreDataNewFormat);
-  console.log("formatted data:", formattedData);
-  dataService.setData(formattedData);
-};
+  return {
+    register: register,
+    getFields: getFields,
+    select: select
+  };
+});
+
+app.controller("fieldPanelCtrl", function($scope, storage, data){
+  'use strict'
+  storage.register("服务端开发", dataCoreDataNewFormat);
+  storage.register("前端开发", {});
+  $scope.fields = storage.getFields();
+  $scope.selectedField = "";
+  $scope.$watch('selectedField', function(newValue, oldValue, scope){
+    console.log(newValue, oldValue, scope);
+    if (newValue === oldValue) {
+      return;
+    }
+    data.setData(transformRoot(newValue));
+  }, true);
+});
