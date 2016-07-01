@@ -31,7 +31,7 @@ app.directive('treechart', function(bus) {
               }
               console.log("data is changed", data);
 
-              chart.diameter(1280)
+              chart.diameter(1600)
                   .data(data);
 
               d3.select(element[0])

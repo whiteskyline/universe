@@ -46,10 +46,11 @@ d3.chart.architectureTree = function() {
       }
 
       node.detail.total = 1;
-      if (typeof(node.detail.finished) !== "undefined" && node.detail.finished == true ) {
-        node.detail.finished = 1
-      } else {
-        node.detail.finished = 0
+      if (typeof(node.detail.finished) == "undefined") {
+        node.detail.finished = 0;
+      }
+      if (node.detail.finished === true) {
+        node.detail.finished = 1;
       }
 
       return node.detail;
@@ -236,12 +237,28 @@ d3.chart.architectureTree = function() {
             svg.selectAll(".node")
                 .filter(function(d) {
                     if (d.name === node.name) return false;
+
+                    /**
+                     * depth更浅的节点，肯定返回true
+                     * depth更深的节点，取相应节点的子下面的某个深度节点，判断是否对
+                     */
+                    if (node.depth >= d.depth) return true;
+                    if (parentAtLevel(d, node.depth) == node) return false;
+
                     return node.index.relatedNodes.indexOf(d.name) === -1;
                 })
                 .transition()
                 .style("opacity", opacity);
         };
     };
+
+    var parentAtLevel = function(node, level) {
+      var parentNode = node;
+      while (parentNode.depth > level) {
+        parentNode = parentNode.parent;
+      }
+      return parentNode;
+    }
 
     var filters = {
       name: '',

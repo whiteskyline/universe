@@ -29,10 +29,12 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
         total = 1;
         finished = node.detail.finished;
 
-        if (typeof(finished) != 'undefined' && finished == true) {
-          finished = 1;
-        } else {
+        if (typeof(finished) == "undefined") {
           finished = 0;
+        }
+
+        if (finished === true) {
+          finished = 1;
         }
       } else {
         node.children.map(function(child){
@@ -64,7 +66,6 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
       });
 
       node.detail.topsubs = nodesToString(copied.slice(0, n))
-      console.log("top incomplete subs", node.detail.topsubs);
     }
 
     var nodesToString = function(nodes) {
