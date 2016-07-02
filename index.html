@@ -13,16 +13,13 @@
     <div id="tabs">
       <ul>
         <li><a href="#skill-tab">技能树管理</a></li>
-        <li><a href="skill_tree.html">项目目标管理</a></li>
+        <li><a href="#project-tab">项目目标管理</a></li>
         <li><a href="#money-tab">财务管理</a></li>
       </ul>
       <div class="logo">
         Universe APP
       </div>
-      <div id="skill-tab">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget diam nec urna hendrerit tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum aliquam ligula non nulla cursus volutpat. Aliquam malesuada felis nec turpis auctor interdum. Cras et lobortis dolor. Nam sodales, dolor eu cursus faucibus, justo leo vestibulum turpis, id malesuada erat ipsum et leo. Integer id aliquam augue. Proin quis risus magna.</p>
-        <a href="#" id="sampleButton">Change</a>
-      </div>
+      <iframe id="skill-tab" src="skill_tree.html" style="width:100%; height:96%;"></iframe>
     </div>
 
     <!-- start of scripts -->
@@ -32,14 +29,7 @@
     <!-- end of scripts -->
     <script charset="utf-8">
       $(function(){
-        $("#tabs").tabs({
-          beforeLoad: function( event, ui ) {
-            ui.jqXHR.fail(function() {
-              ui.panel.html("Couldn't load this tab. We'll try to fix this as soon as possible. " +
-                "If this wouldn't be a demo." );
-            });
-          }
-        });
+        $("#tabs").tabs();
       });
     </script>
 

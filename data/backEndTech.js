@@ -221,5 +221,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("服务端技术", backEndTechData);
+  storage.register("服务端技术", backEndTechData, true);
 });

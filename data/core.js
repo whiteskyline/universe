@@ -57,8 +57,8 @@ function collectDetail(key, value, detail) {
 
 app.service("storage", function(data){
   var registeredFields = [];
-  var register = function(key, data) {
-    registeredFields.push({"key": key, "data": data});
+  var register = function(key, data, def) {
+    registeredFields.push({"key": key, "data": data, "default": def});
   }
   var getFields = function() {
     return registeredFields;
@@ -76,12 +76,21 @@ app.service("storage", function(data){
 
 app.controller("fieldPanelCtrl", function($scope, storage, data){
   'use strict'
-  $scope.fields = storage.getFields();
-  $scope.selectedField = "";
+  var fields = storage.getFields();
+  $scope.fields = fields;
   $scope.$watch('selectedField', function(newValue, oldValue, scope){
     if (newValue === oldValue) {
       return;
     }
     data.setData(transformRoot(newValue.data));
   }, true);
+  fields.map(function(value){
+    if (typeof(value.default) !== "undefined" && value.default == true) {
+      window.onload = function() {
+          console.log("data initialized");
+          $scope.selectedField = value;
+          $scope.$digest();
+      }
+    }
+  });
 });

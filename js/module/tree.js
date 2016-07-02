@@ -26,7 +26,6 @@ d3.chart.architectureTree = function() {
             links = tree.links(nodes);
 
         updateChildrenFinishedStatus(nodes);
-        console.log("status updated nodes", nodes)
         activeNode = null;
 
         svg.call(updateData, nodes, links);
