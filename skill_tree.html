@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Universe Tree</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/tree.css" />
+  </head>
+  <body>
+    <div ng-app="universeApp">
+
+      <!-- select panel -->
+      <div ng-controller="fieldPanelCtrl">
+        <div class="fields panel panel-default">
+            <div class="panel-heading">领域选择</div>
+            <div class="panel-body">
+                <div class="url">
+                    <select class="form-control" ng-options="opt.key for opt in fields" ng-model="selectedField">
+                    </select>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div ng-controller="deadlinePanelCtrl">
+        <div id="deadlinePanel">
+          <div ng-if="detail">
+            <ng-include src="'js/templates/panel-deadline.html'"></ng-include>
+          </div>
+        </div>
+      </div>
+      <div ng-controller="skillTreeCtrl">
+        <treechart data="data" diameter="1600"></treechart>
+      </div>
+      <div ng-controller="skillInfoPanelCtrl">
+        <div id="panel">
+          <div ng-if="detail">
+            <ng-include src="'js/templates/panel-detail.html'"></ng-include>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/basic/d3.js" charset="utf-8"></script>
+    <script src="js/basic/angular.js" charset="utf-8"></script>
+    <script src="js/module/tree.js" charset="utf-8"></script>
+
+    <script src="js/core.js" charset="utf-8"></script>
+    <script src="js/service/data.js" charset="utf-8"></script>
+    <script src="js/service/bus.js" charset="utf-8"></script>
+    <script src="js/directive/treechart.js" charset="utf-8"></script>
+    <script src="js/controller/skillTree.js" charset="utf-8"></script>
+    <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
+    <script src="js/controller/deadlinePanel.js" charset="utf-8"></script>
+    <!-- load data -->
+    <script src="data/core.js" charset="utf-8"></script>
+    <script src="data/backEndTech.js" charset="utf-8"></script>
+    <script src="data/stockTech.js" charset="utf-8"></script>
+    <script src="data/frontEndTech.js" charset="utf-8"></script>
+
+  </body>
+</html>

@@ -1,60 +1,47 @@
 <html>
   <head>
-    <title>Universe Tree</title>
+    <title>Universe APP</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/tree.css" />
+    <link rel="stylesheet" href="css/jquery-ui.custom.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/self-define.css" />
+  </head>
   </head>
   <body>
-    <div ng-app="universeApp">
-
-      <!-- select panel -->
-      <div ng-controller="fieldPanelCtrl">
-        <div class="fields panel panel-default">
-            <div class="panel-heading">领域选择</div>
-            <div class="panel-body">
-                <div class="url">
-                    <select class="form-control" ng-options="opt.key for opt in fields" ng-model="selectedField">
-                    </select>
-                </div>
-            </div>
-        </div>
+    <!--start combinations-->
+    <div id="tabs">
+      <ul>
+        <li><a href="#skill-tab">技能树管理</a></li>
+        <li><a href="skill_tree.html">项目目标管理</a></li>
+        <li><a href="#money-tab">财务管理</a></li>
+      </ul>
+      <div class="logo">
+        Universe APP
       </div>
-
-      <div ng-controller="deadlinePanelCtrl">
-        <div id="deadlinePanel">
-          <div ng-if="detail">
-            <ng-include src="'js/templates/panel-deadline.html'"></ng-include>
-          </div>
-        </div>
-      </div>
-      <div ng-controller="skillTreeCtrl">
-        <treechart data="data" diameter="1600"></treechart>
-      </div>
-      <div ng-controller="skillInfoPanelCtrl">
-        <div id="panel">
-          <div ng-if="detail">
-            <ng-include src="'js/templates/panel-detail.html'"></ng-include>
-          </div>
-        </div>
+      <div id="skill-tab">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget diam nec urna hendrerit tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum aliquam ligula non nulla cursus volutpat. Aliquam malesuada felis nec turpis auctor interdum. Cras et lobortis dolor. Nam sodales, dolor eu cursus faucibus, justo leo vestibulum turpis, id malesuada erat ipsum et leo. Integer id aliquam augue. Proin quis risus magna.</p>
+        <a href="#" id="sampleButton">Change</a>
       </div>
     </div>
-    <script src="js/basic/d3.js" charset="utf-8"></script>
-    <script src="js/basic/angular.js" charset="utf-8"></script>
-    <script src="js/module/tree.js" charset="utf-8"></script>
 
-    <script src="js/core.js" charset="utf-8"></script>
-    <script src="js/service/data.js" charset="utf-8"></script>
-    <script src="js/service/bus.js" charset="utf-8"></script>
-    <script src="js/directive/treechart.js" charset="utf-8"></script>
-    <script src="js/controller/skillTree.js" charset="utf-8"></script>
-    <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
-    <script src="js/controller/deadlinePanel.js" charset="utf-8"></script>
-    <!-- load data -->
-    <script src="data/core.js" charset="utf-8"></script>
-    <script src="data/backEndTech.js" charset="utf-8"></script>
-    <script src="data/stockTech.js" charset="utf-8"></script>
-    <script src="data/frontEndTech.js" charset="utf-8"></script>
+    <!-- start of scripts -->
+    <script src="js/basic/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/basic/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/basic/jquery-ui.custom.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- end of scripts -->
+    <script charset="utf-8">
+      $(function(){
+        $("#tabs").tabs({
+          beforeLoad: function( event, ui ) {
+            ui.jqXHR.fail(function() {
+              ui.panel.html("Couldn't load this tab. We'll try to fix this as soon as possible. " +
+                "If this wouldn't be a demo." );
+            });
+          }
+        });
+      });
+    </script>
 
   </body>
 </html>
