@@ -53,7 +53,8 @@ app.run(function(storage){
             "语言基础": {},
             "设计模式": {},
             "兼容性BUG": {},
-            "Node.js": {}
+            "Node.js": {},
+            "ES6":{}
           },
           "框架技术":{
             "AngularJS":{
@@ -69,7 +70,7 @@ app.run(function(storage){
           }
         },
         "测试技术":{
-          "自动化测试": {"_t":["selenium"]},
+          "自动化测试": {"selenium":{}, "PhantomJS":{}},
           "单元测试": {"QUnit":{}, "Jasmine":{}},
           "性能测试":{"_u":["yslow", "pageSpeed", "showSlow"]}
         }
@@ -84,6 +85,7 @@ app.run(function(storage){
             "技术总结": {}
           }
         },
+        "Weex":{},
         "应用测试":{}
       },
       <!-- end of Native应用 -->
