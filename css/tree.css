@@ -25,6 +25,7 @@
 .panel-action {
     padding: 5px;
     text-align: center;
+    
 }
 
 .details {
@@ -74,16 +75,10 @@
 }
 
 .fields {
-  position: fixed;
-  top: 10px;
-  left: 10px;
   width: 200px;
 }
 
 .deadlines {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
   width: 200px;
 }
 

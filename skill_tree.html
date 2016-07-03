@@ -4,11 +4,13 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/tree.css" />
+    <link rel="stylesheet" href="css/self-define.css" />
   </head>
   <body>
     <div ng-app="universeApp">
 
-      <!-- select panel -->
+      <!-- start of leftbar -->
+      <div class="leftbar">
       <div ng-controller="fieldPanelCtrl">
         <div class="fields panel panel-default">
             <div class="panel-heading">领域选择</div>
@@ -28,6 +30,13 @@
           </div>
         </div>
       </div>
+
+      <svg id="deadlineBar">
+      </svg>
+
+    </div>
+    <!-- end of left bar -->
+
       <div ng-controller="skillTreeCtrl">
         <treechart data="data" diameter="1600"></treechart>
       </div>
@@ -39,9 +48,12 @@
         </div>
       </div>
     </div>
+
+    <!-- start of scripts -->
     <script src="js/basic/d3.js" charset="utf-8"></script>
     <script src="js/basic/angular.js" charset="utf-8"></script>
     <script src="js/module/tree.js" charset="utf-8"></script>
+    <script src="js/module/deadline.js" charset="utf-8"></script>
 
     <script src="js/core.js" charset="utf-8"></script>
     <script src="js/service/data.js" charset="utf-8"></script>
@@ -55,6 +67,7 @@
     <script src="data/backEndTech.js" charset="utf-8"></script>
     <script src="data/stockTech.js" charset="utf-8"></script>
     <script src="data/frontEndTech.js" charset="utf-8"></script>
+    <!-- end of scripts -->
 
   </body>
 </html>
