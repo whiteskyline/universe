@@ -32,20 +32,19 @@ d3.chart.deadlineBar = function(selector) {
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             yAxis = d3.svg.axis()
                 .orient("left")
-                .ticks(d3.time.months, 1)
                 .tickFormat(formatDate);
 
             yAxisElement = svg.append("g")
                 .attr("class", "y axis")
                 .attr("transform", "translate(" + margin.left + ",0)")
             colorMaps = d3.scale.threshold()
-                          .domain([0.2, 0.4, 0.6, 0.8])
-                          .range(["#FF0033", "#E6109B", "#FFE3FB", "#F2FE28", "#00FF80"]);
+                .domain([0.2, 0.4, 0.6, 0.8])
+                .range(["#FF0033", "#E6109B", "#FFE3FB", "#F2FE28", "#00FF80"]);
         }
 
         // 绘制
         yScale.domain([new Date(deadlineData.start), new Date(deadlineData.end)]);
-        yAxis.scale(yScale);
+        yAxis.scale(yScale).ticks(selectUnit(new Date(deadlineData.start), new Date(deadlineData.end)), 1);
         yAxisElement.call(yAxis);
 
         var node = svg.selectAll(".node")
@@ -59,19 +58,19 @@ d3.chart.deadlineBar = function(selector) {
         node.append("circle")
             .attr("r", 3.5)
             .style("fill", "#FFFFFF")
-            .style("stroke", function(d){
-              if (d.name === "今天") {
-                return "#00FF80";
-              }
-              if (d.fperc >= 1) {
-                return "#99CCFF";
-              }
-              if (d.deadline <= new Date()) {
-                return "#FF0033";
-              }
+            .style("stroke", function(d) {
+                if (d.name === "今天") {
+                    return "#00FF80";
+                }
+                if (d.fperc >= 1) {
+                    return "#99CCFF";
+                }
+                if (d.deadline <= new Date()) {
+                    return "#FF0033";
+                }
 
-              // 根据fperc返回
-              return colorMaps(d.fperc);
+                // 根据fperc返回
+                return colorMaps(d.fperc);
             });
 
         node.append("text")
@@ -82,24 +81,56 @@ d3.chart.deadlineBar = function(selector) {
             });
     }
 
+    var selectUnit = function(start, end) {
+      var DAY = 24 * 3600 * 1000;
+      var WEEK = DAY * 7;
+      var MONTH = WEEK * 4;
+      var HALF_YEAR = MONTH * 6;
+      var range = end - start;
+      if (range > HALF_YEAR) return d3.time.months;
+      if (range > 2 * MONTH) return d3.time.weeks;
+      if (range > WEEK) return d3.time.days;
+      return d3.time.days;
+    }
+
     var createDatanodes = function() {
-      var dataNodes = angular.copy(deadlineData.nodes);
-      dataNodes.push({
-          "name": "开始",
-          "deadline": deadlineData.start,
-          "fperc": 1
-      });
-      dataNodes.push({
-          "name": "结束",
-          "deadline": deadlineData.end,
-          "fperc": 1
-      });
-      return dataNodes;
+        var dataNodes = angular.copy(deadlineData.nodes);
+        dataNodes.push({
+            "name": "开始",
+            "deadline": deadlineData.start,
+            "fperc": 1
+        });
+        dataNodes.push({
+            "name": "结束",
+            "deadline": deadlineData.end,
+            "fperc": 1
+        });
+        return dataNodes;
     }
 
     var formatDate = function(d) {
         var date = new Date(d);
         return (date.getYear()) + 1900 + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    }
+
+    var collectDeadlineNodes = function(data, results, parent) {
+        if (typeof(data.detail.deadline) !== "undefined") {
+            var name;
+            if (typeof(parent) !== "undefined") name = parent.name + "-" + data.name;
+            else name = data.name;
+            var finishPerc = data.detail.finished / data.detail.total;
+            results.push({
+                "name": name,
+                "deadline": data.detail.deadline,
+                "fperc": finishPerc
+            });
+        }
+
+        if (typeof(data.children) != "undefined") {
+            data.children.map(function(child) {
+                collectDeadlineNodes(child, results, data);
+            })
+        }
     }
 
     chart.data = function(values) {
@@ -108,47 +139,24 @@ d3.chart.deadlineBar = function(selector) {
         return chart;
     }
 
-    var collectDeadlineNodes = function(data, results, parent) {
-      if (typeof(data.detail.deadline) !== "undefined") {
-        var name;
-        if (typeof(parent) !== "undefined") name = parent.name + "-" + data.name;
-        else name = data.name;
-        var finishPerc = data.detail.finished / data.detail.total;
-        results.push({"name": name, "deadline": data.detail.deadline, "fperc": finishPerc});
-      }
-
-      if (typeof(data.children) != "undefined") {
-        data.children.map(function(child){
-          collectDeadlineNodes(child, results, data);
-        })
-      }
-    }
-
     chart.transformData = function(data) {
-      var start = data.detail.start;
-      var end = data.detail.end;
-      console.log("range", start, end);
+        var start = data.detail.start;
+        var end = data.detail.end;
+        console.log("range", start, end);
 
-      var results = [];
-      collectDeadlineNodes(data, results);
-      results.push({"name": "今天", "deadline": formatDate(new Date()), "fperc": 1});
-      return {"start": start, "end": end, "nodes": results};
+        var results = [];
+        collectDeadlineNodes(data, results);
+        results.push({
+            "name": "今天",
+            "deadline": formatDate(new Date()),
+            "fperc": 1
+        });
+        return {
+            "start": start,
+            "end": end,
+            "nodes": results
+        };
     }
 
     return chart;
 };
-
-app.run(function(bus){
-  var chart;
-  bus.on("updateData", function(data){
-    if (typeof(data) === 'undefined') {
-      return;
-    }
-
-    console.log("deadline bar data loaded", data);
-    chart = d3.chart.deadlineBar("#deadlineBar");
-    var transformedData = chart.transformData(data);
-    chart.data(transformedData);
-    d3.select("#deadlineBar").call(chart);
-  });
-});
