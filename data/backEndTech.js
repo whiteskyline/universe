@@ -32,6 +32,7 @@ app.run(function(storage){
           "FDD":{}
         },
         "DEBUG技术":{
+          "_dl": "2016/7/15",
           "远程DEBUG技术":{"_f": true},
           "Intellij DEBUG技术":{"_f": 0.5}
         }
@@ -112,13 +113,13 @@ app.run(function(storage){
             "数据服务":{
               "SQL":{
                 "MySQL":{
-                  "基础使用":{"_f": true},
+                  "基础使用":{"_f": true, "_dl": "2016/5/1"},
                   "深入学习":{}
                 },
                 "AWS RDS":{},
               },
               "NoSQL":{
-                "DynamoDB":{},
+                "DynamoDB":{"_dl": "2016/4/1"},
                 "MongoDB":{},
                 "Cassandra":{}
               },
@@ -221,5 +222,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("服务端技术", backEndTechData, true);
+  storage.register("服务端技术", backEndTechData, true, "2016/3/1", "2016/10/1");
 });

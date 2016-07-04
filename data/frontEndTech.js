@@ -59,7 +59,7 @@ app.run(function(storage){
           "框架技术":{
             "AngularJS":{
               "基础应用":{"_f": true},
-              "深入剖析":{},
+              "深入剖析":{"_dl": "2016/7/20"},
               "技术总结":{"_f": 0.5}
             },
             "jQuery": {
@@ -106,5 +106,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("前端技术", frontEndData);
+  storage.register("前端技术", frontEndData, false, "2016/6/1", "2016/10/30");
 });

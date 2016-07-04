@@ -8,5 +8,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("股票技术", stockData);
+  storage.register("股票技术", stockData, false, "2016/3/1", "2016/10/1");
 });
