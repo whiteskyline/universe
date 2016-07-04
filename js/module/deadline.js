@@ -8,8 +8,8 @@ d3.chart.deadlineBar = function(selector) {
         bottom: 10,
         right: 10
     };
-    var width = 200,
-        height = 800;
+    var width = 300,
+        height = 1300;
 
     var yScale, yAxis, yAxisElement, svg;
     var colorMaps;
@@ -43,8 +43,8 @@ d3.chart.deadlineBar = function(selector) {
         }
 
         // 绘制
-        yScale.domain([new Date(deadlineData.start), new Date(deadlineData.end)]);
-        yAxis.scale(yScale).ticks(selectUnit(new Date(deadlineData.start), new Date(deadlineData.end)), 1);
+        yScale.domain([deadlineData.start, deadlineData.end]);
+        yAxis.scale(yScale).ticks(selectUnit(deadlineData.start, deadlineData.end), 1);
         yAxisElement.call(yAxis);
 
         var node = svg.selectAll(".node")
@@ -53,7 +53,7 @@ d3.chart.deadlineBar = function(selector) {
             .append("g")
             .attr("class", "node")
             .attr("transform", function(d, i) {
-                return "translate(" + margin.left + "," + yScale(new Date(d.deadline)) + ")";
+                return "translate(" + margin.left + "," + yScale(d.deadline) + ")";
             });
         node.append("circle")
             .attr("r", 3.5)
@@ -121,7 +121,7 @@ d3.chart.deadlineBar = function(selector) {
             var finishPerc = data.detail.finished / data.detail.total;
             results.push({
                 "name": name,
-                "deadline": data.detail.deadline,
+                "deadline": new Date(data.detail.deadline),
                 "fperc": finishPerc
             });
         }
@@ -142,18 +142,17 @@ d3.chart.deadlineBar = function(selector) {
     chart.transformData = function(data) {
         var start = data.detail.start;
         var end = data.detail.end;
-        console.log("range", start, end);
 
         var results = [];
         collectDeadlineNodes(data, results);
         results.push({
             "name": "今天",
-            "deadline": formatDate(new Date()),
+            "deadline": new Date(),
             "fperc": 1
         });
         return {
-            "start": start,
-            "end": end,
+            "start": new Date(start),
+            "end": new Date(end),
             "nodes": results
         };
     }
