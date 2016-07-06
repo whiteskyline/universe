@@ -7,7 +7,7 @@ app.run(function(storage){
         "_dl": "2016/7/6",
         "micloud-emq-common":{
           "_dl": "2016/7/5 12:00",
-          "cache层测试完毕": {"_dl": "2016/7/5 00:00", "_f": 0.3},
+          "cache层测试完毕": {"_dl": "2016/7/5 00:00", "_f": 0.4},
           "service层测试完毕": {"_dl": "2016/7/5 10:00"}
         },
         "micloud-emq-service":{
