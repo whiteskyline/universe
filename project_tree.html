@@ -36,6 +36,10 @@
           -->
 
             <div ng-controller="deadlineBarCtrl">
+                <div id="options">
+                  <input type="checkbox" ng-model="startFromNow">从当前开始</input>
+                  <input type="checkbox" ng-model="displayBeforeNow" ng-init="displayBeforeNow=true">显示已过期项目</input>
+                </div>
                 <div id="deadlineBar">
                 </div>
             </div>

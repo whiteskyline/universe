@@ -17,5 +17,21 @@
 
      chart.data(chart.transformData(data));
      d3.select("#deadlineBar").call(chart);
+
+     $scope.$watch("startFromNow", function(newValue) {
+       console.log("new value", newValue);
+       if (typeof(newValue) !== "undefined") {
+         chart.setStartFromNow(newValue);
+         d3.select("#deadlineBar").call(chart);
+       }
+     })
+
+     $scope.$watch("displayBeforeNow", function(newValue) {
+       console.log("new value", newValue);
+       if (typeof(newValue) !== "undefined") {
+         chart.setDisplayBeforeNow(newValue);
+         d3.select("#deadlineBar").call(chart);
+       }
+     })
    });
  });

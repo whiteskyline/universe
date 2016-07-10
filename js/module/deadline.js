@@ -17,13 +17,14 @@ d3.chart.deadlineBar = function(selector) {
     var filteredDeadlineData;
 
     // 一些选项内容
-    var startFromNow = true;
+    var startFromNow = false;
+    var displayBeforeNow = true;
 
     /**
      * build the chart
      */
     function chart() {
-        d3.select(selector).selectAll("svg").remove();
+        d3.select(selector).selectAll("svg").selectAll(".node").remove();
         if (typeof(yScale) === "undefined") {
             yScale = d3.time.scale().range([0, height - margin.top - margin.bottom]);
             svg = d3.select(selector)
@@ -50,11 +51,11 @@ d3.chart.deadlineBar = function(selector) {
         filteredDeadlineData = filterDeadlines(deadlineData);
         // 绘制
         yScale.domain([filteredDeadlineData.start, filteredDeadlineData.end]);
-        yAxis.scale(yScale).ticks(selectUnit(deadlineData.start, deadlineData.end), 1);
+        yAxis.scale(yScale).ticks(selectUnit(filteredDeadlineData.start, filteredDeadlineData.end), 1);
         yAxisElement.call(yAxis);
 
         var node = svg.selectAll(".node")
-            .data(createDatanodes(deadlineData))
+            .data(createDatanodes(filteredDeadlineData))
             .enter()
             .append("g")
             .attr("class", "node")
@@ -88,6 +89,7 @@ d3.chart.deadlineBar = function(selector) {
     }
 
     var selectUnit = function(start, end) {
+      var HOUR = 3600 * 1000;
       var DAY = 24 * 3600 * 1000;
       var WEEK = DAY * 7;
       var MONTH = WEEK * 4;
@@ -96,7 +98,8 @@ d3.chart.deadlineBar = function(selector) {
       if (range > HALF_YEAR) return d3.time.months;
       if (range > 2 * MONTH) return d3.time.weeks;
       if (range > WEEK) return d3.time.days;
-      return d3.time.days;
+      if (range > DAY) return d3.time.days;
+      return d3.time.hours;
     }
 
     var createDatanodes = function(dData) {
@@ -116,28 +119,53 @@ d3.chart.deadlineBar = function(selector) {
 
     var filterDeadlines = function(originData) {
       var result = angular.copy(originData);
-      if (startFromNow) {
-        result.nodes = filterLaterDatanodes(originData.nodes);
-        result.nodes.sort(function(a, b){
-          return a.deadline - b.deadline;
-        });
-      }
-      result.start = result.nodes[0].deadline;
-      result.nodes = createDatanodes(result);
+      filterVisableDatanodes(result);
       return result;
     }
 
-    var filterLaterDatanodes = function(oriDatas) {
+    var filterVisableDatanodes = function(oriData) {
+
+      // 过滤需要显示的节点
       var resultDatas = new Array();
-      oriDatas.forEach(function (item, index, array) {
-        if (item.deadline > new Date(Date.now() - 1800)) resultDatas.push(item);
+      oriData.nodes.forEach(function (item, index, array) {
+        if (startFromNow) {
+          if (item.deadline > new Date(Date.now() - 1800)) {
+            resultDatas.push(item);
+            return;
+          }
+          if (displayBeforeNow) {
+            if (item.fperc < 1) {
+              resultDatas.push(item);
+              return;
+            }
+          }
+        } else {
+          resultDatas.push(item);
+          return;
+        }
+
       });
-      return resultDatas;
+
+      resultDatas.sort(function(a, b){
+        return a.deadline - b.deadline;
+      });
+
+      oriData.nodes = resultDatas;
+
+      // 决定start与end的节点
+      if (startFromNow) {
+        if (displayBeforeNow) {
+          oriData.start = oriData.nodes[0].deadline;
+        } else {
+          oriData.start = new Date();
+        }
+      }
+
     }
 
     var formatDate = function(d) {
         var date = new Date(d);
-        return (date.getYear()) + 1900 + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        return (date.getYear()) + 1900 + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
     }
 
     var collectDeadlineNodes = function(data, results, parent) {
@@ -182,6 +210,20 @@ d3.chart.deadlineBar = function(selector) {
             "end": new Date(end),
             "nodes": results
         };
+    }
+
+    chart.setStartFromNow = function(value) {
+      if (typeof(value) !== "undefined") {
+        startFromNow = value;
+      }
+      return chart;
+    }
+
+    chart.setDisplayBeforeNow = function(value) {
+      if (typeof(value) != "undefined") {
+        displayBeforeNow = value;
+      }
+      return chart;
     }
 
     return chart;
