@@ -87,16 +87,26 @@ d3.chart.architectureTree = function() {
         var ranges = [0.2, 0.4, 0.6, 0.8]
 
         node.append("circle")
-            .attr("r", function(d) { return 4.5 * (d.size || 1); })
+            .attr("r", function(d) { return 6.0 * (d.size || 1); })
+            .attr("class", function(d) {
+              if (typeof(d.detail.active) !== "undefined") {
+                return "active";
+              } else {
+                return "";
+              }
+            })
             .style('stroke', function(d) {
                 return d3.scale.threshold()
                     .domain(ranges)
                     .range(colors)(d.detail.finished / d.detail.total);
             })
+            .style("stroke-width", function(d) {return 2.0 * (d.size || 1);})
             .style('fill', function(d) {
-                return d3.scale.threshold()
-                    .domain(ranges)
-                    .range(colors)(d.detail.finished / d.detail.total);
+                // return d3.scale.threshold()
+                //     .domain(ranges)
+                //     .range(colors)(d.detail.finished / d.detail.total);
+                // active node is filled
+                return "#FFFFFF";
             });
 
         node.append("text")
@@ -106,6 +116,35 @@ d3.chart.architectureTree = function() {
             .text(function(d) {
                 return d.name;
             });
+
+
+
+        var activeNodes = container.selectAll("circle.active");
+        function repeat(func) {
+          activeNodes
+            .transition()
+            .duration(700)
+            .call(func);
+        }
+        // 反向变化
+        function transOppo(trans) {
+          trans
+          .each("end", function(){
+            repeat(transPosi);
+          })
+          .style("stroke-width", function(d) {return 2.0 * (d.size || 1);})
+          .attr("r", function(d) {return 6.0 * (d.size || 1);});
+        }
+        // 正向变化
+        function transPosi(trans) {
+          trans
+          .each("end", function(){
+            repeat(transOppo);
+          })
+          .style("stroke-width", function(d) {return 6.0 * (d.size || 1);})
+          .attr("r", function(d) {return 18.0 * (d.size || 1);});
+        }
+        repeat(transPosi);
     };
 
     /**

@@ -6,9 +6,10 @@ app.run(function(storage){
       "Universe APP升级":{
         "Active状态":{
           "Active状态数据支持":{_f: true},
-          "Active高亮显示":{_c: "最好做成心跳型"},
+          "Active高亮显示":{_c: "最好做成心跳型", _f: true},
           "相关连线高亮显示":{},
-          _dl: "2016/7/10 15:30"
+          _dl: "2016/7/10 15:30",
+          _ac: true
         },
         "deadlineBar升级":{
           "重叠避免":{},
