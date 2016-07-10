@@ -20,36 +20,6 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
   // initData(data);
 
   function formatData(data) {
-    // 递归检查所有的节点的完成情况
-    var checkFinishStatus = function(node) {
-      var total = 0;
-      var finished = 0;
-
-      if (typeof(node.children) == 'undefined') {
-        total = 1;
-        finished = node.detail.finished;
-
-        if (typeof(finished) == "undefined") {
-          finished = 0;
-        }
-
-        if (finished === true) {
-          finished = 1;
-        }
-      } else {
-        node.children.map(function(child){
-          var childNode = checkFinishStatus(child);
-          total = childNode.detail.total + total;
-          finished = childNode.detail.finished + finished;
-        });
-      }
-
-      node.detail.finished = finished;
-      node.detail.total = total;
-
-      return node;
-    };
-
     // 获得每个节点的最紧急的三个子项目
     var checkTopIncompleteChildren = function(node, n) {
       if (typeof(node.children) == 'undefined') {
@@ -76,7 +46,6 @@ app.controller('skillInfoPanelCtrl', function($scope, $timeout, $window, data, b
       return result;
     }
 
-    checkFinishStatus(data);
     checkTopIncompleteChildren(data, 3);
     return data;
   }
