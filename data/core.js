@@ -58,6 +58,9 @@ function collectDetail(key, value, detail) {
     if (key == "_f") {
       detail.finished = value;
     }
+    if (key == "_ac") {
+      detail.active = value;
+    }
     return true;
   }
   return false;

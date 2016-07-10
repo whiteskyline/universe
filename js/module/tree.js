@@ -31,42 +31,6 @@ d3.chart.architectureTree = function() {
         svg.call(updateData, nodes, links);
     }
 
-    var updateNodeFinishedStatus = function(node){
-      // 已经获得的，不再重复获得
-      if (typeof(node.detail.total) !== "undefined") {
-        return node.detail;
-      }
-
-      if (typeof(node.children) !== 'undefined') {
-        var status = updateChildrenFinishedStatus(node.children)
-        node.detail.total = status.total;
-        node.detail.finished = status.finished;
-        return node.detail;
-      }
-
-      node.detail.total = 1;
-      if (typeof(node.detail.finished) == "undefined") {
-        node.detail.finished = 0;
-      }
-      if (node.detail.finished === true) {
-        node.detail.finished = 1;
-      }
-
-      return node.detail;
-
-    }
-
-    var updateChildrenFinishedStatus = function(nodes){
-      var total = 0;
-      var finished = 0;
-      nodes.map(function(node) {
-        var childStatus = updateNodeFinishedStatus(node);
-        total = total + childStatus.total;
-        finished = finished + childStatus.finished;
-      })
-      return {'total': total, 'finished': finished}
-    }
-
     /**
      * Update the chart data
      * @param {Object} container
