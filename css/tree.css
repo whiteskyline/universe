@@ -22,10 +22,16 @@
     stroke-width: 1.5px;
 }
 
+.link-active {
+    fill: none;
+    stroke: #bbb;
+    stroke-width: 4px;
+}
+
 .panel-action {
     padding: 5px;
     text-align: center;
-    
+
 }
 
 .details {

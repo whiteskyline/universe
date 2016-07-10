@@ -14,6 +14,10 @@ d3.chart.deadlineBar = function(selector) {
     var yScale, yAxis, yAxisElement, svg;
     var colorMaps;
     var deadlineData;
+    var filteredDeadlineData;
+
+    // 一些选项内容
+    var startFromNow = true;
 
     /**
      * build the chart
@@ -42,8 +46,10 @@ d3.chart.deadlineBar = function(selector) {
                 .range(["#FF0033", "#E6109B", "#FFE3FB", "#F2FE28", "#00FF80"]);
         }
 
+        // 过滤数据
+        filteredDeadlineData = filterDeadlines(deadlineData);
         // 绘制
-        yScale.domain([deadlineData.start, deadlineData.end]);
+        yScale.domain([filteredDeadlineData.start, filteredDeadlineData.end]);
         yAxis.scale(yScale).ticks(selectUnit(deadlineData.start, deadlineData.end), 1);
         yAxisElement.call(yAxis);
 
@@ -93,19 +99,40 @@ d3.chart.deadlineBar = function(selector) {
       return d3.time.days;
     }
 
-    var createDatanodes = function() {
-        var dataNodes = angular.copy(deadlineData.nodes);
+    var createDatanodes = function(dData) {
+        var dataNodes = angular.copy(dData.nodes);
         dataNodes.push({
             "name": "开始",
-            "deadline": deadlineData.start,
+            "deadline": dData.start,
             "fperc": 1
         });
         dataNodes.push({
             "name": "结束",
-            "deadline": deadlineData.end,
+            "deadline": dData.end,
             "fperc": 1
         });
         return dataNodes;
+    }
+
+    var filterDeadlines = function(originData) {
+      var result = angular.copy(originData);
+      if (startFromNow) {
+        result.nodes = filterLaterDatanodes(originData.nodes);
+        result.nodes.sort(function(a, b){
+          return a.deadline - b.deadline;
+        });
+      }
+      result.start = result.nodes[0].deadline;
+      result.nodes = createDatanodes(result);
+      return result;
+    }
+
+    var filterLaterDatanodes = function(oriDatas) {
+      var resultDatas = new Array();
+      oriDatas.forEach(function (item, index, array) {
+        if (item.deadline > new Date(Date.now() - 1800)) resultDatas.push(item);
+      });
+      return resultDatas;
     }
 
     var formatDate = function(d) {

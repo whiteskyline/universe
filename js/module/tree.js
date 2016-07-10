@@ -45,7 +45,9 @@ d3.chart.architectureTree = function() {
         });
 
         var diagonal = d3.svg.diagonal.radial()
-            .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+            .projection(function(d) {
+              return [d.y, d.x / 180 * Math.PI];
+            });
 
         var linkSelection = svg.selectAll(".link").data(links, function(d) {
             return d.source.name + d.target.name + Math.random();
@@ -53,7 +55,14 @@ d3.chart.architectureTree = function() {
         linkSelection.exit().remove();
 
         linkSelection.enter().append("path")
-            .attr("class", "link")
+            .attr("class", function(d){
+              console.log("path data", d);
+              if (typeof(d.target.detail.active) !== "undefined") {
+                return "link-active";
+              } else {
+                return "link";
+              }
+            })
             .attr("d", diagonal);
 
         var nodeSelection = container.selectAll(".node").data(nodes, function(d) {
@@ -117,8 +126,9 @@ d3.chart.architectureTree = function() {
                 return d.name;
             });
 
-
-
+        /*
+         * 心跳相关逻辑
+         */
         var activeNodes = container.selectAll("circle.active");
         function repeat(func) {
           activeNodes
