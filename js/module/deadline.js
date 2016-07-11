@@ -13,8 +13,13 @@ d3.chart.deadlineBar = function(selector) {
 
     var yScale, yAxis, yAxisElement, svg;
     var colorMaps;
+
+    // 数据域
     var deadlineData;
     var filteredDeadlineData;
+
+    // 处理中间数据
+    var currentUnit;
 
     // 一些选项内容
     var startFromNow = false;
@@ -47,15 +52,20 @@ d3.chart.deadlineBar = function(selector) {
                 .range(["#FF0033", "#E6109B", "#FFE3FB", "#F2FE28", "#00FF80"]);
         }
 
-        // 过滤数据
-        filteredDeadlineData = filterDeadlines(deadlineData);
+        // 预处理数据
+        copyOriginData();
+        filterVisableDeadlines();
+        setRange();
+        currentUnit = selectUnit();
+        reduceViewConflict();
+
         // 绘制
         yScale.domain([filteredDeadlineData.start, filteredDeadlineData.end]);
         yAxis.scale(yScale).ticks(selectUnit(filteredDeadlineData.start, filteredDeadlineData.end), 1);
         yAxisElement.call(yAxis);
 
         var node = svg.selectAll(".node")
-            .data(createDatanodes(filteredDeadlineData))
+            .data(filteredDeadlineData.nodes)
             .enter()
             .append("g")
             .attr("class", "node")
@@ -65,102 +75,101 @@ d3.chart.deadlineBar = function(selector) {
         node.append("circle")
             .attr("r", 3.5)
             .style("fill", "#FFFFFF")
-            .style("stroke", function(d) {
-                if (d.name === "今天") {
-                    return "#00FF80";
-                }
-                if (d.fperc >= 1) {
-                    return "#99CCFF";
-                }
-                if (d.deadline <= new Date()) {
-                    return "#FF0033";
-                }
-
-                // 根据fperc返回
-                return colorMaps(d.fperc);
-            });
+            .style("stroke", viewStrokeColor);
 
         node.append("text")
             .attr("x", 10)
             .attr("y", 5)
-            .text(function(d) {
-                return d.name
-            });
+            .text(function(d) {return d.name;});
     }
 
-    var selectUnit = function(start, end) {
+    /*
+     * 内部操作函数
+     */
+    var copyOriginData = function() {
+      filteredDeadlineData = angular.copy(deadlineData);
+      filteredDeadlineData.nodes.push({
+        "name": "当前",
+        "deadline": new Date(),
+        "fperc": 0
+      })
+    }
+
+    // 过滤需要显示的节点
+    var filterVisableDeadlines = function() {
+      // 过滤需要显示的节点
+      var resultDeadlines = new Array();
+      filteredDeadlineData.nodes.forEach(function (item, index, array) {
+        if (startFromNow) {
+          if ( !displayBeforeNow && item.deadline < new Date(Date.now() - 1000)) {
+            return;
+          }
+          if (displayBeforeNow && item.fperc >= 1) {
+            return;
+          }
+        }
+        resultDeadlines.push(item);
+      });
+
+      resultDeadlines.sort(function(a, b){
+        return a.deadline - b.deadline;
+      });
+
+      filteredDeadlineData.nodes = resultDeadlines;
+    }
+
+    // 设置开始和结束时间
+    var setRange = function() {
+      if (startFromNow) {
+        if (displayBeforeNow) {
+          filteredDeadlineData.start = filteredDeadlineData.nodes[0].deadline;
+        } else {
+          filteredDeadlineData.start = new Date();
+        }
+      }
+    }
+
+    // 设置开始和结束时间
+    var selectUnit = function() {
       var HOUR = 3600 * 1000;
       var DAY = 24 * 3600 * 1000;
       var WEEK = DAY * 7;
       var MONTH = WEEK * 4;
       var HALF_YEAR = MONTH * 6;
-      var range = end - start;
+      var range = filteredDeadlineData.end - filteredDeadlineData.start;
       if (range > HALF_YEAR) return d3.time.months;
-      if (range > 2 * MONTH) return d3.time.weeks;
+      if (range > 1.5 * MONTH) return d3.time.weeks;
       if (range > WEEK) return d3.time.days;
-      if (range > DAY) return d3.time.days;
+      if (range > DAY) return d3.time.hours;
       return d3.time.hours;
     }
 
-    var createDatanodes = function(dData) {
-        var dataNodes = angular.copy(dData.nodes);
-        dataNodes.push({
-            "name": "开始",
-            "deadline": dData.start,
-            "fperc": 1
-        });
-        dataNodes.push({
-            "name": "结束",
-            "deadline": dData.end,
-            "fperc": 1
-        });
-        return dataNodes;
-    }
-
-    var filterDeadlines = function(originData) {
-      var result = angular.copy(originData);
-      filterVisableDatanodes(result);
-      return result;
-    }
-
-    var filterVisableDatanodes = function(oriData) {
-
-      // 过滤需要显示的节点
-      var resultDatas = new Array();
-      oriData.nodes.forEach(function (item, index, array) {
-        if (startFromNow) {
-          if (item.deadline > new Date(Date.now() - 1800)) {
-            resultDatas.push(item);
-            return;
-          }
-          if (displayBeforeNow) {
-            if (item.fperc < 1) {
-              resultDatas.push(item);
-              return;
-            }
-          }
-        } else {
-          resultDatas.push(item);
-          return;
-        }
-
-      });
-
-      resultDatas.sort(function(a, b){
-        return a.deadline - b.deadline;
-      });
-
-      oriData.nodes = resultDatas;
-
-      // 决定start与end的节点
-      if (startFromNow) {
-        if (displayBeforeNow) {
-          oriData.start = oriData.nodes[0].deadline;
-        } else {
-          oriData.start = new Date();
+    var reduceViewConflict = function() {
+      var timeSpan = (filteredDeadlineData.end - filteredDeadlineData.start) / 100;
+      var nodes = filteredDeadlineData.nodes;
+      for (var i = 1; i < nodes.length; i++) {
+        if (nodes[i].deadline - nodes[i - 1].deadline < timeSpan) {
+          nodes[i].deadline = new Date(nodes[i - 1].deadline.getTime() + timeSpan);
         }
       }
+    }
 
+    /*
+     * 渲染过程用到的函数
+     */
+    var viewStrokeColor = function(d) {
+      if (d.name === "当前") {
+          return "#00FF80";
+      }
+      if (d.fperc >= 1) {
+          return "#99CCFF";
+      }
+      if (d.deadline <= new Date()) {
+          return "#FF0033";
+      }
+
+      // 根据fperc返回
+      return colorMaps(d.fperc);
     }
 
     var formatDate = function(d) {
@@ -168,6 +177,9 @@ d3.chart.deadlineBar = function(selector) {
         return (date.getYear()) + 1900 + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
     }
 
+    /*
+     * 数据处理函数
+     */
     var collectDeadlineNodes = function(data, results, parent) {
         if (typeof(data.detail.deadline) !== "undefined") {
             var name;
@@ -188,28 +200,25 @@ d3.chart.deadlineBar = function(selector) {
         }
     }
 
-    chart.data = function(values) {
-        if (!arguments.length) return deadlineData;
-        deadlineData = values;
-        return chart;
-    }
-
-    chart.transformData = function(data) {
+    var transformData = function(data) {
         var start = data.detail.start;
         var end = data.detail.end;
-
         var results = [];
         collectDeadlineNodes(data, results);
-        results.push({
-            "name": "今天",
-            "deadline": new Date(),
-            "fperc": 1
-        });
         return {
             "start": new Date(start),
             "end": new Date(end),
             "nodes": results
         };
+    }
+
+    /*
+     * 对外的设置函数
+     */
+    chart.data = function(values) {
+        if (!arguments.length) return deadlineData;
+        deadlineData = transformData(values);
+        return chart;
     }
 
     chart.setStartFromNow = function(value) {

@@ -15,7 +15,7 @@
        chart = d3.chart.deadlineBar("#deadlineBar");
      }
 
-     chart.data(chart.transformData(data));
+     chart.data(data);
      d3.select("#deadlineBar").call(chart);
 
      $scope.$watch("startFromNow", function(newValue) {
