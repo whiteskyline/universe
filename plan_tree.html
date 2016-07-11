@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Universe Tree</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/tree.css" />
+    <link rel="stylesheet" href="css/self-define.css" />
+</head>
+
+<body>
+    <div ng-app="universeApp">
+
+        <!-- start of leftbar -->
+        <div class="leftbar">
+            <div ng-controller="fieldPanelCtrl">
+                <div class="fields panel panel-default">
+                    <div class="panel-heading">领域选择</div>
+                    <div class="panel-body">
+                        <div class="url">
+                            <select class="form-control" ng-options="opt.key for opt in fields" ng-model="selectedField">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div ng-controller="deadlinePanelCtrl">
+                <div id="deadlinePanel">
+                    <div ng-if="detail">
+                        <ng-include src="'js/templates/panel-deadline.html'"></ng-include>
+                    </div>
+                </div>
+            </div>
+          -->
+
+            <div ng-controller="deadlineBarCtrl">
+                <div id="options">
+                  <input type="checkbox" ng-model="startFromNow">从当前开始</input>
+                  <input type="checkbox" ng-model="displayBeforeNow" ng-init="displayBeforeNow=true">显示已过期项目</input>
+                </div>
+                <div id="deadlineBar">
+                </div>
+            </div>
+
+        </div>
+        <!-- end of left bar -->
+
+        <div ng-controller="skillTreeCtrl">
+            <treechart data="data" diameter="1600"></treechart>
+        </div>
+        <div ng-controller="skillInfoPanelCtrl">
+            <div id="panel">
+                <div ng-if="detail">
+                    <ng-include src="'js/templates/panel-detail.html'"></ng-include>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- start of scripts -->
+    <script src="js/basic/d3.js" charset="utf-8"></script>
+    <script src="js/basic/angular.js" charset="utf-8"></script>
+    <script src="js/module/tree.js" charset="utf-8"></script>
+    <script src="js/module/deadline.js" charset="utf-8"></script>
+
+    <script src="js/core.js" charset="utf-8"></script>
+    <script src="js/service/data.js" charset="utf-8"></script>
+    <script src="js/service/bus.js" charset="utf-8"></script>
+    <script src="js/directive/treechart.js" charset="utf-8"></script>
+    <script src="js/controller/skillTree.js" charset="utf-8"></script>
+    <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
+    <script src="js/controller/deadlinePanel.js" charset="utf-8"></script>
+    <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
+    <!-- load data -->
+    <script src="data/core.js" charset="utf-8"></script>
+    <script src="data/dayplans/mondayPlan.js" charset="utf-8"></script>
+    <!-- end of scripts -->
+
+</body>
+
+</html>

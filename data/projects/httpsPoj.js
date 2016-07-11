@@ -8,10 +8,15 @@ app.run(function(storage){
         "FE服务方案":{},
         "支撑性业务方案":{
           "Relocation服务":{
-            "Relocation-Http服务": {},
+            "Relocation-Http服务": {
+              "Resin下服务":{},
+              "Play下服务":{},
+              "新旧架构服务比对":{}
+            },
             "Relocation-Interceptor": {},
             "Relocation参与整体服务流程": {},
-            "_dl": "2016/7/10"
+            "_dl": "2016/7/10",
+            _ac: true
           }
         },
         "_dl": "2016/7/11"
