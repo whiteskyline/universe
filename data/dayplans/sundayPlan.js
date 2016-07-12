@@ -1,7 +1,7 @@
 'use strict';
 app.run(function(storage){
 
-  var sundayPojData = {
+  var sundayPlanData = {
     "周日事项":{
       "Universe APP升级":{
         "Active状态":{
@@ -11,7 +11,7 @@ app.run(function(storage){
           _dl: "2016/7/10 15:30"
         },
         "deadlineBar升级":{
-          "重叠避免":{_ac:true},
+          "重叠避免":{_ac:true, _f: true},
           "不同显示状态支持":{
             "开始日期可定义":{_c: "开始显示/从今天开始", _f: true},
             "显示开始前的未完成项目":{_f: true},
@@ -28,5 +28,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("周日事项", sundayPojData, false, "2016/7/10 14:00", "2016/7/11 3:00");
+  storage.register("周日事项", sundayPlanData, false, "2016/7/10 14:00", "2016/7/11 3:00");
 });

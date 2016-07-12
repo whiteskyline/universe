@@ -4,7 +4,7 @@ app.run(function(storage){
   var httpsPojData = {
     "HTTPS":{
       "旧服务方案":{
-        "Nginx服务方案":{},
+        "Nginx服务方案":{_f: true},
         "FE服务方案":{_f: true},
         "支撑性业务方案":{
           "Relocation服务":{
@@ -14,24 +14,28 @@ app.run(function(storage){
               "新旧架构服务比对":{_f: true}
             },
             "Relocation-Interceptor": {_f: true},
-            "Relocation参与整体服务流程": {_ac: true},
+            "Relocation参与整体服务流程": {_f: true},
             "_dl": "2016/7/10"
           }
         },
-        "_dl": "2016/7/11",
-        _ac: true
+        "_dl": "2016/7/11"
       },
       "新服务方案确认":{
         "Nginx服务方案设计":{_f: true},
-        "FE服务方案设计":{},
+        "FE服务方案设计":{_f: true},
         "支撑性业务方案设计":{
-          "Relocation服务迁移方案":{}
+          "Relocation服务迁移方案":{_f: true}
         },
         "迁移过程设计":{
-          "服务器迁移过程":{},
-          "客户端支持过程设计":{}
+          "服务器迁移过程设计":{_f: true},
+          "客户端支持过程设计":{_f: true}
         },
         "_dl": "2016/7/15"
+      },
+      "代码级别工作":{
+        "Relocation-FE-Play验证并上线": {_dl: "2016/7/15"},
+        "Relocation-FE服务支持HTTPS开发并上线Staging": {_dl: "2016/7/20"},
+        "Relocation-Interceptor支持HTTPS并上线Staging": {_dl: "2016/7/22"}
       },
       "迁移与全面上线":{
         "支撑性业务迁移":{
