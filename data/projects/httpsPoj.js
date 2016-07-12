@@ -5,24 +5,24 @@ app.run(function(storage){
     "HTTPS":{
       "旧服务方案":{
         "Nginx服务方案":{},
-        "FE服务方案":{},
+        "FE服务方案":{_f: true},
         "支撑性业务方案":{
           "Relocation服务":{
             "Relocation-Http服务": {
-              "Resin下服务":{},
-              "Play下服务":{},
-              "新旧架构服务比对":{}
+              "Resin下服务":{_f: true},
+              "Play下服务":{_f: true},
+              "新旧架构服务比对":{_f: true}
             },
-            "Relocation-Interceptor": {},
-            "Relocation参与整体服务流程": {},
-            "_dl": "2016/7/10",
-            _ac: true
+            "Relocation-Interceptor": {_f: true},
+            "Relocation参与整体服务流程": {_ac: true},
+            "_dl": "2016/7/10"
           }
         },
-        "_dl": "2016/7/11"
+        "_dl": "2016/7/11",
+        _ac: true
       },
       "新服务方案确认":{
-        "Nginx服务方案设计":{},
+        "Nginx服务方案设计":{_f: true},
         "FE服务方案设计":{},
         "支撑性业务方案设计":{
           "Relocation服务迁移方案":{}
@@ -55,5 +55,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("HTTPS", httpsPojData, false, "2016/7/1", "2016/8/15");
+  storage.register("HTTPS", httpsPojData, true, "2016/7/1", "2016/8/15");
 });

@@ -28,5 +28,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("周日事项", sundayPojData, true, "2016/7/10 14:00", "2016/7/11 3:00");
+  storage.register("周日事项", sundayPojData, false, "2016/7/10 14:00", "2016/7/11 3:00");
 });
