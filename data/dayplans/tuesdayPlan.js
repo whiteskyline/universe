@@ -29,5 +29,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("周二事项", tuesdayPlanData, true, "2016/7/12 10:00", "2016/7/12 23:00");
+  storage.register("周二事项", tuesdayPlanData, false, "2016/7/12 10:00", "2016/7/12 23:00");
 });

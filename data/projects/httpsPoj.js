@@ -30,10 +30,19 @@ app.run(function(storage){
           "服务器迁移过程设计":{_f: true},
           "客户端支持过程设计":{_f: true}
         },
+        "新服务方案对IAuth/OAuth方向的依赖": {
+          "调查目前使用IAuth/OAuth服务的情况":{},
+          "验证新方案对于原始的逻辑不会产生影响":{}
+        },
         "_dl": "2016/7/15"
       },
       "代码级别工作":{
-        "Relocation-FE-Play验证并上线": {_dl: "2016/7/15"},
+        "代码工作量预估":{
+          "FE-Play上线需要的工作分解与时间预估":{_f: true},
+          "FE支持HTTPS需要的工作分解与时间预估":{_f: true},
+          "Relocation-Interceptor支持HTTPS需要的工作分解与时间预估":{}
+        },
+        "Relocation-FE-Play验证并上线": {_dl: "2016/7/19"},
         "Relocation-FE服务支持HTTPS开发并上线Staging": {_dl: "2016/7/20"},
         "Relocation-Interceptor支持HTTPS并上线Staging": {_dl: "2016/7/22"}
       },
