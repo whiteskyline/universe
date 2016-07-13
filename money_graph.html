@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Universe Tree</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/tree.css" />
+    <link rel="stylesheet" href="css/self-define.css" />
+</head>
+
+<body>
+    <div ng-app="universeApp">
+
+        <!-- start of leftbar -->
+        <div class="leftbar">
+          <div ng-controller="wacaiStatusController">
+
+          </div>
+        </div>
+        <!-- end of left bar -->
+
+    </div>
+
+    <!-- start of scripts -->
+    <script src="js/basic/d3.js" charset="utf-8"></script>
+    <script src="js/basic/angular.js" charset="utf-8"></script>
+    <script src="js/module/tree.js" charset="utf-8"></script>
+    <script src="js/module/deadline.js" charset="utf-8"></script>
+
+    <script src="js/core.js" charset="utf-8"></script>
+    <script src="js/service/data.js" charset="utf-8"></script>
+    <script src="js/service/bus.js" charset="utf-8"></script>
+    <script src="js/directive/treechart.js" charset="utf-8"></script>
+    <script src="js/controller/skillTree.js" charset="utf-8"></script>
+    <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
+    <script src="js/controller/deadlinePanel.js" charset="utf-8"></script>
+    <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
+    <!-- load data -->
+    <script charset="utf-8">
+      var data = {"name": "ming.horizon@gmail.com", "pwd": "9d34FmNgAXq1c+IYsreAnA==", "autoLogin":1}
+      app.controller("wacaiStatusController", function($scope, $http) {
+        $http({"url":"https://user.wacai.com/login/all", "method": "POST", "data": data, "headers":{'Access-Control-Allow-Origin': "*", 'Content-Type': 'application/x-www-form-urlencoded'},
+        transformRequest: function(data){
+          var str = [];
+          for(var p in data)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(data[p]));
+          return str.join("&");
+        }
+      }).then(
+          function successCallback(response){
+            console.log("success", response)
+          },
+          function errorCallback(response){
+            console.log("error", response);
+          });
+      });
+    </script>
+    <!-- end of scripts -->
+
+</body>
+
+</html>
