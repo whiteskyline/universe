@@ -8,7 +8,7 @@ app.run(function(storage){
           "Java": {
             "基础应用":{"_f": true},
             "纯熟应用":{
-              "注释写法与Java规范":{"_dl": "2016/7/10"}
+              "注释写法与Java规范":{"_dl": "2016/7/10", _ac: true}
             },
             "深入探究":{"垃圾回收技术":{}}
           },
@@ -37,9 +37,8 @@ app.run(function(storage){
           "FDD":{}
         },
         "DEBUG技术":{
-          "_dl": "2016/7/15",
-          "远程DEBUG技术":{"_f": true},
-          "Intellij DEBUG技术":{"_f": 0.5}
+          "远程DEBUG技术":{},
+          "Intellij DEBUG技术":{}
         }
       },
       <!-- end of 开发 -->
