@@ -69,7 +69,7 @@ app.run(function(storage){
                 "UnixLXC":{}
               },
               "WEB容器": {
-                "Apache Tomcat":{},
+                "Apache Tomcat":{_ac: true},
                 "Resin":{}
               }
             },
@@ -157,7 +157,8 @@ app.run(function(storage){
               }
             },
             "操作系统":{
-              "本地Linux系统":{},
+              "本地Linux系统":{
+              },
               "云端Linux系统":{}
             },
           }
@@ -191,6 +192,11 @@ app.run(function(storage){
           "DDoS":{},
           "iptables":{},
           "VPS":{}
+        },
+        "服务器安全":{
+          "沙盒技术":{},
+          "服务器资源限制":{"CPU":{}},
+          _ac: true
         }
       },
       <!-- end of 安全 -->

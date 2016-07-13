@@ -183,7 +183,7 @@ d3.chart.deadlineBar = function(selector) {
     var collectDeadlineNodes = function(data, results, parent) {
         if (typeof(data.detail.deadline) !== "undefined") {
             var name;
-            if (typeof(parent) !== "undefined") name = parent.name + "-" + data.name;
+            if (typeof(parent) !== "undefined" && parent.name.length < 10) name = parent.name + "-" + data.name;
             else name = data.name;
             var finishPerc = data.detail.finished / data.detail.total;
             results.push({
