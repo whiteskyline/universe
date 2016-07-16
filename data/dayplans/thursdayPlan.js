@@ -1,12 +1,12 @@
 'use strict';
-app.run(function(storage){
+app.run(function(storage, dailyUtil){
 
   var thursdayPlanData = {
     "周四事项":{
       "调查旧接口对Auth的影响":{
         "扫描最近两个月的日志":{_ac: true, _f: 0.6},
         "追查OAuth的责任人":{_ac: true, _f: 0.5},
-        _dl: "2016/7/14 12:00"
+        _dl: "12:00"
       },
       "Play-FE验证与测试":{
         "Play添加测试用例":{
@@ -27,10 +27,11 @@ app.run(function(storage){
           }
         },
         "部署Onebox并且测试通过":{_f: true},
-        _dl: "2016/7/14 17:00"
+        _dl: "17:00"
       }
     }
   };
 
-  storage.register("周四事项", thursdayPlanData, true, "2016/7/14 10:00", "2016/7/14 23:00");
+
+  dailyUtil.registerDailyPlan(thursdayPlanData, "8:00", "23:00", "Thursday", "day")
 });

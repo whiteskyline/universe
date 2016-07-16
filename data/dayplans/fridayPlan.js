@@ -7,5 +7,5 @@ app.run(function(storage, dailyUtil){
     }
   };
 
-  storage.register("周五事项", fridayPlanData, true, "2016/7/15 10:00", "2016/7/15 23:00");
+  dailyUtil.registerDailyPlan(fridayPlanData, "8:00", "23:00", "Friday", "day")
 });

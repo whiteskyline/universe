@@ -1,5 +1,5 @@
 'use strict';
-app.run(function(storage){
+app.run(function(storage, dailyUtil){
 
   var tuesdayPlanData = {
     "周二事项":{
@@ -18,16 +18,16 @@ app.run(function(storage){
       },
       "Relocation更改安排":{
         _f: true,
-        _dl: "2016/7/12 17:30"
+        _dl: "17:30"
       },
       "服务器沙盒化调研":{
-        _dl: "2016/7/12 22:00"
+        _dl: "22:00"
       },
       "Tomcat架构总结":{
-        _dl: "2016/7/12 23:00"
+        _dl: "23:00"
       }
     }
   };
 
-  storage.register("周二事项", tuesdayPlanData, false, "2016/7/12 10:00", "2016/7/12 23:00");
+  dailyUtil.registerDailyPlan(tuesdayPlanData, "8:00", "23:00", "Thuesday", "day")
 });

@@ -37,22 +37,25 @@
     <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
     <!-- load data -->
     <script charset="utf-8">
-      var data = {"name": "ming.horizon@gmail.com", "pwd": "9d34FmNgAXq1c+IYsreAnA==", "autoLogin":1}
-      app.controller("wacaiStatusController", function($scope, $http) {
-        $http({"url":"https://user.wacai.com/login/all", "method": "POST", "data": data, "headers":{'Access-Control-Allow-Origin': "*", 'Content-Type': 'application/x-www-form-urlencoded'},
-        transformRequest: function(data){
-          var str = [];
-          for(var p in data)
-          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(data[p]));
-          return str.join("&");
+      var commonHeaders = {'Access-Control-Allow-Origin': "*", 'Content-Type': 'application/x-www-form-urlencoded'}
+      var loginUrl = "https://user.wacai.com/login/all"
+      var loginData = {"name": "ming.horizon@gmail.com", "pwd": "9d34FmNgAXq1c+IYsreAnA==", "autoLogin":1}
+      var listOutputUrl = "https://www.wacai.com/biz/ledger_list.action"
+      var transformRequest = function(data) {
+        var str = [];
+        for (var key in data) {
+          str.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
         }
-      }).then(
+        return str.join("&")
+      }
+
+      app.controller("wacaiStatusController", function($scope, $http) {
+        $http({"url": loginUrl, "method": "POST", "data": loginData, "headers": commonHeaders, transformRequest: transformRequest})
+        .then(
           function successCallback(response){
             console.log("success", response)
-          },
-          function errorCallback(response){
-            console.log("error", response);
-          });
+            $http({""})
+        });
       });
     </script>
     <!-- end of scripts -->

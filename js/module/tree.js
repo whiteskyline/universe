@@ -56,7 +56,6 @@ d3.chart.architectureTree = function() {
 
         linkSelection.enter().append("path")
             .attr("class", function(d){
-              console.log("path data", d);
               if (typeof(d.target.detail.active) !== "undefined") {
                 return "link-active link";
               } else {
