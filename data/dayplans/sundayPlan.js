@@ -3,30 +3,31 @@ app.run(function(storage, dailyUtil){
 
   var sundayPlanData = {
     "周日事项":{
-      "Universe APP升级":{
-        "Active状态":{
-          "Active状态数据支持":{_f: true},
-          "Active高亮显示":{_c: "最好做成心跳型", _f: true},
-          "相关连线高亮显示":{_f: true},
-          _dl: "15:30"
-        },
-        "deadlineBar升级":{
-          "重叠避免":{_ac:true, _f: true},
-          "不同显示状态支持":{
-            "开始日期可定义":{_c: "开始显示/从今天开始", _f: true},
-            "显示开始前的未完成项目":{_f: true},
-            "日期显示范围可调":{_c: "从当前后一天/从当前后三天/周/月/三月/年", _f: true}
-          },
-          _dl: "11:30",
-          _ac: true
-        }
+      "升级日计划组件": {
+        "简化计划时间设置":{_f: true},
+        "提供计划型中间层":{_f: true}
       },
-      "服务器沙盒化":{
-        "初步调研":{_f: true},
-        _dl: "2:30"
+      "理财功能增加": {
+        "基础问题尝试": {
+          "URL基础调用成功":{_dl: "08:00", _f: true}
+        },
+        "功能添加": {
+          "月支出累积变化图": {
+            "URL调查":{},
+            "代码完成":{}
+          },
+          "小类日变化图":{
+            "URL调查":{},
+            "代码完成":{}
+          },
+          "理财计划与当前状态变化":{
+            "URL调查":{},
+            "代码完成":{}
+          }
+        }
       }
     }
   };
 
-  dailyUtil.registerDailyPlan(sundayPlanData, "8:00", "23:00", "Sunday", "day")
+  dailyUtil.registerDailyPlan(sundayPlanData, "01:00", "23:00", "Sunday", "day")
 });

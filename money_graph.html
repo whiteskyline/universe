@@ -24,6 +24,7 @@
     <!-- start of scripts -->
     <script src="js/basic/d3.js" charset="utf-8"></script>
     <script src="js/basic/angular.js" charset="utf-8"></script>
+    <script src="js/util/moment.js" charset="utf-8"></script>
     <script src="js/module/tree.js" charset="utf-8"></script>
     <script src="js/module/deadline.js" charset="utf-8"></script>
 
@@ -40,7 +41,8 @@
       var commonHeaders = {'Access-Control-Allow-Origin': "*", 'Content-Type': 'application/x-www-form-urlencoded'}
       var loginUrl = "https://user.wacai.com/login/all"
       var loginData = {"name": "ming.horizon@gmail.com", "pwd": "9d34FmNgAXq1c+IYsreAnA==", "autoLogin":1}
-      var listOutputUrl = "https://www.wacai.com/biz/ledger_list.action"
+      var listOutcomeUrl = "https://www.wacai.com/biz/ledger_list.action"
+      var listOutcomeData = {"cond.date": "2016-07-01", "cond.date_end": "2016-07-31", "cond.withDaySum": "true", "pageInfo.pageIndex": "1", "cond.reimbursePrefer": "0"}
       var transformRequest = function(data) {
         var str = [];
         for (var key in data) {
@@ -54,7 +56,10 @@
         .then(
           function successCallback(response){
             console.log("success", response)
-            $http({""})
+            $http({"url": listOutcomeUrl + "?timsmp=" + new moment().valueOf() , "method": "POST", "data": listOutcomeData})
+            .then( function sCallback(resp) {
+              console.log(resp)
+            });
         });
       });
     </script>
