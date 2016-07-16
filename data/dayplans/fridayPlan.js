@@ -1,5 +1,5 @@
 'use strict';
-app.run(function(storage){
+app.run(function(storage, dailyUtil){
 
   var fridayPlanData = {
     "周五事项":{
