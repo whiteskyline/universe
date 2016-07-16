@@ -17,7 +17,8 @@ app.run(function(storage){
         _dl: "2016/7/13 17:00"
       },
       "D3.js简单总结":{
-        _dl: "2016/7/13 21:30"
+        _dl: "2016/7/13 21:30",
+        _f: true
       },
       "Tomcat总结":{
         _dl: "2016/7/13 22:30"
@@ -25,5 +26,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("周三事项", wednesdayPlanData, true, "2016/7/13 10:00", "2016/7/13 23:00");
+  storage.register("周三事项", wednesdayPlanData, false, "2016/7/13 10:00", "2016/7/13 23:00");
 });

@@ -44,10 +44,10 @@ app.run(function(storage){
         },
         "Relocation-FE-Play验证并上线": {
           "Onebox验证测试":{
-            "添加Play的测试":{},
+            "添加Play的测试":{_f: true},
             _dl: "2016/7/15"
           },
-          "上线Staging":{_dl: "2016/7/15"},
+          "上线Staging":{_dl: "2016/7/15", _f: true},
           "上线Production":{_dl: "2016/7/18"},
           _dl: "2016/7/19"
         },

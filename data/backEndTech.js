@@ -70,6 +70,17 @@ app.run(function(storage){
               "WEB容器": {
                 "Apache Tomcat":{_ac: true},
                 "Resin":{}
+              },
+              "异步化": {
+                "异步化语言及库基础":{
+
+                },
+                "异步化前端-Play":{
+                  "Play测试":{_ac: true}
+                },
+                "异步化后端":{
+
+                }
               }
             },
             "通信":{
