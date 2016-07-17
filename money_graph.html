@@ -19,11 +19,16 @@
         </div>
         <!-- end of left bar -->
 
+        <div id="monthlyOutcomeDailyGraph">
+        </div>
+
     </div>
 
     <!-- start of scripts -->
     <script src="js/basic/d3.js" charset="utf-8"></script>
     <script src="js/basic/angular.js" charset="utf-8"></script>
+    <script src="js/basic/jquery.min.js" charset="utf-8"></script>
+    <script src="js/basic/highcharts.src.js" charset="utf-8"></script>
     <script src="js/util/moment.js" charset="utf-8"></script>
     <script src="js/module/tree.js" charset="utf-8"></script>
     <script src="js/module/deadline.js" charset="utf-8"></script>
@@ -38,30 +43,119 @@
     <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
     <!-- load data -->
     <script charset="utf-8">
-      var commonHeaders = {'Access-Control-Allow-Origin': "*", 'Content-Type': 'application/x-www-form-urlencoded'}
-      var loginUrl = "https://user.wacai.com/login/all"
-      var loginData = {"name": "ming.horizon@gmail.com", "pwd": "9d34FmNgAXq1c+IYsreAnA==", "autoLogin":1}
-      var listOutcomeUrl = "https://www.wacai.com/biz/ledger_list.action"
-      var listOutcomeData = {"cond.date": "2016-07-01", "cond.date_end": "2016-07-31", "cond.withDaySum": "true", "pageInfo.pageIndex": "1", "cond.reimbursePrefer": "0"}
-      var transformRequest = function(data) {
-        var str = [];
-        for (var key in data) {
-          str.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      Highcharts.setOptions({ global: { useUTC: false } });
+
+
+
+      var http;
+
+
+      var totalPageCount;
+      var ledgers = [];
+      var outcomeDataReceiver = function(response) {
+        var data = response.data
+        totalPageCount = data.pi.pageCount
+
+        for (var idx = 0; idx < data.ledgers.length; idx++) {
+          ledgers.push(data.ledgers[idx])
         }
-        return str.join("&")
+
+        // 发起下次请求
+        if (data.pi.pageNo < data.pi.pageCount) {
+          listOutcomeData["pageInfo.pageIndex"] = data.pi.pageNo + 1
+          request(listOutcomeUrl, "POST", {"timsmp": new moment().valueOf()}, listOutcomeData)
+          .then(outcomeDataReceiver)
+        } else {
+
+          // all data loaded, create charts
+          console.log("total ledgers", ledgers)
+          $('#monthlyOutcomeDailyGraph').highcharts({
+            chart: {type: 'area'},
+            title: {text: '月支出警示图'},
+            xAxis: {
+              type: 'datetime'
+            },
+            yAxis: {
+              min: 0,
+              title: {
+                text: "支出值"
+              }
+            },
+            series:[createMonthlyBudgetData(5900), createMonthlyOutcomeData(ledgers)]
+          })
+        }
+      }
+
+      var createMonthlyBudgetData = function(budget) {
+        var startEdge = new moment().startOf("month")
+        var endEdge = new moment().endOf("month")
+        console.log("edge", startEdge, endEdge)
+        console.log("date", startEdge.date(), endEdge.date())
+
+        var totalDays = endEdge.date() - startEdge.date() + 1
+        var monthlyBudgetData = {
+          name: "月预算累积",
+          color: "#99CCFF",
+          data:[]
+        }
+
+        var nextDate = startEdge.clone()
+        var averageDailyBudget = budget / totalDays;
+        for (var idx = 0; idx < totalDays; idx++) {
+          nextDate.date(idx + 1)
+          monthlyBudgetData.data.push([nextDate.valueOf(), averageDailyBudget * (idx * 1)])
+        }
+
+        return monthlyBudgetData
+      }
+
+      var createMonthlyOutcomeData = function(ledgers) {
+        ledgers = ledgers.sort(function(a, b) {
+          var aMom = new moment(a.date, "YYYY-MM-DD HH:mm:ss")
+          var bMom = new moment(b.date, "YYYY-MM-DD HH:mm:ss")
+          return aMom.valueOf() - bMom.valueOf()
+        })
+
+        var outcomeLedgers = []
+        for (var idx = 0; idx < ledgers.length; idx++) {
+          if (ledgers[idx].tag === "支出") {
+            outcomeLedgers.push(ledgers[idx])
+          }
+        }
+
+        console.log("outcome", outcomeLedgers)
+
+        var totalOutcome = 0
+        var monthlyOutcomeData = {
+          name: "月支出累积",
+          color: "#E6109B",
+          data:[]
+        }
+        for (var idx = 0; idx < outcomeLedgers.length; idx++) {
+          var node = outcomeLedgers[idx]
+          var mon = new moment(node.date, "YYYY-MM-DD HH:mm:ss")
+          totalOutcome = totalOutcome + new Number(node.money)
+          monthlyOutcomeData.data.push([mon.valueOf(), totalOutcome])
+        }
+
+        console.log(monthlyOutcomeData)
+        return monthlyOutcomeData
+      }
+
+      var loginDataReceiver = function(response) {
+        console.log("login success", response)
+        request(listOutcomeUrl, "POST", {"timsmp": new moment().valueOf()}, listOutcomeData)
+        .then(outcomeDataReceiver)
       }
 
       app.controller("wacaiStatusController", function($scope, $http) {
-        $http({"url": loginUrl, "method": "POST", "data": loginData, "headers": commonHeaders, transformRequest: transformRequest})
-        .then(
-          function successCallback(response){
-            console.log("success", response)
-            $http({"url": listOutcomeUrl + "?timsmp=" + new moment().valueOf() , "method": "POST", "data": listOutcomeData})
-            .then( function sCallback(resp) {
-              console.log(resp)
-            });
-        });
+        http = $http
+        request(loginUrl, "POST", null, loginData)
+        .then(loginDataReceiver);
       });
+
+
+
     </script>
     <!-- end of scripts -->
 

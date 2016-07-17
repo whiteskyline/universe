@@ -144,6 +144,12 @@ d3.chart.deadlineBar = function(selector) {
       return d3.time.hours;
     }
 
+    // string to date_end
+    var toDate = function(str) {
+      var mo = new moment(str, "YYYY-MM-DD HH:mm")
+      return new Date(mo.valueOf())
+    }
+
     var reduceViewConflict = function() {
       var timeSpan = (filteredDeadlineData.end - filteredDeadlineData.start) / 100;
       var nodes = filteredDeadlineData.nodes;
@@ -188,7 +194,7 @@ d3.chart.deadlineBar = function(selector) {
             var finishPerc = data.detail.finished / data.detail.total;
             results.push({
                 "name": name,
-                "deadline": new Date(data.detail.deadline),
+                "deadline": toDate(data.detail.deadline),
                 "fperc": finishPerc
             });
         }
@@ -206,8 +212,8 @@ d3.chart.deadlineBar = function(selector) {
         var results = [];
         collectDeadlineNodes(data, results);
         return {
-            "start": new Date(start),
-            "end": new Date(end),
+            "start": toDate(start),
+            "end": toDate(end),
             "nodes": results
         };
     }
