@@ -52,7 +52,7 @@ app.run(function(storage){
           _dl: "2016/7/19"
         },
         "Relocation-FE服务支持HTTPS开发并上线Staging": {
-          "逻辑开发与测试":{_dl:"2016/7/21"},
+          "逻辑开发与测试":{_dl:"2016/7/21", _f: true},
           "上线Staging":{_dl:"2016/7/22"},
           "上线Production":{_dl:"2016/7/26"},
           _dl: "2016/7/26"

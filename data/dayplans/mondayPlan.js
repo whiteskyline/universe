@@ -3,33 +3,30 @@ app.run(function(storage, dailyUtil){
 
   var mondayPlanData = {
     "周一事项":{
-      "Relocation服务熟悉":{
-        "Relocation-Http服务熟悉":{
-          "Resin下服务":{_dl: "12:00", _f: true},
-          "Play下服务":{_dl: "15:00", _f: true},
-          "两者服务方案对比":{_dl: "17:00", _f: true},
-          "MT层服务":{_dl: "19:00", _f: true},
-          "Http服务的拦截器逻辑":{_f: true}
-        }
+      "Play-FE验证与上线": {
+        "IAuth错误更正": {_dl: "11:00", _f: true},
+        "Staging流量完整切换": {_dl: "14:00", _f:true},
+        "发送上线申请": {_dl: "15:00"},
+        "上线完成并切换流量": {_dl: "18:00"}
       },
-      "Https方案调研":{
-        "Nginx层方案":{_f: true},
-        "Interceptor层方案":{_f: true},
-        "Relocation-Http服务修改方案":{_f: true},
-        "MT层修改方案":{_f: true},
-        "区域间方案":{_c:"区域间跳转的时候，是否需要知道对端的HTTPS的支持情况", _f: true},
-        "客户端支持能力调研":{
-          "HTTP标准Redirect能力调研":{_f: true}
+      "OAuth流量搜索": {
+        "简单验证一天的OAuth数据": {_dl: "12:00", _f: 0.5},
+        "发出每周的Job":{_dl: "13:30"}
+      },
+      "HTTPS支持开发": {
+        "逻辑开发": {
+          "Playlib-DataCenterUtil更改":{_f: true},
+          "ZK加入新配置":{_f: true},
+          "HostListUtil加入getHostList支持版本":{_f: true},
+          "上层调用": {_f: true},
+          _dl: "20:00", _ac: true
         },
-        _dl: "20:00"
-      },
-      "方案Wiki文档":{_dl: "22:05", _f: 0.8},
-      "整理DeadlineBar代码":{
-        "整理代码":{_f: true},
-        "重叠去除":{_f: true},
-        _dl:"2016/7/11 22:00"
-      },
-      "D3.js小总结":{_f: true}
+        "测试": {
+          "添加单元测试": {_f: true},
+          "添加BVT测试": {_ac: true},
+          "搭建Onebox测试环境": {}
+        }
+      }
     }
   };
 

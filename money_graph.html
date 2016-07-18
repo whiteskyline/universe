@@ -36,6 +36,7 @@
     <script src="js/core.js" charset="utf-8"></script>
     <script src="js/service/data.js" charset="utf-8"></script>
     <script src="js/service/bus.js" charset="utf-8"></script>
+    <script src="js/service/wacai.js" charset="utf-8"></script>
     <script src="js/directive/treechart.js" charset="utf-8"></script>
     <script src="js/controller/skillTree.js" charset="utf-8"></script>
     <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
@@ -45,116 +46,31 @@
     <script charset="utf-8">
       Highcharts.setOptions({ global: { useUTC: false } });
 
-
-
-      var http;
-
-
-      var totalPageCount;
-      var ledgers = [];
-      var outcomeDataReceiver = function(response) {
-        var data = response.data
-        totalPageCount = data.pi.pageCount
-
-        for (var idx = 0; idx < data.ledgers.length; idx++) {
-          ledgers.push(data.ledgers[idx])
-        }
-
-        // 发起下次请求
-        if (data.pi.pageNo < data.pi.pageCount) {
-          listOutcomeData["pageInfo.pageIndex"] = data.pi.pageNo + 1
-          request(listOutcomeUrl, "POST", {"timsmp": new moment().valueOf()}, listOutcomeData)
-          .then(outcomeDataReceiver)
-        } else {
-
-          // all data loaded, create charts
-          console.log("total ledgers", ledgers)
-          $('#monthlyOutcomeDailyGraph').highcharts({
-            chart: {type: 'area'},
-            title: {text: '月支出警示图'},
-            xAxis: {
-              type: 'datetime'
-            },
-            yAxis: {
-              min: 0,
-              title: {
-                text: "支出值"
-              }
-            },
-            series:[createMonthlyBudgetData(5900), createMonthlyOutcomeData(ledgers)]
-          })
-        }
-      }
-
-      var createMonthlyBudgetData = function(budget) {
-        var startEdge = new moment().startOf("month")
-        var endEdge = new moment().endOf("month")
-        console.log("edge", startEdge, endEdge)
-        console.log("date", startEdge.date(), endEdge.date())
-
-        var totalDays = endEdge.date() - startEdge.date() + 1
-        var monthlyBudgetData = {
-          name: "月预算累积",
-          color: "#99CCFF",
-          data:[]
-        }
-
-        var nextDate = startEdge.clone()
-        var averageDailyBudget = budget / totalDays;
-        for (var idx = 0; idx < totalDays; idx++) {
-          nextDate.date(idx + 1)
-          monthlyBudgetData.data.push([nextDate.valueOf(), averageDailyBudget * (idx * 1)])
-        }
-
-        return monthlyBudgetData
-      }
-
-      var createMonthlyOutcomeData = function(ledgers) {
-        ledgers = ledgers.sort(function(a, b) {
-          var aMom = new moment(a.date, "YYYY-MM-DD HH:mm:ss")
-          var bMom = new moment(b.date, "YYYY-MM-DD HH:mm:ss")
-          return aMom.valueOf() - bMom.valueOf()
+      function drawOutcomeGraph(data, budget) {
+        $('#monthlyOutcomeDailyGraph').highcharts({
+          chart: {type: 'area'},
+          title: {text: '月支出警示图'},
+          xAxis: {
+            type: 'datetime'
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: "支出值"
+            }
+          },
+          series:[budget, data]
         })
-
-        var outcomeLedgers = []
-        for (var idx = 0; idx < ledgers.length; idx++) {
-          if (ledgers[idx].tag === "支出") {
-            outcomeLedgers.push(ledgers[idx])
-          }
-        }
-
-        console.log("outcome", outcomeLedgers)
-
-        var totalOutcome = 0
-        var monthlyOutcomeData = {
-          name: "月支出累积",
-          color: "#E6109B",
-          data:[]
-        }
-        for (var idx = 0; idx < outcomeLedgers.length; idx++) {
-          var node = outcomeLedgers[idx]
-          var mon = new moment(node.date, "YYYY-MM-DD HH:mm:ss")
-          totalOutcome = totalOutcome + new Number(node.money)
-          monthlyOutcomeData.data.push([mon.valueOf(), totalOutcome])
-        }
-
-        console.log(monthlyOutcomeData)
-        return monthlyOutcomeData
       }
 
-      var loginDataReceiver = function(response) {
-        console.log("login success", response)
-        request(listOutcomeUrl, "POST", {"timsmp": new moment().valueOf()}, listOutcomeData)
-        .then(outcomeDataReceiver)
-      }
-
-      app.controller("wacaiStatusController", function($scope, $http) {
-        http = $http
-        request(loginUrl, "POST", null, loginData)
-        .then(loginDataReceiver);
+      app.controller("wacaiStatusController", function($scope, $http, wacai) {
+        wacai.initData()
+        wacai.setOnDataLoaded(function(data) {
+          budget = wacai.createMonthlyBudgetData()
+          drawOutcomeGraph(data, budget)
+        })
+        wacai.login()
       });
-
-
 
     </script>
     <!-- end of scripts -->
