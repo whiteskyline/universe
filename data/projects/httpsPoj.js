@@ -48,7 +48,7 @@ app.run(function(storage){
             _dl: "2016/7/15"
           },
           "上线Staging":{_dl: "2016/7/15", _f: true},
-          "上线Production":{_dl: "2016/7/18"},
+          "上线Production":{_dl: "2016/7/18", _f: true},
           _dl: "2016/7/19"
         },
         "Relocation-FE服务支持HTTPS开发并上线Staging": {

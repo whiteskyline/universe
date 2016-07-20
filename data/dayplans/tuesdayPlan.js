@@ -3,24 +3,26 @@ app.run(function(storage, dailyUtil){
 
   var tuesdayPlanData = {
     "周二事项":{
-      "周一遗留事务":{
-        "客户端支持能力调研":{_c:"当Auth状态下的跳转,相关IAUTH和OAUTH对redirect流程的定义,因为不会有相关的头，那么就没关系", _f: true},
-        "现有头部内容调查":{_f: true},
-        "Wiki文档完成":{_f: true},
-        _dl: "2016/7/12 16:00"
+      "Play-FE上线安排": {
+        "准备micloud_playlib稳定版并且更改play-fe依赖的版本": {_ac: true, _f: true},
+        "依赖服务发布正式版": {
+          "passportsdk-play发布正式版":{_dl: "17:00", _f: true},
+          "micloud-playlib发布正式版":{_dl: "18:00", _f: true},
+          _ac: true
+        },
+        "发送上线申请": {_ac: true, _f: true},
+        "上线完成并切换流量": {}
       },
-      "HTTPS设计更改":{
-        "Relocation-Redirect文档更改":{_f: true},
-        "调查Relocation-API-AUTH请求量":{_f: true},
-        "新版本时序图":{_f: true},
-        "追查OAuth/IAuth使用情况":{},
-        _dl: "2016/7/12 16:30"
+      "流量搜索": {
+        "发出每周的Job":{_dl: "14:00"}
       },
-      "Relocation更改安排":{
-        _f: true,
-        _dl: "17:30"
+      "HTTPS支持开发": {
+        "测试":{
+          "添加BVT测试":{_f: 0.5},
+          "搭建Onebox测试环境":{}
+        }
       },
-      "服务器沙盒化调研":{
+      "服务器沙盒化实现":{
         _dl: "22:00"
       },
       "Tomcat架构总结":{
@@ -29,5 +31,5 @@ app.run(function(storage, dailyUtil){
     }
   };
 
-  dailyUtil.registerDailyPlan(tuesdayPlanData, "8:00", "23:00", "Thuesday", "day")
+  dailyUtil.registerDailyPlan(tuesdayPlanData, "8:00", "23:00", "Tuesday", "day")
 });

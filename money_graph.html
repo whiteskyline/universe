@@ -22,6 +22,9 @@
         <div id="monthlyOutcomeDailyGraph">
         </div>
 
+        <div id="financeGraph">
+        </div>
+
     </div>
 
     <!-- start of scripts -->
@@ -63,11 +66,32 @@
         })
       }
 
+      function drawFinanceGraph(data, plan) {
+        $('#financeGraph').highcharts({
+          chart: {type: 'area'},
+          title: {text: '累积速度警示图'},
+          xAxis: {
+            type: 'datetime'
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: "存续值"
+            }
+          },
+          series:[plan, data]
+        })
+      }
+
       app.controller("wacaiStatusController", function($scope, $http, wacai) {
         wacai.initData()
-        wacai.setOnDataLoaded(function(data) {
+        wacai.setOnOutcomeDataLoaded(function(data) {
           budget = wacai.createMonthlyBudgetData()
           drawOutcomeGraph(data, budget)
+        })
+        wacai.setOnFinanceStatusDataLoaded(function(data) {
+          plan = wacai.createYearlyFinancePlanData()
+          drawFinanceGraph(data, plan)
         })
         wacai.login()
       });

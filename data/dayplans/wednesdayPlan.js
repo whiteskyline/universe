@@ -26,5 +26,5 @@ app.run(function(storage, dailyUtil){
     }
   };
 
-  dailyUtil.registerDailyPlan(wednesdayPlanData, "8:00", "23:00", "Thuesday", "day")
+  dailyUtil.registerDailyPlan(wednesdayPlanData, "8:00", "23:00", "Wednesday", "day")
 });
