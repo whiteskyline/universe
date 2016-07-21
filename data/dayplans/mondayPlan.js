@@ -6,7 +6,7 @@ app.run(function(storage, dailyUtil){
       "Play-FE验证与上线": {
         "IAuth错误更正": {_dl: "11:00", _f: true},
         "Staging流量完整切换": {_dl: "14:00", _f:true},
-        "发送上线申请": {_dl: "15:00"},
+        "发送上线申请": {_dl: "15:00", _f: true},
         "上线完成并切换流量": {_dl: "18:00"}
       },
       "OAuth流量搜索": {

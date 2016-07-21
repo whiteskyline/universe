@@ -8,30 +8,27 @@ app.run(function(storage, dailyUtil){
         "追查OAuth的责任人":{_ac: true, _f: 0.5},
         _dl: "12:00"
       },
-      "Play-FE验证与测试":{
+      "Play-FE支持验证与测试":{
         "Play添加测试用例":{
           "学习Play如何编写测试":{
             "Scala环境使用测试":{
               "JUnit测试":{_f: true},
+              "SBT中JUnit总结":{},
               "ScalaTest测试":{}
             },
             "使用Play上下文测试":{
-              "Service测试":{},
-              "接口测试":{}
-            },
-            _ac: true
-          },
-          "添加测试":{
-            "utils包测试": {_f: true},
-            "controller包测试": {_f: true}
+              "总结": {}
+            }
           }
         },
-        "部署Onebox并且测试通过":{_f: true},
-        _dl: "17:00"
+        "部署Onebox并且测试通过":{
+          "部署Onebox环境": {_dl: "14:30", _f: true},
+          "调查micloud-bvt的测试环境切换": {_dl: "15:30", _f: true},
+          "增加相关的测试": {_dl: "17:00", _f: true}
+        }
       }
     }
   };
-
 
   dailyUtil.registerDailyPlan(thursdayPlanData, "8:00", "23:00", "Thursday", "day")
 });
