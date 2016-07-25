@@ -19,7 +19,8 @@ app.run(function(storage, dailyUtil){
           "ZK加入新配置":{_f: true},
           "HostListUtil加入getHostList支持版本":{_f: true},
           "上层调用": {_f: true},
-          _dl: "20:00", _ac: true
+          _dl: "20:00",
+          _ac: true
         },
         "测试": {
           "添加单元测试": {_f: true},

@@ -8,7 +8,12 @@ app.run(function(storage){
           "Java": {
             "基础应用":{"_f": true},
             "纯熟应用":{
-              "注释写法与Java规范":{"_dl": "2016/7/10", _ac: true}
+              "注释写法与Java规范":{
+                "Google代码规范":{_f: true},
+                "复杂文档注释书写":{_ac: true},
+                "_dl": "2016/7/10",
+                _ac: true
+              }
             },
             "深入探究":{"垃圾回收技术":{}}
           },
