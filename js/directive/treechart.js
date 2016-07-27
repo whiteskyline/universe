@@ -31,7 +31,9 @@ app.directive('treechart', function(bus) {
               }
               console.log("data is changed", data);
 
-              chart.diameter(1600)
+              var radius = window.innerWidth - 520
+              if (radius > window.innerHeight) radius = window.innerHeight
+              chart.diameter(radius)
                   .data(data);
 
               d3.select(element[0])

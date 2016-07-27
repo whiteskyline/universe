@@ -25,38 +25,40 @@
                 </div>
             </div>
 
-            <!--
-            <div ng-controller="deadlinePanelCtrl">
-                <div id="deadlinePanel">
+            <div ng-controller="skillInfoPanelCtrl">
+                <div id="panel">
                     <div ng-if="detail">
-                        <ng-include src="'js/templates/panel-deadline.html'"></ng-include>
+                        <ng-include src="'js/templates/panel-detail.html'"></ng-include>
                     </div>
                 </div>
             </div>
-          -->
 
-            <div ng-controller="deadlineBarCtrl">
-                <div id="options">
-                  <input type="checkbox" ng-model="startFromNow">从当前开始</input>
-                  <input type="checkbox" ng-model="displayBeforeNow" ng-init="displayBeforeNow=true">显示已过期项目</input>
-                </div>
-                <div id="deadlineBar">
+            <div ng-controller="deadlinePanelCtrl">
+                <div id="deadlinePanel">
+                    <ng-include src="'js/templates/panel-deadline.html'"></ng-include>
                 </div>
             </div>
 
         </div>
         <!-- end of left bar -->
 
-        <div ng-controller="skillTreeCtrl">
+        <div ng-controller="skillTreeCtrl" class="middlebar">
             <treechart data="data" diameter="1600"></treechart>
         </div>
-        <div ng-controller="skillInfoPanelCtrl">
-            <div id="panel">
-                <div ng-if="detail">
-                    <ng-include src="'js/templates/panel-detail.html'"></ng-include>
+
+        <!-- start of right bar -->
+        <div class="rightbar">
+            <div ng-controller="deadlineBarCtrl">
+                <div id="options">
+                    <input type="checkbox" ng-model="startFromNow">从当前开始</input>
+                    <input type="checkbox" ng-model="displayBeforeNow" ng-init="displayBeforeNow=true">显示已过期项目</input>
+                </div>
+                <div id="deadlineBar">
                 </div>
             </div>
         </div>
+        <!-- end of right bar -->
+
     </div>
 
     <!-- start of scripts -->

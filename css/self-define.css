@@ -21,3 +21,15 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+.rightbar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+}
+
+.middlebar {
+  top: 10px;
+  left: 220px;
+}

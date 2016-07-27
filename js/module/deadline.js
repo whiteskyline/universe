@@ -9,7 +9,7 @@ d3.chart.deadlineBar = function(selector) {
         right: 10
     };
     var width = 300,
-        height = 1300;
+        height = window.innerHeight - margin.top - margin.bottom - 30;
 
     var yScale, yAxis, yAxisElement, svg;
     var colorMaps;
