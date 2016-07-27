@@ -67,21 +67,43 @@ function collectDetail(key, value, detail) {
 }
 
 app.service("storage", function(data){
+  var LEVEL_DAY = 1;
+  var LEVEL_WEEK = 2;
+  var LEVEL_MONTH = 3;
+  var LEVEL_YEAR = 4;
+
   var registeredFields = [];
-  var register = function(key, data, def, startDate, endDate) {
-    registeredFields.push({"key": key, "data": data, "default": def, "start": startDate, "end": endDate});
+  var currentLevel = LEVEL_DAY;
+
+  var register = function(key, data, def, startDate, endDate, level) {
+    registeredFields.push({"key": key, "data": data, "default": def, "start": startDate, "end": endDate, "level": level});
   }
   var getFields = function() {
-    return registeredFields;
+    return registeredFields.filter(function(ele){
+      return ele.level == currentLevel
+    })
   }
   var select = function(data) {
     data.setData(transformRoot(data, getFields()));
   }
-
+  var setLevel = function(level) {
+    currentLevel = level
+  }
+  var getLeveledData = function(level) {
+    var targetData = registeredFields.find(function(ele){
+      return (ele.level == currentLevel + 1)
+    })
+    return targetData;
+  }
   return {
     register: register,
     getFields: getFields,
-    select: select
+    select: select,
+    getLeveledData: getLeveledData,
+    LEVEL_DAY: LEVEL_DAY,
+    LEVEL_WEEK: LEVEL_WEEK,
+    LEVEL_MONTH: LEVEL_MONTH,
+    LEVEL_YEAR: LEVEL_YEAR
   };
 });
 

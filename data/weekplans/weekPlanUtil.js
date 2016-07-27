@@ -1,6 +1,6 @@
 'use strict';
 
-app.service('dailyUtil', function(storage){
+app.service('weeklyUtil', function(storage){
   'use strict';
 
   var DAILY_FORMAT = "YYYY-MM-DD HH:mm"
@@ -38,30 +38,27 @@ app.service('dailyUtil', function(storage){
 
   };
 
-  var registerDailyPlan = function(dataNode, startHour, endHour, timeBase, unit) {
+  var registerWeeklyPlan = function(dataNode, unit) {
     var rootName;
     for (var v in dataNode) {
       rootName = v;
     }
 
     var baseMoment = new moment()
-    baseMoment.day(timeBase).startOf(unit)
+    baseMoment.startOf(unit)
     var unitTailMoment = new moment()
-    unitTailMoment.day(timeBase).endOf(unit)
+    unitTailMoment.endOf(unit)
     var now = new Date()
     var def = baseMoment.valueOf() < now && unitTailMoment.valueOf() > now
 
     adjustNodeTime(dataNode, baseMoment, unit)
 
-    var startMoment = transformTime(startHour, baseMoment, unit)
-    var endMoment = transformTime(endHour, baseMoment, unit)
-
-    storage.register(rootName, dataNode, def, startMoment.format(DAILY_FORMAT), endMoment.format(DAILY_FORMAT), storage.LEVEL_DAY);
+    storage.register(rootName, dataNode, def, baseMoment.format(DAILY_FORMAT), unitTailMoment.format(DAILY_FORMAT), storage.LEVEL_WEEK);
   };
 
   return {
     selectDefault: selectDefault,
-    registerDailyPlan: registerDailyPlan
+    registerWeeklyPlan: registerWeeklyPlan
   };
 
 });

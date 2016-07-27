@@ -39,6 +39,12 @@
                 </div>
             </div>
 
+            <div ng-controller="parentPlanPanelCtrl">
+                <div id="parentPlanPanel">
+                    <ng-include src="'js/templates/panel-parent-plan.html'"></ng-include>
+                </div>
+            </div>
+
         </div>
         <!-- end of left bar -->
 
@@ -77,8 +83,11 @@
     <script src="js/controller/skillInfoPanel.js" charset="utf-8"></script>
     <script src="js/controller/deadlinePanel.js" charset="utf-8"></script>
     <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
+    <script src="js/controller/parentPlanPanel.js" charset="utf-8"></script>
     <!-- load data -->
     <script src="data/core.js" charset="utf-8"></script>
+    <script src="data/weekplans/weekPlanUtil.js" charset="utf-8"></script>
+    <script src="data/weekplans/weekPlan.js" charset="utf-8"></script>
     <script src="data/dayplans/dayPlanUtil.js" charset="utf-8"></script>
     <script src="data/dayplans/mondayPlan.js" charset="utf-8"></script>
     <script src="data/dayplans/tuesdayPlan.js" charset="utf-8"></script>
