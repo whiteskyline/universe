@@ -83,5 +83,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("HTTPS", httpsPojData, true, "2016/7/1", "2016/8/15");
+  storage.register("HTTPS", httpsPojData, true, "2016/7/1", "2016/8/15", storage.LEVEL_POJ);
 });

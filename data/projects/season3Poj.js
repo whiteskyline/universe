@@ -57,5 +57,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("Q3整体工作", season3PojData, false, "2016/7/1", "2016/9/30");
+  storage.register("Q3整体工作", season3PojData, false, "2016/7/1", "2016/9/30", storage.LEVEL_POJ);
 });

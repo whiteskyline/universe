@@ -7,7 +7,16 @@
 
  app.controller("parentPlanPanelCtrl", function($scope, bus, storage){
 
-   function collectNodeInfo(data) {
+   function collectNodeInfo(data, results, func, trans) {
+     if (func(data)) {
+       results.push(trans(data))
+     }
+
+     if (typeof(data.children) !== "undefined") {
+       data.children.forEach(function(ele){
+         collectNodeInfo(ele, results, func, trans)
+       })
+     }
 
    }
 
@@ -17,8 +26,26 @@
      }
      console.log("current data", data)
 
-     var parentPlan = transformDataFormat()
-     console.log("parent data",storage.getLeveledData())
-     $scope.node = {"name": "new parent node"}
+     var parentLevelData = storage.getLeveledData()
+     var parentName = parentLevelData.key
+
+     var parentPlan = transformDataFormat(parentName, parentLevelData.data[parentName])
+     console.log("parent data", parentPlan)
+
+     var trans = function(ele) {
+        return ele
+     }
+
+     var resultNode = {"name": "父层级计划概览", unfinishedJobs:[], finishedJobs:[], withDeadlines:[], }
+     collectNodeInfo(parentPlan, resultNode.unfinishedJobs, function(ele) {
+       if (typeof(ele.detail.finished) === "undefined") return true
+       return ele.detail.finished < 1
+     }, trans)
+     collectNodeInfo(parentPlan, resultNode.finishedJobs, function(ele){
+       return ele.detail.finished >= 1
+     },trans)
+
+     console.log("transed", resultNode)
+     $scope.node = resultNode
    });
  });

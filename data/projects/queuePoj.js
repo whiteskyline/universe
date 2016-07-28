@@ -54,5 +54,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("EMQ项目", queuePojData, false, "2016/7/1", "2016/7/16");
+  storage.register("EMQ项目", queuePojData, false, "2016/7/1", "2016/7/16", storage.LEVEL_POJ);
 });

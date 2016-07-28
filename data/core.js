@@ -71,6 +71,7 @@ app.service("storage", function(data){
   var LEVEL_WEEK = 2;
   var LEVEL_MONTH = 3;
   var LEVEL_YEAR = 4;
+  var LEVEL_POJ = 5;
 
   var registeredFields = [];
   var currentLevel = LEVEL_DAY;
@@ -99,11 +100,13 @@ app.service("storage", function(data){
     register: register,
     getFields: getFields,
     select: select,
+    setLevel: setLevel,
     getLeveledData: getLeveledData,
     LEVEL_DAY: LEVEL_DAY,
     LEVEL_WEEK: LEVEL_WEEK,
     LEVEL_MONTH: LEVEL_MONTH,
-    LEVEL_YEAR: LEVEL_YEAR
+    LEVEL_YEAR: LEVEL_YEAR,
+    LEVEL_POJ: LEVEL_POJ
   };
 });
 

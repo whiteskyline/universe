@@ -31,13 +31,15 @@ app.directive('treechart', function(bus) {
               }
               console.log("data is changed", data);
 
-              var radius = window.innerWidth - 520
-              if (radius > window.innerHeight) radius = window.innerHeight
+              var radius = window.top.innerWidth - 520
+              if (radius > window.top.innerHeight) radius = window.top.innerHeight
+              console.log("radius", radius, data)
               chart.diameter(radius)
                   .data(data);
 
               d3.select(element[0])
                   .call(chart);
+
             });
 
             bus.on('nameFilterChange', function(nameFilter) {

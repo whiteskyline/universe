@@ -76,6 +76,11 @@
     <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
     <!-- load data -->
     <script src="data/core.js" charset="utf-8"></script>
+    <script>
+      app.run(function(storage){
+        storage.setLevel(storage.LEVEL_POJ);
+      })
+    </script>
     <script src="data/projects/queuePoj.js" charset="utf-8"></script>
     <script src="data/projects/season3Poj.js" charset="utf-8"></script>
     <script src="data/projects/httpsPoj.js" charset="utf-8"></script>

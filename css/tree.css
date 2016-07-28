@@ -35,7 +35,7 @@
 }
 
 .details {
-    width: 200px;
+    width: 350px;
 }
 
 .details ul {
@@ -78,11 +78,11 @@
 }
 
 .fields {
-  width: 200px;
+  width: 350px;
 }
 
 .deadlines {
-  width: 200px;
+  width: 350px;
 }
 
 .deadlines .btn {

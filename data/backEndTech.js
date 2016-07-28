@@ -248,5 +248,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("服务端技术", backEndTechData, true, "2016/3/1", "2016/10/1");
+  storage.register("服务端技术", backEndTechData, true, "2016/3/1", "2016/10/1", storage.LEVEL_POJ);
 });

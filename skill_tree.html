@@ -77,10 +77,16 @@
     <script src="js/controller/deadlineBar.js" charset="utf-8"></script>
     <!-- load data -->
     <script src="data/core.js" charset="utf-8"></script>
+    <script>
+      app.run(function(storage){
+        storage.setLevel(storage.LEVEL_POJ);
+      })
+    </script>
     <script src="data/backEndTech.js" charset="utf-8"></script>
     <script src="data/stockTech.js" charset="utf-8"></script>
     <script src="data/frontEndTech.js" charset="utf-8"></script>
     <!-- end of scripts -->
+
 
 </body>
 

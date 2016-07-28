@@ -10,38 +10,11 @@
             </ul>
         </div>
 
-        <div class="properties" ng-if="node.detail.topsubs">
-            <h5>未完成</h5>
+        <div class="properties" ng-if="node.unfinishedJobs">
+            <h5>未完成事项</h5>
             <ul>
-                <li ng-repeat="topsub in node.detail.topsubs">
-                    {{ topsub }}
-                </li>
-            </ul>
-        </div>
-
-        <div class="properties" ng-if="node.detail.books">
-            <h5>相关书籍</h5>
-            <ul>
-                <li ng-repeat="book in node.detail.books">
-                    《{{ book }}》
-                </li>
-            </ul>
-        </div>
-
-        <div class="properties" ng-if="node.detail.techkeys">
-            <h5>技术关键词</h5>
-            <ul>
-                <li ng-repeat="key in node.detail.techkeys">
-                    {{ key }}
-                </li>
-            </ul>
-        </div>
-
-        <div class="properties" ng-if="node.detail.deadline">
-            <h5>截止日期</h5>
-            <ul>
-                <li>
-                    {{ node.detail.deadline }}
+                <li ng-repeat="job in node.unfinishedJobs">
+                    {{ job.name }}<code ng-if="job.detail.deadline">:{{job.detail.deadline}}</code>
                 </li>
             </ul>
         </div>

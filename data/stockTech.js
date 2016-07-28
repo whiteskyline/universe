@@ -31,5 +31,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("股票技术", stockData, false, "2016/7/1", "2016/10/1");
+  storage.register("股票技术", stockData, false, "2016/7/1", "2016/10/1", storage.LEVEL_POJ);
 });

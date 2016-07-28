@@ -106,5 +106,5 @@ app.run(function(storage){
     }
   }
 
-  storage.register("前端技术", frontEndData, false, "2016/6/1", "2016/10/30");
+  storage.register("前端技术", frontEndData, false, "2016/6/1", "2016/10/30", storage.LEVEL_POJ);
 });
