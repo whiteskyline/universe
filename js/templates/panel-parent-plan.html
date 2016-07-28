@@ -1,19 +1,20 @@
-<div class="details panel panel-info">
+<div class="details panel panel-info" ng-if="node">
     <div class="panel-heading">{{ node.name }}</div>
     <div class="panel-body">
-        <div class="url" ng-if="node.detail.urls">
-            <h5>相关网址</h5>
-            <ul>
-              <li ng-repeat="url in node.detail.urls">
-                <a href="{{ url }}" target="_blank">{{ url }}</a>
-              </li>
-            </ul>
-        </div>
 
         <div class="properties" ng-if="node.unfinishedJobs">
             <h5>未完成事项</h5>
             <ul>
                 <li ng-repeat="job in node.unfinishedJobs">
+                    {{ job.name }}<code ng-if="job.detail.deadline">:{{job.detail.deadline}}</code>
+                </li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.finishedJobs">
+            <h5>已完成事项</h5>
+            <ul>
+                <li ng-repeat="job in node.finishedJobs">
                     {{ job.name }}<code ng-if="job.detail.deadline">:{{job.detail.deadline}}</code>
                 </li>
             </ul>

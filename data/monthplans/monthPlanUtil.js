@@ -1,13 +1,13 @@
 'use strict';
 
-app.service('weeklyUtil', function(storage){
+app.service('monthlyUtil', function(storage){
   'use strict';
 
-  var DAILY_FORMAT = "ddd HH:mm"
+  var DAILY_FORMAT = "YYYY-MM-DD HH:mm"
 
   var transformTime = function(timeSlice, baseMoment, unit) {
     if (typeof(timeSlice) === "string") {
-      timeSlice = moment(timeSlice, "ddd HH").diff(moment("Mon", "ddd")) + moment.duration({"days": 1}).valueOf()
+      timeSlice = moment(timeSlice, "DD HH").diff(moment("1", "DD"))
     }
     var resultMoment = baseMoment.clone()
     resultMoment.add(timeSlice)
@@ -38,7 +38,7 @@ app.service('weeklyUtil', function(storage){
 
   };
 
-  var registerWeeklyPlan = function(dataNode, unit) {
+  var registerMonthlyPlan = function(dataNode, unit) {
     var rootName;
     for (var v in dataNode) {
       rootName = v;
@@ -52,12 +52,12 @@ app.service('weeklyUtil', function(storage){
     var def = baseMoment.valueOf() < now && unitTailMoment.valueOf() > now
 
     adjustNodeTime(dataNode, baseMoment, unit)
-    storage.register(rootName, dataNode, def, baseMoment.format(DAILY_FORMAT), unitTailMoment.format(DAILY_FORMAT), storage.LEVEL_WEEK);
+    storage.register(rootName, dataNode, def, baseMoment.format(DAILY_FORMAT), unitTailMoment.format(DAILY_FORMAT), storage.LEVEL_MONTH);
   };
 
   return {
     selectDefault: selectDefault,
-    registerWeeklyPlan: registerWeeklyPlan
+    registerMonthlyPlan: registerMonthlyPlan
   };
 
 });

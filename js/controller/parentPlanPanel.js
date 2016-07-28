@@ -27,6 +27,10 @@
      console.log("current data", data)
 
      var parentLevelData = storage.getLeveledData()
+     if (typeof(parentLevelData) === "undefined") {
+       $scope.node = null
+       return
+     }
      var parentName = parentLevelData.key
 
      var parentPlan = transformDataFormat(parentName, parentLevelData.data[parentName])

@@ -8,6 +8,18 @@ function transformRoot(data, fields) {
   }
 }
 
+function findField(data, fields) {
+  var fieldName
+  for (var key in data) {
+    fieldName = key;
+  }
+
+  return fields.find(function(fi){
+    return fi.key == fieldName;
+  });
+
+}
+
 function transformDataFormat(name, data, start, end) {
   var node = {"name": name}
   var info = filterInfo(data);
@@ -80,12 +92,13 @@ app.service("storage", function(data){
     registeredFields.push({"key": key, "data": data, "default": def, "start": startDate, "end": endDate, "level": level});
   }
   var getFields = function() {
-    return registeredFields.filter(function(ele){
-      return ele.level == currentLevel
-    })
+    return registeredFields;
   }
-  var select = function(data) {
-    data.setData(transformRoot(data, getFields()));
+  var select = function(selectedData) {
+    var field = findField(selectedData, getFields())
+    console.log("field is selected", field.key)
+    setLevel(field.level)
+    data.setData(transformDataFormat(field.key, selectedData[field.key], field.start, field.end));
   }
   var setLevel = function(level) {
     currentLevel = level
@@ -154,9 +167,10 @@ app.controller("fieldPanelCtrl", function($scope, storage, data){
     if (newValue === oldValue) {
       return;
     }
-    var rootData = transformRoot(newValue.data, fields);
-    markFinishStatus(rootData);
-    data.setData(rootData);
+    storage.select(newValue.data);
+    // var rootData = transformRoot(newValue.data, fields);
+    // markFinishStatus(rootData);
+    // data.setData(rootData);
   }, true);
   fields.map(function(value){
     if (typeof(value.default) !== "undefined" && value.default == true) {
