@@ -1,6 +1,5 @@
 app.directive('treechart', function(bus) {
     'use strict';
-    console.log("directive treechart is regestered");
     return {
         restrict: 'E',
         replace: true,
@@ -10,30 +9,13 @@ app.directive('treechart', function(bus) {
         },
         link: function(scope, element) {
             var chart = d3.chart.architectureTree();
-
-            console.log("watch data");
-            // scope.$watch("data", function(data) {
-            //     if (typeof (data) === 'undefined') {
-            //         return;
-            //     }
-            //     console.log("data is changed", data);
-            //
-            //     chart.diameter(960)
-            //         .data(scope.data);
-            //
-            //     d3.select(element[0])
-            //         .call(chart);
-            // });
-
             bus.on("updateData", function(data){
               if (typeof (data) === 'undefined') {
                   return;
               }
-              console.log("data is changed", data);
 
               var radius = window.top.innerWidth - 520
               if (radius > window.top.innerHeight) radius = window.top.innerHeight
-              console.log("radius", radius, data)
               chart.diameter(radius)
                   .data(data);
 

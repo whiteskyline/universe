@@ -10,8 +10,12 @@ function transformRoot(data, fields) {
 
 function findField(data, fields) {
   var fieldName
-  for (var key in data) {
-    fieldName = key;
+  if (typeof(data) === "string") {
+    fieldName = data
+  } else {
+    for (var key in data) {
+      fieldName = key
+    }
   }
 
   return fields.find(function(fi){
@@ -87,6 +91,7 @@ app.service("storage", function(data){
 
   var registeredFields = [];
   var currentLevel = LEVEL_DAY;
+  var selected = null;
 
   var register = function(key, data, def, startDate, endDate, level) {
     registeredFields.push({"key": key, "data": data, "default": def, "start": startDate, "end": endDate, "level": level});
@@ -98,7 +103,21 @@ app.service("storage", function(data){
     var field = findField(selectedData, getFields())
     console.log("field is selected", field.key)
     setLevel(field.level)
-    data.setData(transformDataFormat(field.key, selectedData[field.key], field.start, field.end));
+
+    // set COOKIE
+    // if (selected == null) {
+    //   if ($.cookie("selected") != null) {
+    //     field = findField($.cookie("selected"), getFields())
+    //     setLevel(field.level)
+    //   }
+    //   selected = field
+    // }
+    $.cookie("selected", field.key)
+
+    data.setData(transformDataFormat(field.key, field.data[field.key], field.start, field.end));
+  }
+  var getSelected = function() {
+    return selected;
   }
   var setLevel = function(level) {
     currentLevel = level
@@ -114,6 +133,7 @@ app.service("storage", function(data){
     getFields: getFields,
     select: select,
     setLevel: setLevel,
+    getSelected: getSelected,
     getLeveledData: getLeveledData,
     LEVEL_DAY: LEVEL_DAY,
     LEVEL_WEEK: LEVEL_WEEK,
@@ -172,13 +192,19 @@ app.controller("fieldPanelCtrl", function($scope, storage, data){
     // markFinishStatus(rootData);
     // data.setData(rootData);
   }, true);
+  var selectedField = null;
   fields.map(function(value){
-    if (typeof(value.default) !== "undefined" && value.default == true) {
-      window.onload = function() {
-          console.log("data initialized");
-          $scope.selectedField = value;
-          $scope.$digest();
-      }
+    if (typeof(value.default) !== "undefined" && value.default == true && selectedField == null) {
+      selectedField = value
     }
-  });
+    if (value.key == $.cookie("selected")) {
+      selectedField = value
+    }
+  })
+
+  window.onload = function() {
+    $scope.selectedField = selectedField;
+    $scope.$digest();
+  }
+
 });

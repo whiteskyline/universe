@@ -10,7 +10,6 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
   'use strict';
 
   bus.on('updateData', function(data) {
-      console.log("deadline scope data will be changed", data);
       $scope.data = angular.copy(data);
       $scope.detail = true;
       $scope.node = {"techniques":getDeadlines(data)};

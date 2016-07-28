@@ -2,14 +2,13 @@
  * filename:    data.js
  * author:      linmingxing@xiaomi.com
  * date:        2016-6-28
- * comment:     
+ * comment:
  */
 app.service("data", function($q, bus){
   var emited;
   var jsonData;
 
 var setData = function(data) {
-  console.log("data is set to data service", data)
   jsonData = data;
   emitRefresh();
 }

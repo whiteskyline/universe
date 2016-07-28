@@ -24,7 +24,6 @@
      if (typeof(data) === 'undefined') {
        return;
      }
-     console.log("current data", data)
 
      var parentLevelData = storage.getLeveledData()
      if (typeof(parentLevelData) === "undefined") {
@@ -34,7 +33,6 @@
      var parentName = parentLevelData.key
 
      var parentPlan = transformDataFormat(parentName, parentLevelData.data[parentName])
-     console.log("parent data", parentPlan)
 
      var trans = function(ele) {
         return ele
@@ -49,7 +47,6 @@
        return ele.detail.finished >= 1
      },trans)
 
-     console.log("transed", resultNode)
      $scope.node = resultNode
    });
  });
