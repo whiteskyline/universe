@@ -3,7 +3,7 @@
 app.service('weeklyUtil', function(storage){
   'use strict';
 
-  var DAILY_FORMAT = "ddd HH:mm"
+  var DAILY_FORMAT = "YYYY-MM-DD HH:mm"
 
   var transformTime = function(timeSlice, baseMoment, unit) {
     if (typeof(timeSlice) === "string") {

@@ -139,7 +139,7 @@ d3.chart.deadlineBar = function(selector) {
       var range = filteredDeadlineData.end - filteredDeadlineData.start;
       if (range > HALF_YEAR) return d3.time.months;
       if (range > 1.5 * MONTH) return d3.time.weeks;
-      if (range > WEEK) return d3.time.days;
+      if (range > 3 * DAY) return d3.time.days;
       if (range > DAY) return d3.time.hours;
       return d3.time.hours;
     }
