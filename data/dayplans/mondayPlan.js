@@ -23,9 +23,9 @@ app.run(function(storage, dailyUtil){
         },
         "Play支持Https工作": {
           "代码编写": {
-            "genRedirectUrl更改":{},
-            "supportHttps配置添加":{},
-            "判断redirect条件添加":{}
+            "genRedirectUrl更改":{_f: true},
+            "supportHttps配置添加":{_f: true},
+            "判断redirect条件添加":{_f: true}
           },
           "编写Unit测试":{},
           "编写Onebox测试":{},
