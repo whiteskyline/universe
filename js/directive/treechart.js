@@ -3,7 +3,7 @@ app.directive('treechart', function(bus) {
     return {
         restrict: 'E',
         replace: true,
-        template: '<div id="graph"></div>',
+        template: '<div id="graph" class="middlebar"></div>',
         scope:{
             data: '='
         },
@@ -16,6 +16,11 @@ app.directive('treechart', function(bus) {
 
               var radius = window.top.innerWidth - 520
               if (radius > window.top.innerHeight) radius = window.top.innerHeight
+
+              var left = (window.top.innerWidth - radius) / 2
+
+              $(".middlebar").css({"position": "fixed", "left": left})
+
               chart.diameter(radius)
                   .data(data);
 
