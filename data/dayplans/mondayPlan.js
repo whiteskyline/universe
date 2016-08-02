@@ -9,11 +9,11 @@ app.run(function(storage, dailyUtil){
       },
       "整理Play版本的内容上线Staging": {
         _ac: true,
-        "代码整理": {"更改https支持配置为hostlist配置":{_ac: true, _dl: "14:00", _f: true}},
+        "代码整理": {"更改https支持配置为hostlist配置":{_dl: "14:00", _f: true}},
         "增加Onebox测试": {_dl: "15:30", _f: true},
-        "编写Bvt测试": {_dl: "18:00", _ac: true},
-        "准备SNAPSHOT版本": {_dl: "14:00"},
-        "更新Staging-Wifi服务": {_dl: "15:00"}
+        "编写Bvt测试": {_dl: "18:00", _f: true},
+        "准备SNAPSHOT版本": {_dl: "14:00", _f: true},
+        "更新Staging-Wifi服务": {_dl: "15:00", _f: true}
       },
       "代码级别工作": {
         "Rose支持Https工作":{
