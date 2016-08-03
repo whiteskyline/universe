@@ -22,10 +22,16 @@ app.run(function(storage, dailyUtil){
           "编写Onebox测试":{_dl: "21:30"},
         },
         "Play支持Https工作": {
-          "编写Onebox测试":{},
-          "编写Bvt测试":{}
+          "编写Onebox测试":{_f: true},
+          "编写Bvt测试":{_f: true}
         },
         _dl: "20:00"
+      },
+      "Play-Rose代码合并": {
+        "查看现有代码": {},
+        "抽象封装层": {},
+        "实现": {},
+        "测试": {}
       },
       "支持NPM的沙河机制服务搭建":{
         "依赖内容调研": {
