@@ -8,7 +8,6 @@ app.run(function(storage, dailyUtil){
         "发出每周的Job":{_dl: "20:30"}
       },
       "整理Play版本的内容上线Staging": {
-        _ac: true,
         "代码整理": {"更改https支持配置为hostlist配置":{_dl: "14:00", _f: true}},
         "增加Onebox测试": {_dl: "15:30", _f: true},
         "编写Bvt测试": {_dl: "18:00", _f: true},
@@ -29,18 +28,19 @@ app.run(function(storage, dailyUtil){
       },
       "Play-Rose代码合并": {
         "查看现有代码": {},
-        "抽象封装层": {},
-        "实现": {},
-        "测试": {}
+        "抽象封装层": {_ac: true},
+        "实现": {_ac: true},
+        "测试": {},
+        _ac: true
       },
       "支持NPM的沙河机制服务搭建":{
         "依赖内容调研": {
-          "子进程控制":{},
+          "子进程控制":{_f: true},
           "npm-rpc调研":{},
           "内部queue服务调度":{},
         },
         "代码实现": {
-          "lpcap程序可在chroot后执行": {},
+          "lpcap程序可在chroot后执行": {_f: true},
           "包装Java服务": {}
         }
       },
