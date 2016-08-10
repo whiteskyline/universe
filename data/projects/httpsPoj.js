@@ -32,7 +32,7 @@ app.run(function(storage){
         },
         "新服务方案对IAuth/OAuth方向的依赖": {
           "调查目前使用IAuth/OAuth服务的情况":{_f: 0.5},
-          "验证新方案对于原始的逻辑不会产生影响":{}
+          "验证新方案对于原始的逻辑不会产生影响":{_f: true}
         },
         "_dl": "2016/7/15"
       },
@@ -58,12 +58,14 @@ app.run(function(storage){
           _dl: "2016/7/26"
         },
         "Relocation-Interceptor支持HTTPS并上线Staging": {
-          "Rose逻辑开发":{_dl:"2016/7/28"},
+          "Rose逻辑开发":{_dl:"2016/7/28", _f: true},
           "Find更新Interceptor":{_dl:"2016/8/1"},
           "Find上线Production":{_dl:"2016/8/2"},
-          "Play逻辑开发":{_dl:"2016/7/29"},
+          "Play逻辑开发":{_dl:"2016/7/29", _ac: true},
           "Wifi更新版本":{_dl:"2016/8/1"},
           "Wifi上线Production":{_dl:"2016/8/2"},
+          "Play-Rose代码合并": {_f: true},
+          "更新Play到合并版本": {_f: 0.6},
           _dl: "2016/8/2"
         }
       },
