@@ -59,14 +59,36 @@ app.run(function(storage){
         },
         "Relocation-Interceptor支持HTTPS并上线Staging": {
           "Rose逻辑开发":{_dl:"2016/7/28", _f: true},
-          "Find更新Interceptor":{_dl:"2016/8/1"},
-          "Find上线Production":{_dl:"2016/8/2"},
-          "Play逻辑开发":{_dl:"2016/7/29", _ac: true},
-          "Wifi更新版本":{_dl:"2016/8/1"},
-          "Wifi上线Production":{_dl:"2016/8/2"},
+          "Play逻辑开发":{_dl:"2016/7/29", _f: true},
           "Play-Rose代码合并": {_f: true},
-          "更新Play到合并版本": {_f: 0.6},
+          "更新Play到合并版本": {
+            "代码": {_f: true},
+            "进行测试": {_f: true}
+          },
           _dl: "2016/8/2"
+        },
+        "代码收尾工作": {
+          "合并更改的代码": {},
+          "重新进行测试": {},
+          _ac: true
+        },
+        "上线准备工作": {
+          "Staging在线测试": {
+            "Staging配置准备": {},
+            "BVT测试添加": {},
+            "Wifi服务Staging上线": {},
+            "Find服务Staging上线": {},
+            "Staging测试": {}
+          },
+          "上线准备工作": {
+            "域名申请": {},
+            "线上新配置添加": {},
+            "所有服务升级Interceptor":{}
+          },
+          "上线": {
+            "Find上线": {},
+            "Wifi上线": {}
+          }
         }
       },
       "退出标准":{
