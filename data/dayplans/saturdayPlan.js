@@ -3,24 +3,20 @@ app.run(function(storage, dailyUtil){
 
   var saturdayPlanData = {
     "周六事项":{
-      "升级日计划组件": {
-        "简化计划时间设置":{_f: true},
-        "提供计划型中间层":{_f: true}
+      "Relocation服务代码更改完成": {
+        "micloud-infra-review代码更改": {_dl: "16:30", _f: true},
+        "play代码更改": {_dl: "17:30", _f: true},
+        "relocation-fe代码更改": {_dl: "18:00", _f: true}
+      },
+      "Executor服务": {
+        "构建Executor服务": {},
+        "部署": {}
       },
       "理财功能增加": {
-        "基础问题尝试": {_f: true},
         "功能添加": {
-          "月支出累积变化图": {
-            "URL调查":{_f: true},
-            "代码完成":{_f: true}
-          },
           "小类日变化图":{
             "URL调查":{},
             "代码完成":{}
-          },
-          "理财计划与当前状态变化":{
-            "URL调查":{_f: true},
-            "代码完成":{_f: true}
           }
         }
       }
