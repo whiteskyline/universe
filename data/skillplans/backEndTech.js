@@ -11,7 +11,7 @@ app.run(function(storage){
               "注释写法与Java规范":{
                 "Google代码规范":{_f: true},
                 "复杂文档注释书写":{_ac: true},
-                "_dl": "2016/7/10",
+                "_dl": "2016/8/20",
                 _ac: true
               }
             },
@@ -22,7 +22,7 @@ app.run(function(storage){
             "深入研究":{"函数编程技术":{}}
           },
           "SHELL": {
-            "基础应用":{"_f": true, "_dl": "2016/7/12"},
+            "基础应用":{"_f": true},
             "深入研究":{}
           }
         },
@@ -30,7 +30,7 @@ app.run(function(storage){
           "并发技术":{},
           "池化技术":{},
           "常见库":{
-            "Joda-Time":{"_c":"时间处理库", "_f": 0.5, "_dl": "2016/7/8"}
+            "Joda-Time":{}
           },
           "日志技术":{}
         },
@@ -49,7 +49,14 @@ app.run(function(storage){
       <!-- end of 开发 -->
       <!-- start of 平台 -->
       "服务端平台":{
-        "基础支撑":{
+        "服务化": {
+          "服务化框架": {
+            "公司内部框架": {_ac: true, _dl: "2016/8/25"},
+            "Dubox": {}
+          },
+          "服务化运维保障": {}
+        },
+        "基础支撑": {
           "计算与服务能力":{
             "计算与服务提供": {
               "服务扩展": {
@@ -73,7 +80,7 @@ app.run(function(storage){
                 "UnixLXC":{}
               },
               "WEB容器": {
-                "Apache Tomcat":{_ac: true},
+                "Apache Tomcat":{_ac: true, _dl: "2016/8/30"},
                 "Resin":{}
               },
               "异步化": {
@@ -119,7 +126,11 @@ app.run(function(storage){
               "RabbitMQ":{},
               "AWS SQS":{},
               "ActiveMQ":{},
-              "Kafka":{}
+              "Kafka":{
+                "使用总结": {},
+                "源码剖析": {},
+                _dl: "2016/9/7"
+              }
             },
             "架构与理论":{
               "CAP":{"基础知识":{"_f":true}, "系统应用研究对应":{"_t": ["MongoDB", "Redis"]}},
@@ -133,13 +144,17 @@ app.run(function(storage){
             "数据服务":{
               "SQL":{
                 "MySQL":{
-                  "基础使用":{"_f": true, "_dl": "2016/5/1"},
-                  "深入学习":{}
+                  "基础使用": {"_f": true, "_dl": "2016/5/1"},
+                  "深入学习": {
+                    "分库分表实战": {},
+                    _dl: "2016/9/15",
+                    _ac: true
+                  }
                 },
                 "AWS RDS":{},
               },
               "NoSQL":{
-                "DynamoDB":{"_dl": "2016/4/1"},
+                "DynamoDB":{},
                 "MongoDB":{},
                 "Cassandra":{}
               },
@@ -210,7 +225,10 @@ app.run(function(storage){
         },
         "服务器安全":{
           "沙盒技术":{},
-          "服务器资源限制":{"CPU":{}},
+          "服务器资源限制":{
+            "CPU":{_f: 0.8},
+            "文件系统限制": {_f: true}
+          },
           _ac: true
         }
       },

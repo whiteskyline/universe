@@ -12,16 +12,15 @@ app.run(function(storage){
       },
       "项目编写": {
         "项目Init": {
-          "Thrift Init": {},
-          "Maven Init": {},
-          _ac: true
+          "Thrift Init": {_f: true},
+          "Maven Init": {_f: true}
         },
         "Thrift Executor Service 编写": {
           "编写": {},
           "测试": {}
         },
         "ExecutorPool编写":{
-          "编写": {},
+          "编写": {_f: true},
           "测试": {}
         },
         "EnvironmentService编写":{
@@ -34,7 +33,8 @@ app.run(function(storage){
         },
         "ExecutorService编写": {
           "编写": {},
-          "测试": {}
+          "测试": {},
+          _ac: true
         }
       },
       "调试运行": {
