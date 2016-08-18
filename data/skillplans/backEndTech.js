@@ -10,7 +10,7 @@ app.run(function(storage){
             "纯熟应用":{
               "注释写法与Java规范":{
                 "Google代码规范":{_f: true},
-                "复杂文档注释书写":{_ac: true},
+                "复杂文档注释书写":{_f: true},
                 "_dl": "2016/8/20",
                 _ac: true
               }
