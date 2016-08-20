@@ -16,8 +16,8 @@ app.run(function(storage, weeklyUtil){
           _dl: "Wed 16:00"
         },
         "Production上线": {
-          "依赖库升级正式版本": {},
-          "Staging再次测试": {},
+          "依赖库升级正式版本": {_f: true},
+          "Staging再次测试": {_f: true},
           _dl: "Thu 20:00"
         },
         "Cache机制更改": {
@@ -33,6 +33,7 @@ app.run(function(storage, weeklyUtil){
           _dl: "Sat 20:00"
         },
         "ExecutorService完成": {
+          _ac: true,
           _dl: "Wed 21:00"
         }
       }

@@ -85,13 +85,11 @@ app.run(function(storage){
               },
               "异步化": {
                 "异步化语言及库基础":{
-
                 },
                 "异步化前端-Play":{
                   "Play测试":{_ac: true}
                 },
                 "异步化后端":{
-
                 }
               }
             },
@@ -138,6 +136,9 @@ app.run(function(storage){
               "MicroService":{}
             },
             "服务发现":{
+            },
+            "其他服务":{
+              "snowflake": {_c: "GUID生成服务", _ac: true}
             }
           },
           "支撑架构服务":{

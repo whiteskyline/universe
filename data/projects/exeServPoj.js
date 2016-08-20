@@ -21,14 +21,18 @@ app.run(function(storage){
         },
         "ExecutorPool编写":{
           "编写": {_f: true},
-          "测试": {}
+          "测试": {_f: true}
         },
         "EnvironmentService编写":{
-          "编写": {},
-          "测试": {}
+          "编写": {_f: true},
+          "测试": {_f: true}
         },
         "QueueService":{
-          "编写": {},
+          "编写": {_f: true},
+          "测试": {_f: true}
+        },
+        "序列号生成器": {
+          "编写": {_f: true},
           "测试": {}
         },
         "ExecutorService编写": {

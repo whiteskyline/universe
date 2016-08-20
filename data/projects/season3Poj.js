@@ -10,7 +10,10 @@ app.run(function(storage){
           "KeyChain": {}
         },
         "HTTPS":{
-          "AWS启用":{}
+          "AWS启用":{_f: true}
+        },
+        "Relocation服务": {
+          "Cache机制升级": {_ac: true}
         },
         "数据备份":{
           "列表补全":{"_c": "用户列表尚未补全"},
