@@ -33,10 +33,10 @@ app.run(function(storage){
         },
         "序列号生成器": {
           "编写": {_f: true},
-          "测试": {}
+          "测试": {_f: true}
         },
         "ExecutorService编写": {
-          "编写": {},
+          "编写": {_f: 0.5},
           "测试": {},
           _ac: true
         }
