@@ -54,7 +54,7 @@ app.run(function(storage){
         "Relocation-FE服务支持HTTPS开发并上线Staging": {
           "逻辑开发与测试":{_dl:"2016/7/21", _f: true},
           "上线Staging":{_dl:"2016/7/22", _f: true},
-          "上线Production":{_dl:"2016/7/26"},
+          "上线Production":{_dl:"2016/7/26", _f: true},
           _dl: "2016/7/26"
         },
         "Relocation-Interceptor支持HTTPS并上线Staging": {
@@ -74,19 +74,19 @@ app.run(function(storage){
         },
         "上线准备工作": {
           "Staging在线测试": {
-            "Staging配置准备": {},
-            "BVT测试添加": {},
-            "Wifi服务Staging上线": {},
-            "Find服务Staging上线": {},
-            "Staging测试": {}
+            "Staging配置准备": {_f: true},
+            "BVT测试添加": {_f: true},
+            "Wifi服务Staging上线": {_f: true},
+            "Status服务Staging上线": {_f: true},
+            "Staging测试": {_f: true}
           },
           "上线准备工作": {
-            "域名申请": {},
-            "线上新配置添加": {},
+            "域名申请": {_ac: true},
+            "线上新配置添加": {_f: true},
             "所有服务升级Interceptor":{}
           },
           "上线": {
-            "Find上线": {},
+            "Status上线": {},
             "Wifi上线": {}
           }
         }
