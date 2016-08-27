@@ -91,6 +91,9 @@ app.run(function(storage){
                 },
                 "异步化后端":{
                 }
+              },
+              "MVC框架": {
+                "Spring框架": {}
               }
             },
             "通信":{
@@ -138,7 +141,16 @@ app.run(function(storage){
             "服务发现":{
             },
             "其他服务":{
-              "snowflake": {_c: "GUID生成服务", _ac: true}
+              "snowflake": {
+                _c: "GUID生成服务",
+                _ac: true,
+                "基本原理": {
+                  _f: true
+                },
+                "服务分Partition架构": {
+                  
+                }
+              }
             }
           },
           "支撑架构服务":{

@@ -81,13 +81,13 @@ app.run(function(storage){
             "Staging测试": {_f: true}
           },
           "上线准备工作": {
-            "域名申请": {_ac: true},
+            "域名申请": {_ac: true, _f: true},
             "线上新配置添加": {_f: true},
-            "所有服务升级Interceptor":{}
+            "所有服务升级Interceptor":{_f: 0.1}
           },
           "上线": {
-            "Status上线": {},
-            "Wifi上线": {}
+            "Status上线": {_f: true},
+            "Wifi上线": {_f: true}
           }
         }
       },

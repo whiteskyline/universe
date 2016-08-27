@@ -38,16 +38,16 @@ app.service('dailyUtil', function(storage){
 
   };
 
-  var registerDailyPlan = function(dataNode, startHour, endHour, timeBase, unit) {
+  var registerDailyPlan = function(dataNode, startHour, endHour, unit) {
     var rootName;
     for (var v in dataNode) {
       rootName = v;
     }
 
     var baseMoment = new moment()
-    baseMoment.day(timeBase).startOf(unit)
+    baseMoment.startOf(unit)
     var unitTailMoment = new moment()
-    unitTailMoment.day(timeBase).endOf(unit)
+    unitTailMoment.endOf(unit)
     var now = new Date()
     var def = baseMoment.valueOf() < now && unitTailMoment.valueOf() > now
 

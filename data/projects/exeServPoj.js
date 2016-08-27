@@ -16,7 +16,7 @@ app.run(function(storage){
           "Maven Init": {_f: true}
         },
         "Thrift Executor Service 编写": {
-          "编写": {},
+          "编写": {_f: true},
           "测试": {}
         },
         "ExecutorPool编写":{
@@ -36,7 +36,7 @@ app.run(function(storage){
           "测试": {_f: true}
         },
         "ExecutorService编写": {
-          "编写": {_f: 0.5},
+          "编写": {_f: true},
           "测试": {},
           _ac: true
         }
