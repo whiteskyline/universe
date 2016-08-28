@@ -12,8 +12,8 @@ d3.chart.architectureTree = function() {
     function chart(){
         if (typeof(tree) === 'undefined') {
             tree = d3.layout.tree()
-                .size([diameter, diameter])
-                .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+                .size([diameter - 12, diameter - 12])
+                // .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
             svg = d3.select("#graph").append("svg")
                 .attr("width", diameter)

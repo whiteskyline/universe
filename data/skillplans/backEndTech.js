@@ -11,8 +11,7 @@ app.run(function(storage){
               "注释写法与Java规范":{
                 "Google代码规范":{_f: true},
                 "复杂文档注释书写":{_f: true},
-                "_dl": "2016/8/20",
-                _ac: true
+                "_dl": "2016/8/20"
               }
             },
             "深入探究":{"垃圾回收技术":{}}
@@ -24,6 +23,10 @@ app.run(function(storage){
           "SHELL": {
             "基础应用":{"_f": true},
             "深入研究":{}
+          },
+          "Perl": {
+            _c: "文本处理工具",
+            "基础应用": {}
           }
         },
         "程序组件": {
@@ -80,7 +83,13 @@ app.run(function(storage){
                 "UnixLXC":{}
               },
               "WEB容器": {
-                "Apache Tomcat":{_ac: true, _dl: "2016/8/30"},
+                "Apache Tomcat":{
+                  "基础结构": {_f: 0.8},
+                  "事件机制": {},
+                  "长连接处理": {},
+                  "KeepAlive处理": {},
+                  _ac: true, _dl: "2016/8/30"
+                },
                 "Resin":{}
               },
               "异步化": {
@@ -148,7 +157,7 @@ app.run(function(storage){
                   _f: true
                 },
                 "服务分Partition架构": {
-                  
+
                 }
               }
             }
@@ -158,11 +167,9 @@ app.run(function(storage){
               "SQL":{
                 "MySQL":{
                   "基础使用": {"_f": true, "_dl": "2016/5/1"},
-                  "深入学习": {
-                    "分库分表实战": {},
-                    _dl: "2016/9/15",
-                    _ac: true
-                  }
+                  "分库分表实战": {},
+                  _dl: "2016/9/15",
+                  _ac: true
                 },
                 "AWS RDS":{},
               },

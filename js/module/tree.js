@@ -13,7 +13,7 @@ d3.chart.architectureTree = function() {
         if (typeof(tree) === 'undefined') {
             tree = d3.layout.tree()
                 .size([360, diameter / 2 - 120])
-                .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+                // .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
             svg = d3.select("#graph").append("svg")
                 .attr("width", diameter)
