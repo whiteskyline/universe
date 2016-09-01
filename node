@@ -1,0 +1,15 @@
+include       mime.types;
+default_type  application/octet-stream;
+
+log_format iss_log '$server_addr\t$host\t$remote_addr\t$time_local\t$request_uri\t'
+                   '$request_length\t$bytes_sent\t$request_time\t$status\t$upstream_addr\t'
+                   '$upstream_cache_status\t$upstream_response_time\t\t$request_method\t'
+                   '$http_referer\t$http_user_agent\t$arg__hostingserver\t$sent_http_x_xiaomi_status_code';
+
+access_log logs/access.log iss_log;
+error_log  logs/error.log;
+
+sendfile        on;
+keepalive_timeout  65;
+
+include site-enable/*.conf;
