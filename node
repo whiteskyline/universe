@@ -13,3 +13,15 @@ sendfile        on;
 keepalive_timeout  65;
 
 include site-enable/*.conf;
+
+
+server {
+    listen 80;
+    server_name universe.com;
+
+    access_log logs/universe.com.log iss_log;
+    error_log  logs/universe.com.err;
+
+    root /Users/horizon/src_st/open/universe;
+
+}
