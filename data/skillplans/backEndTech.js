@@ -44,6 +44,11 @@ app.run(function(storage){
           "Scrum":{},
           "FDD":{}
         },
+        "代码质量": {
+          "Coverity": {
+            _c: "https://www.coverity.com/, 用于代码的检查"
+          }
+        },
         "DEBUG技术":{
           "远程DEBUG技术":{},
           "Intellij DEBUG技术":{}
@@ -88,6 +93,12 @@ app.run(function(storage){
                   "事件机制": {},
                   "长连接处理": {},
                   "KeepAlive处理": {},
+                  "总结": {
+                    "协议层总结": {_f: true},
+                    "容器层总结": {},
+                    "应用层总结": {},
+                    "特殊细节处理总结": {}
+                  },
                   _ac: true, _dl: "2016/8/30"
                 },
                 "Resin":{}
