@@ -25,3 +25,50 @@ server {
     root /Users/horizon/src_st/open/universe;
 
 }
+
+
+#
+# Map Company Machines
+#
+10.99.184.76 oneboxhost
+10.99.184.76 oneboxhost.micloudapi.xiaomi.com
+
+#
+# IAuth Config
+#
+# 10.237.14.211 staging.iauth.n.xiaomi.net
+127.0.0.1 oneboxhost.micloudapi.xiaomi.com
+123.56.196.43 aliyun
+127.0.0.1 uni.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# Shopping Hosts Limited
+#
+127.0.0.1 taobao.com
+127.0.0.1 jd.com
+127.0.0.1 www.mioffice.cn
+
+#
+# Social Websites
+#
+127.0.0.1 weibo.com
+127.0.0.1 zhihu.com
+
+#
+# Entertainment Websites
+#
+127.0.0.1 qq.com
+127.0.0.1 iqiyi.com
