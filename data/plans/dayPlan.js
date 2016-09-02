@@ -5,26 +5,12 @@ app.run(function(storage, dailyUtil){
     "日事项":{
       "工作": {
         "ClientSDK": {
-          "背景了解": {_ac: true},
+          "背景了解": {
+            _ac: true,
+            "antlr语法学习": {},
+            "twirl模板框架使用学习": {}
+          },
           "当前工作状态接手": {}
-        },
-        "机房ZK切换": {
-          "服务过滤": {
-            "relocation-fe": {_f: true},
-            "relocation-mt": {_f: true},
-            "useridholder-mt": {_f: true},
-            "mqueue服务-lg": {_f: true},
-            "kafka服务": {_f: true}
-          },
-          "上线": {
-            "relocation-fe": {_f: true},
-            "relocation-mt": {_f: true},
-            "useridholder-mt": {_f: true},
-            "mqueue服务-lg": {_f: true}
-          },
-          "更新配置": {
-            "kafka配置": {_f: true}
-          }
         }
       },
       "学习": {
@@ -37,7 +23,6 @@ app.run(function(storage, dailyUtil){
         },
         "Tomcat探究": {
           "时序图整理": {
-            "协议层整理": {_f: true},
             "容器曾整理": {_ac: true},
             "ClassLoader机制整理": {}
           }
