@@ -15,11 +15,12 @@ app.run(function(storage, dailyUtil){
       },
       "学习": {
         "ExecutorService实现": {
-          "测试": {},
-          "Scala/Java的Future/Promise机制探究": {}
+          "测试": {_f: 0.6},
+          "Scala/Java的Future/Promise机制探究": {},
+          "libcap更改": {}
         },
         "ThriftExecutorService对接": {
-
+          _f: true
         },
         "Tomcat探究": {
           "时序图整理": {
