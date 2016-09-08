@@ -9,8 +9,8 @@ app.run(function(storage, weeklyUtil){
           "项目细化与时间估计": {}
         },
         "其他服务上线": {
-          "Https支持开启": {_ac: true, _dl: "Tue 18:00"},
-          "其他服务上线": {_ac: true, _dl: "Web 12:00"}
+          "Https支持开启": {_ac: true, _dl: "Tue 18:00", _f: true},
+          "其他服务上线": {_ac: true, _dl: "Web 12:00", _f: true}
         }
       },
       "学习": {
@@ -22,7 +22,9 @@ app.run(function(storage, weeklyUtil){
           },
           "Worker机制研究": {},
           "Action机制研究": {},
-          "特殊情况处理": {},
+          "特殊情况处理": {
+            "Https支持": {_f: true}
+          },
           _dl: "Wed 20:00"
         },
         "ExecutorService完成": {

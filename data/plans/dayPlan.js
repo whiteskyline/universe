@@ -7,31 +7,23 @@ app.run(function(storage, dailyUtil){
         "ClientSDK": {
           "背景了解": {
             _ac: true,
-            "antlr语法学习": {},
-            "twirl模板框架使用学习": {}
+            _dl: "16:00",
+            "antlr语法学习": {_dl: "12:00"},
+            "twirl模板框架使用学习": {_dl: "15:00"}
           },
           "当前工作状态接手": {}
+        },
+        "剩余服务更新推动": {
+
         }
       },
       "学习": {
         "ExecutorService实现": {
           "测试": {_f: 0.6},
-          "Scala/Java的Future/Promise机制探究": {},
-          "libcap更改": {}
+          "libcap更改": {_ac: true}
         },
-        "ThriftExecutorService对接": {
-          _f: true
-        },
-        "Tomcat探究": {
-          "时序图整理": {
-            "容器层整理": {_f: true},
-            "疑问解决": {
-              "ClassLoader机制是如何工作的": {_f: true},
-              "Https的机制是如何工作的": {},
-              "LifeCycleMBeanBase的JMX相关的用来干什么": {_f: true},
-              "KeepAlive机制如何进行工作": {_f: true}
-            }
-          }
+        "Tomcat长连接作用机制": {
+
         }
       }
     }

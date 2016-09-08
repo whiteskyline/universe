@@ -105,7 +105,9 @@ app.run(function(storage){
                   },
                   _ac: true, _dl: "2016/8/30"
                 },
-                "Resin":{}
+                "Resin":{
+                  "基础使用": {_f: true}
+                }
               },
               "异步化": {
                 "异步化语言及库基础":{
@@ -117,7 +119,8 @@ app.run(function(storage){
                 }
               },
               "MVC框架": {
-                "Spring框架": {}
+                "Spring框架": {},
+                "Struts框架": {}
               }
             },
             "通信":{
