@@ -83,7 +83,7 @@ app.run(function(storage){
           "上线准备工作": {
             "域名申请": {_ac: true, _f: true},
             "线上新配置添加": {_f: true},
-            "所有服务升级Interceptor":{_f: 0.1}
+            "所有服务升级Interceptor":{_f: 0.7}
           },
           "上线": {
             "Status上线": {_f: true},
@@ -94,8 +94,8 @@ app.run(function(storage){
       "退出标准":{
         "服务正式发版": {
           "服务端":{
-            "Find/Wifi Nginx开启https支持":{},
-            "线上增加Find/Wifi开启https配置":{}
+            "Find/Wifi Nginx开启https支持":{_f: true},
+            "线上增加Find/Wifi开启https配置":{_f: true}
           },
           "客户端":{
             "MIUI发布新版本确认流量正常":{}

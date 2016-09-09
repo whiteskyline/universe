@@ -19,8 +19,8 @@ app.run(function(storage, dailyUtil){
       },
       "学习": {
         "ExecutorService实现": {
-          "测试": {_f: 0.6},
-          "libcap更改": {_ac: true}
+          "测试": {_f: 0.8},
+          "libcap更改": {_ac: true, _f: true}
         },
         "Tomcat长连接作用机制": {
 
