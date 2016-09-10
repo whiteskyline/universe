@@ -93,15 +93,15 @@ app.run(function(storage){
               "WEB容器": {
                 "Apache Tomcat":{
                   "基础结构": {_f: true},
-                  "事件机制": {},
-                  "长连接处理": {},
+                  "事件机制": {_f: true},
+                  "长连接处理": {_f: true},
                   "KeepAlive处理": {_f: true},
                   "JMX机制": {_f: true},
                   "总结": {
                     "协议层总结": {_f: true},
                     "容器层总结": {_f: true},
                     "应用层总结": {_f: true},
-                    "特殊细节处理总结": {}
+                    "特殊细节处理总结": {_f: true}
                   },
                   _ac: true, _dl: "2016/8/30"
                 },

@@ -5,7 +5,7 @@ app.run(function(storage, weeklyUtil){
     "周计划":{
       "工作": {
         "ClientSDK工作": {
-          "背景了解": {_ac: true, _dl: "Wed 20:00"},
+          "背景了解": {_ac: true, _dl: "Wed 20:00", _f: true},
           "项目细化与时间估计": {}
         },
         "其他服务上线": {
@@ -20,10 +20,10 @@ app.run(function(storage, weeklyUtil){
             "容器层整理": {_f: true},
             "应用层整理": {_f: true}
           },
-          "Worker机制研究": {},
-          "Action机制研究": {},
+          "Lifecycle机制研究": {_f: true},
           "特殊情况处理": {
-            "Https支持": {_f: true}
+            "Https支持": {_f: true},
+            "长连接支持学习": {_f: true}
           },
           _dl: "Wed 20:00"
         },
@@ -36,7 +36,7 @@ app.run(function(storage, weeklyUtil){
             "服务启动": {},
             "利用Factory等对Thrift服务进行定制，达到自动发现等功能": {
             },
-            "Thrift的序列化框架": {}
+            "Thrift的序列化框架": {_ac: true}
           },
           _dl: "Tue 22:00"
         },
