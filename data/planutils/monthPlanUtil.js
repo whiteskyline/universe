@@ -10,6 +10,7 @@ app.service('monthlyUtil', function(storage){
       timeSlice = moment(timeSlice, "DD HH").diff(moment("1", "DD"))
     }
     var resultMoment = baseMoment.clone()
+
     resultMoment.add(timeSlice)
 
     return resultMoment

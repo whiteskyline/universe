@@ -10,6 +10,9 @@ app.service('weeklyUtil', function(storage){
       timeSlice = moment(timeSlice, "ddd HH").diff(moment("Mon", "ddd"))
     }
     var resultMoment = baseMoment.clone()
+    if (timeSlice < 0) {
+      timeSlice = timeSlice + moment.duration(1, "weeks")
+    }
     resultMoment.add(timeSlice)
 
     return resultMoment

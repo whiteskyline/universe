@@ -37,7 +37,7 @@ app.run(function(storage){
         "系统与工具": {
           "Linux命令行与Shell编程大全": {},
           "Linux Shell脚本攻略": {},
-          "Pro Git": {},
+          "Pro Git": {_f: true},
           "Maven实战": {}
         },
         "其它": {

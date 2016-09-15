@@ -62,7 +62,7 @@ app.run(function(storage){
       "服务端平台":{
         "服务化": {
           "服务化框架": {
-            "公司内部框架": {_ac: true, _dl: "2016/8/25"},
+            "公司内部框架": {_dl: "2016/8/25", _f: true},
             "Dubox": {}
           },
           "服务化运维保障": {}
@@ -103,7 +103,7 @@ app.run(function(storage){
                     "应用层总结": {_f: true},
                     "特殊细节处理总结": {_f: true}
                   },
-                  _ac: true, _dl: "2016/8/30"
+                  _dl: "2016/8/30"
                 },
                 "Resin":{
                   "基础使用": {_f: true}
@@ -148,7 +148,7 @@ app.run(function(storage){
         "中间与支撑服务":{
           "分布式基础":{
             "RPC":{
-              "Thrift":{"基础应用":{"_f": true}, "深入解析":{_f: true}, "总结整理":{"_f": 0.5}}
+              "Thrift":{"基础应用":{"_f": true}, "深入解析":{_f: true}, "总结整理":{"_f": true}}
             },
             "消息队列":{
               "RabbitMQ":{},
@@ -198,12 +198,12 @@ app.run(function(storage){
               },
               "缓存":{
                 "Memcached":{},
-                "Redis":{},
+                "Redis":{_ac: true},
                 "AWS ElasticCache":{}
               },
               "检索":{
-                "Solr":{},
-                "ElasticSearch":{}
+                "Solr": {},
+                "ElasticSearch": {}
               },
               "大数据":{
                 "语言工具":{"_t":["R", "Python", "Java", "Scala"]},

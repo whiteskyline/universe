@@ -5,13 +5,18 @@ app.run(function(storage, dailyUtil){
     "日事项":{
       "工作": {
         "ClientSDK": {
+          "Android依赖包处理": {},
+          "Android请求重写": {},
+          "修改Wifi-SDK使用重写包": {}
         },
-        "剩余服务更新推动": {}
+        "剩余服务更新推动": {
+          _dl: "23:00"
+        },
+        "mt-bug解决": {
+          _f: true
+        }
       },
       "学习": {
-        "Thrift框架研究": {
-          "Swift解释器部分": {}
-        }
       }
     }
   };
