@@ -9,7 +9,7 @@ d3.chart.deadlineBar = function(selector) {
         right: 10
     };
     var width = 300,
-        height = window.top.innerHeight - margin.top - margin.bottom - 100;
+        height = window.top.innerHeight - margin.top - margin.bottom - 100 - 600;
 
     var yScale, yAxis, yAxisElement, svg;
     var colorMaps;
@@ -187,6 +187,12 @@ d3.chart.deadlineBar = function(selector) {
      * 数据处理函数
      */
     var collectDeadlineNodes = function(data, results, parent) {
+        if (typeof(data.children) != "undefined") {
+            data.children.map(function(child) {
+                collectDeadlineNodes(child, results, data);
+            })
+        }
+
         if (typeof(data.detail.deadline) !== "undefined") {
             var name;
             if (typeof(parent) !== "undefined" && parent.name.length < 10) name = parent.name + "-" + data.name;
@@ -199,11 +205,6 @@ d3.chart.deadlineBar = function(selector) {
             });
         }
 
-        if (typeof(data.children) != "undefined") {
-            data.children.map(function(child) {
-                collectDeadlineNodes(child, results, data);
-            })
-        }
     }
 
     var transformData = function(data) {
