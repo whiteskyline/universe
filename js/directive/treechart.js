@@ -14,15 +14,17 @@ app.directive('treechart', function(bus) {
                   return;
               }
 
-              var radius = window.top.innerWidth - 520
+              var radius = window.top.innerWidth - 320
               if (radius > window.top.innerHeight) radius = window.top.innerHeight
 
-              var left = (window.top.innerWidth - radius) / 2
+              var left = (window.top.innerWidth - radius)
 
               $(".middlebar").css({"position": "fixed", "left": left})
 
-              chart.diameter(radius)
-                  .data(data);
+              // chart.diameter(radius)
+                  // .data(data);
+              chart.size(radius, window.top.innerHeight - 12)
+                   .data(data);
 
               d3.select(element[0])
                   .call(chart);

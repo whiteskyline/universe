@@ -4,7 +4,7 @@ d3.chart = d3.chart || {};
 
 d3.chart.architectureTree = function() {
 
-    var svg, tree, treeData, diameter, activeNode;
+    var svg, tree, treeData, diameter, activeNode, width, height;
 
     /**
      * Build the chart
@@ -12,12 +12,12 @@ d3.chart.architectureTree = function() {
     function chart(){
         if (typeof(tree) === 'undefined') {
             tree = d3.layout.tree()
-                .size([diameter - 12, diameter - 12])
+                .size([width - 12, height - 12])
                 // .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
             svg = d3.select("#graph").append("svg")
-                .attr("width", diameter)
-                .attr("height", diameter)
+                .attr("width", height)
+                .attr("height", width)
                 .append("g")
                 // .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
         }
@@ -352,6 +352,12 @@ d3.chart.architectureTree = function() {
         if (!arguments.length) return diameter;
         diameter = value;
         return chart;
+    };
+
+    chart.size = function(x, y) {
+      height = x;
+      width = y;
+      return chart;
     };
 
     chart.nameFilter = function(nameFilter) {
