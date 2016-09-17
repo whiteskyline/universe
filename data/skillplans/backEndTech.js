@@ -198,7 +198,13 @@ app.run(function(storage){
               },
               "缓存":{
                 "Memcached":{},
-                "Redis":{_ac: true},
+                "Redis":{
+                  "功能了解": {_f: true},
+                  "部署": {},
+                  "使用实践": {},
+                  "总结": {},
+                  _ac: true
+                },
                 "AWS ElasticCache":{}
               },
               "检索":{
