@@ -17,7 +17,8 @@ app.run(function(storage, weeklyUtil){
         "mt-bug解决": {
           _ac: true,
           _f: true
-        }
+        },
+        "UserMappingId转换接口": {_ac: true}
       },
       "学习": {
         "ExecutorService完成": {
