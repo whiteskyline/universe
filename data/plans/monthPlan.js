@@ -9,6 +9,14 @@ app.run(function(storage, monthlyUtil){
             "研究各个客户端的基本帐号流程": {_ac: true, _dl: "14 12:00", _f: true}
           },
           "服务更改为ClientSDK发布与SDK改进": {
+            "将原接口的代码迁移到maven编译": {_ac: true, _f: true},
+            "定义Base层接口": {},
+            "实现Test环境实现": {},
+            "处理batch的接口对内容进行处理": {
+              "请求处理": {},
+              "返回值处理": {}
+            },
+            "完整迁移wifi服务": {},
             "Wifi-FE-SDK发布": {_dl: "19 12:00"},
             "Wifi-FE-客户端使用SDK调用": {
               "融合帐号与Auth认证机制": {_dl: "17 12:00"},
@@ -22,6 +30,11 @@ app.run(function(storage, monthlyUtil){
             "Rose发布流程改进": {_dl: "30 12:00"}
           }
         },
+        "Https服务全面上线": {
+          "https证书落地": {_f: true},
+          "所有服务的lib检查": {_f: true},
+          "美西所有服务开启https": {}
+        },
         "mt-bug解决": {
           _ac: true, _f: true
         }
@@ -29,7 +42,7 @@ app.run(function(storage, monthlyUtil){
       "学习": {
         "Redis": {
           "基础功能了解": {_f: true},
-          "部署以及功能测试": {},
+          "部署以及功能测试": {_f: 0.5},
           "问题深入分析与总结": {},
           _dl: "25 12:00"
         },
@@ -37,6 +50,9 @@ app.run(function(storage, monthlyUtil){
         "SnowFlake服务架构": {_dl: "17 12:00"},
         "沙盒技术总结": {_dl: "17 12:00", _f: true},
         "了解小米股权重酬": {}
+      },
+      "商业": {
+        "完成微店开店流程": {}
       },
       "阅读": {
         "激活消费者心理需求": {_ac: true}
