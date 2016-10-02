@@ -200,8 +200,8 @@ app.run(function(storage){
                 "Memcached":{},
                 "Redis":{
                   "功能了解": {_f: true},
-                  "部署": {},
-                  "使用实践": {},
+                  "部署": {_f: 0.6},
+                  "使用实践": {_f: 0.4},
                   "总结": {},
                   _ac: true
                 },

@@ -12,13 +12,19 @@ app.run(function(storage, monthlyUtil){
             "将原接口的代码迁移到maven编译": {_ac: true, _f: true},
             "定义Base层接口": {_f: true},
             "更新wiki设计和时间安排文档": {_f: true},
-            "生成接口使用Base层定义": {_ac: true},
+            "生成接口使用Base层定义": {
+              _ac: true,
+              "Relocation-Base实现": {_ac: true},
+              "Passport-Base实现": {},
+              "Network-Base实现": {}
+            },
             "实现Test环境实现": {},
             "处理batch的接口对内容进行处理": {
               "请求处理": {_f: true},
               "返回值处理": {_f: true}
-            },
-            "完整迁移wifi服务": {},
+            }
+          },
+          "目标服务更改": {
             "Wifi-FE-SDK发布": {_dl: "19 12:00"},
             "Wifi-FE-客户端使用SDK调用": {
               "融合帐号与Auth认证机制": {_dl: "17 12:00"},
@@ -35,7 +41,7 @@ app.run(function(storage, monthlyUtil){
         "Https服务全面上线": {
           "https证书落地": {_f: true},
           "所有服务的lib检查": {_f: true},
-          "美西所有服务开启https": {}
+          "美西所有服务开启https": {_f: true}
         },
         "mt-bug解决": {
           _ac: true, _f: true
@@ -51,7 +57,7 @@ app.run(function(storage, monthlyUtil){
         "Play测试": {_dl: "18 12:00"},
         "SnowFlake服务架构": {_dl: "17 12:00"},
         "沙盒技术总结": {_f: true},
-        "了解小米股权重酬": {}
+        "了解小米股权重酬": {_f: true}
       },
       "商业": {
         "完成微店开店流程": {_f: true}
