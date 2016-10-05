@@ -96,8 +96,11 @@ app.service("storage", function(data){
     // 进行数据的处理
     // updateChildrenFinishedStatus(data);
     var node = transformDataFormat(key, data, startDate, endDate);
+    var realNode = node.children[0]
+    realNode.detail.start = startDate
+    realNode.detail.end = endDate
 
-    registeredFields.push({"key": key, "data": node, "default": def, "start": startDate, "end": endDate, "level": level});
+    registeredFields.push({"key": key, "data": realNode, "default": def, "start": startDate, "end": endDate, "level": level});
   }
   var getFields = function() {
     return registeredFields;
@@ -164,7 +167,7 @@ var markFinishStatus = function(node){
   if (typeof(node.detail.finished) == "undefined") {
     node.detail.finished = 0;
   }
-  if (node.detail.finished === true) {
+  if (node.detail.finished == true) {
     node.detail.finished = 1;
   }
 
@@ -195,7 +198,7 @@ app.controller("fieldPanelCtrl", function($scope, storage, data){
     // var rootData = transformRoot(newValue.data, fields);
     // markFinishStatus(rootData);
     // data.setData(rootData);
-  }, true);
+  }, false);
   var selectedField = null;
   fields.map(function(value){
     if (typeof(value.default) !== "undefined" && value.default == true && selectedField == null) {
@@ -208,7 +211,7 @@ app.controller("fieldPanelCtrl", function($scope, storage, data){
 
   window.onload = function() {
     $scope.selectedField = selectedField;
-    $scope.$digest();
+    // $scope.$digest();
   }
 
 });
