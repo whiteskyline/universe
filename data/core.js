@@ -13,9 +13,7 @@ function findField(data, fields) {
   if (typeof(data) === "string") {
     fieldName = data
   } else {
-    for (var key in data) {
-      fieldName = key
-    }
+    fieldName = data.name
   }
 
   return fields.find(function(fi){
@@ -94,7 +92,12 @@ app.service("storage", function(data){
   var selected = null;
 
   var register = function(key, data, def, startDate, endDate, level) {
-    registeredFields.push({"key": key, "data": data, "default": def, "start": startDate, "end": endDate, "level": level});
+
+    // 进行数据的处理
+    // updateChildrenFinishedStatus(data);
+    var node = transformDataFormat(key, data, startDate, endDate);
+
+    registeredFields.push({"key": key, "data": node, "default": def, "start": startDate, "end": endDate, "level": level});
   }
   var getFields = function() {
     return registeredFields;
@@ -114,7 +117,8 @@ app.service("storage", function(data){
     // }
     $.cookie("selected", field.key)
 
-    data.setData(transformDataFormat(field.key, field.data[field.key], field.start, field.end));
+    // data.setData(transformDataFormat(field.key, field.data[field.key], field.start, field.end));
+    data.setData(field.data)
   }
   var getSelected = function() {
     return selected;
