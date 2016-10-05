@@ -49,10 +49,10 @@
      var resultNode = {"name": "父层级计划概览", unfinishedJobs:[], finishedJobs:[], withDeadlines:[], }
      collectNodeInfo(parentPlan, resultNode.unfinishedJobs, function(ele) {
        if (typeof(ele.detail.finished) === "undefined") return true
-       return ele.detail.finished < 1
+       return ele.detail.finished < 1 || ele.detail.finished < ele.detail.total
      }, trans)
      collectNodeInfo(parentPlan, resultNode.finishedJobs, function(ele){
-       return ele.detail.finished >= 1
+       return ele.detail.finished >= ele.detail.total
      },trans)
 
      resultNode.unfinishedJobs = resultNode.unfinishedJobs.sort(function(a, b) {

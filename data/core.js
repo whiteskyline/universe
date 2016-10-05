@@ -99,6 +99,7 @@ app.service("storage", function(data){
     var realNode = node.children[0]
     realNode.detail.start = startDate
     realNode.detail.end = endDate
+    markFinishStatus(realNode)
 
     registeredFields.push({"key": key, "data": realNode, "default": def, "start": startDate, "end": endDate, "level": level});
   }
