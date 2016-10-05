@@ -32,8 +32,8 @@ app.run(function(storage, monthlyUtil){
         "Play测试方法": {_dl: "6 12:00"},
         "SnowFlake服务架构": {_dl: "7 12:00"},
         "Universe改进": {
-          "统一的完成进度处理": {},
-          "统一的进度颜色处理": {},
+          "统一的完成进度处理": {_f: true},
+          "统一的进度颜色处理": {_f: true},
           _dl: "5 23:00"
         }
       },
