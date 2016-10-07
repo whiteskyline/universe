@@ -198,7 +198,13 @@ app.run(function(storage){
               },
               "缓存":{
                 "Memcached":{},
-                "Redis":{_ac: true},
+                "Redis":{
+                  "功能了解": {_f: true},
+                  "部署": {_f: 0.6},
+                  "使用实践": {_f: 0.4},
+                  "总结": {},
+                  _ac: true
+                },
                 "AWS ElasticCache":{}
               },
               "检索":{
@@ -262,7 +268,7 @@ app.run(function(storage){
           "VPS":{}
         },
         "服务器安全":{
-          "沙盒技术":{},
+          "沙盒技术":{_f: true},
           "服务器资源限制":{
             "CPU":{_f: 0.8},
             "文件系统限制": {_f: true}
