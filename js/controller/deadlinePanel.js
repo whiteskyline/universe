@@ -12,7 +12,7 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
   bus.on('updateData', function(data) {
       $scope.data = angular.copy(data);
       $scope.detail = true;
-      $scope.node = {"techniques":getDeadlines(data)};
+      $scope.node = {"deadlines":getDeadlines(data), "finisheds": getFinished(data)};
       // $scope.$digest();
   });
 
@@ -27,6 +27,19 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
     return deadlines;
   };
 
+  var getFinished = function(data) {
+    var finisheds = [];
+
+    collectFinished(data, finisheds);
+
+    finisheds.sort(function(a, b){
+      return new Date(a.deadline) > new Date(b.deadline);
+    });
+
+    return finisheds;
+
+  }
+
   var collectDeadlines = function(node, results) {
     if (typeof(node.children) !== "undefined") {
       node.children.map(function(child){
@@ -34,10 +47,23 @@ app.controller("deadlinePanelCtrl", function($scope, data, bus) {
       });
     }
 
-    if (typeof(node.detail.deadline) !== "undefined") {
+    if (typeof(node.detail.deadline) !== "undefined" && node.detail.finished < node.detail.total) {
       results.push({"name": node.name, "deadline": node.detail.deadline});
     }
 
+  }
+
+  var collectFinished = function(node, results) {
+
+    if (typeof(node.children) !== "undefined") {
+      node.children.map(function(child){
+        collectFinished(child, results);
+      });
+    }
+
+    if (node.detail.finished >= node.detail.total) {
+      results.push({"name": node.name, "deadline": node.detail.deadline});
+    }
   }
 
   // initData(data);

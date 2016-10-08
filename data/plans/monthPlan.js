@@ -8,8 +8,8 @@ app.run(function(storage, monthlyUtil){
           "服务更改为ClientSDK发布与SDK改进": {
             "生成接口使用Base层定义": {
               _ac: true,
-              "Passport-Base实现": {_dl: "8 18:00"},
-              "Network-Base实现": {_dl: "10 19:00"}
+              "Passport-Base实现": {_dl: "8 18:00", _f: true},
+              "Network-Base实现": {_dl: "10 19:00", _f: true}
             },
             "实现Test环境实现": {
               _dl: "13 19:00"
@@ -17,10 +17,11 @@ app.run(function(storage, monthlyUtil){
           },
           "SDK改进": {
             "Play接口定义改进": {_dl: "22 12:00"},
-            "Play开发流程改进": {_dl: "25 12:00"},
-            "Rose发布模板": {_dl: "28 12:00"},
-            "Rose发布流程改进": {_dl: "30 12:00"}
+            "Play开发流程改进": {_dl: "25 12:00"}
           }
+        },
+        "UserIdHolder接口提供": {
+          
         }
       },
       "学习": {

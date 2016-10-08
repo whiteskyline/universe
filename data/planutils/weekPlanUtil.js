@@ -7,7 +7,7 @@ app.service('weeklyUtil', function(storage){
 
   var transformTime = function(timeSlice, baseMoment, unit) {
     if (typeof(timeSlice) === "string") {
-      timeSlice = moment(timeSlice, "ddd HH").diff(moment("Mon", "ddd"))
+      timeSlice = moment(timeSlice, "ddd").diff(moment("Mon", "ddd"))
     }
     var resultMoment = baseMoment.clone()
     if (timeSlice < 0) {

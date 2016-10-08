@@ -17,7 +17,7 @@ app.directive('treechart', function(bus) {
               var radius = window.top.innerWidth - 320
               if (radius > window.top.innerHeight) radius = window.top.innerHeight
 
-              var left = (window.top.innerWidth - radius)
+              var left = (window.top.innerWidth - radius + 40)
 
               $(".middlebar").css({"position": "fixed", "left": left})
 

@@ -11,6 +11,7 @@
             </ul>
         </div>
 
+        <!-- 不再显示已经完成的事项
         <div class="properties" ng-if="node.finishedJobs">
             <h5>已完成事项</h5>
             <ul>
@@ -18,6 +19,10 @@
                     {{ job.name }}<code ng-if="job.detail.deadline"></code>
                 </li>
             </ul>
+        </div>
+      -->
+        <div class="properties" ng-if="node.finishedJobs">
+          <h5>完成事项:<code>{{node.finishedJobs.length}}</code></h5>
         </div>
 
         <div class="comments panel panel-default" ng-if="node.detail.comment">

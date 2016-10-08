@@ -1,13 +1,16 @@
 <div class="deadlines panel panel-default">
     <div class="panel-heading">截止日期</div>
     <div class="panel-body">
-        <div class="url" ng-if="node.techniques">
-            <h5>最近截止日期</h5>
+        <div class="url" ng-if="node.deadlines">
+            <h5>警告截止日期</h5>
             <ul>
-              <li ng-repeat="tech in node.techniques">
-                {{tech.name}}: {{tech.deadline}}
+              <li ng-repeat="deadline in node.deadlines">
+                {{deadline.name}}: <code>{{deadline.deadline}}</code>
               </li>
             </ul>
+        </div>
+        <div class="url" ng-if="node.finisheds">
+            <h5>截止完成项目:<code>{{node.finisheds.length}}</code></h5>
         </div>
     </div>
 </div>

@@ -5,10 +5,10 @@
 }
 
 .leftbar {
-  position: fixed;
   top: 10px;
   left: 10px;
   width: 350px;
+  bottom: 10px;
 }
 
 .middlebar {
