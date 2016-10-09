@@ -16,7 +16,7 @@ app.run(function(storage, dailyUtil){
       },
       "学习": {
         "ExecutorService更新版本": {_dl: "10:00", _f: true},
-        "Redis两章": {_dl: "12:00"},
+        "Redis两章": {_dl: "12:00", _f: true},
         "SnowFlake服务的总结": {_dl: "14:00"},
         "机器学习第一章完成": {_dl: "18:00"}
       }
