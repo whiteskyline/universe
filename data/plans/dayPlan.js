@@ -11,7 +11,7 @@ app.run(function(storage, dailyUtil){
           "RedirectNode的common实现": {_dl: "18:00", _f: true},
           "Network的common实现": {_dl: "18:00", _f: true},
           "RequestorFactory定义": {_dl: "19:00", _f: true},
-          "PassportChaint的test实现": {_dl: "Sun"}
+          "PassportChaint的test实现": {_dl: "Sun", _f: 0.9}
         }
       },
       "学习": {
