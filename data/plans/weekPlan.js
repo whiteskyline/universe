@@ -9,8 +9,12 @@ app.run(function(storage, weeklyUtil){
           "PassportChain的common实现": {_dl: "Sat", _f: true},
           "RelocationChain的common实现": {_dl: "Sat", _f: true},
           "PassportChaint的test实现": {_dl: "Sun", _f: true},
-          "RelocationChain的test实现": {_dl: "Sun"},
-          "test环境基础测试": {_dl: "Sun", _f: 0.2}
+          "RelocationChain的test实现": {_dl: "Sun", _f: 0.6},
+          "test环境基础测试": {
+            _dl: "Sun",
+            "relocation chain 测试": {},
+            "passport chain测试": {_f: true}
+          }
         },
         "UserMappingId转换接口": {
           _c: "提供micloud-infra-api进行所有的一些内部请求的处理"
