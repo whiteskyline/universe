@@ -12,7 +12,8 @@ app.run(function(storage, monthlyUtil){
               "Network-Base实现": {_dl: "10 19:00", _f: true}
             },
             "实现Test环境实现": {
-              _dl: "13 19:00"
+              _dl: "13 19:00",
+              _f: 0.5
             }
           },
           "SDK改进": {
@@ -21,7 +22,7 @@ app.run(function(storage, monthlyUtil){
           }
         },
         "UserIdHolder接口提供": {
-          
+
         }
       },
       "学习": {
@@ -31,7 +32,7 @@ app.run(function(storage, monthlyUtil){
           _dl: "7 18:00"
         },
         "Play测试方法": {_dl: "6 12:00"},
-        "SnowFlake服务架构": {_dl: "7 12:00"},
+        "SnowFlake服务架构": {_dl: "7 12:00", _f: true},
         "Universe改进": {
           "统一的完成进度处理": {_f: true},
           "统一的进度颜色处理": {_f: true},

@@ -175,7 +175,7 @@ app.run(function(storage){
                   _f: true
                 },
                 "服务分Partition架构": {
-
+                  _f: true
                 }
               }
             }

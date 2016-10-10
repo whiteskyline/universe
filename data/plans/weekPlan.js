@@ -22,7 +22,7 @@ app.run(function(storage, weeklyUtil){
           _dl: "Tue 22:00"
         },
         "Redis使用学习": {_dl: "Sun 12:00"},
-        "SnowFlake服务架构": {_dl: "Sat 12:00"},
+        "SnowFlake服务架构": {_dl: "Sat 12:00", _f: true},
         "机器学习第一章完成": {_dl: "Fri 12:00"}
       }
     }
