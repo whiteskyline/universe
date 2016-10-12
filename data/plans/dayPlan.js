@@ -28,7 +28,7 @@ app.run(function(storage, dailyUtil){
       },
       "学习": {
         "Redis资源节省章节": {_f: true},
-        "机器学习第一章完成": {_dl: "18:00"}
+        "机器学习第一章完成": {_dl: "18:00", _f: 0.8}
       }
     }
   };
