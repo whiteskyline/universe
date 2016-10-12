@@ -15,7 +15,8 @@ app.run(function(storage){
               }
             },
             "深入探究":{
-              "垃圾回收技术":{},
+              "垃圾回收技术": {},
+              "Java锁技术": {},
               "ClassLoader机制":{_f: true}
             }
           },
