@@ -23,6 +23,12 @@ app.run(function(storage, weeklyUtil){
           _c: "提供micloud-infra-api进行所有的一些内部请求的处理"
         }
       },
+      "商业": {
+        "联系设计类人员": {
+          "设计风格": {},
+          "最终实现人员": {}
+        }
+      },
       "学习": {
         "ExecutorService完成": {
           _f: true,

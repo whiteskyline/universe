@@ -5,9 +5,9 @@ app.run(function(storage, dailyUtil){
     "日事项":{
       "工作": {
         "ClientSDK": {
-          "环境切换过程Review": {},
-          "Batch过程Review": {},
-          "全部代码Check": {}
+          "环境切换过程Review": {_dl: "18:30", _f: true},
+          "Batch过程Review": {_dl: "22:00", _f: true},
+          "全部代码Check": {_dl: "20:00", _f: true}
         }
       },
       "学习": {
