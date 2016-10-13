@@ -9,12 +9,15 @@ app.run(function(storage, weeklyUtil){
           "PassportChain的common实现": {_dl: "Sat", _f: true},
           "RelocationChain的common实现": {_dl: "Sat", _f: true},
           "PassportChaint的test实现": {_dl: "Sun", _f: true},
-          "RelocationChain的test实现": {_dl: "Sun", _f: 0.6},
+          "RelocationChain的test实现": {_dl: "Sun", _f: true},
           "test环境基础测试": {
             _dl: "Sun",
-            "relocation chain 测试": {},
-            "passport chain测试": {_f: true}
-          }
+            "relocation chain 测试": {_f: true},
+            "passport chain测试": {_f: true},
+            "relocation chain测试": {_f: true}
+          },
+          "环境切换过程Review": {},
+          "Batch流程Review": {}
         },
         "UserMappingId转换接口": {
           _c: "提供micloud-infra-api进行所有的一些内部请求的处理"
@@ -25,9 +28,10 @@ app.run(function(storage, weeklyUtil){
           _f: true,
           _dl: "Tue 22:00"
         },
-        "Redis使用学习": {_dl: "Sun 12:00"},
+        "Redis使用学习": {_dl: "Sun 12:00", _f: 0.4},
         "SnowFlake服务架构": {_dl: "Sat 12:00", _f: true},
-        "机器学习第一章完成": {_dl: "Fri 12:00"}
+        "机器学习第一章完成": {_dl: "Fri 12:00", _f: 0.6},
+        "机器学习第二章完成": {}
       }
     }
   };

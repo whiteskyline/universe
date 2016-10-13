@@ -12,8 +12,10 @@ app.run(function(storage, monthlyUtil){
               "Network-Base实现": {_dl: "10 19:00", _f: true}
             },
             "实现Test环境实现": {
-              _dl: "13 19:00",
-              _f: 0.5
+              "Passport实现": {_f: true},
+              "Relocation实现": {_f: true},
+              "Network实现": {_f: true},
+              _dl: "13 19:00"
             }
           },
           "SDK改进": {
@@ -27,7 +29,7 @@ app.run(function(storage, monthlyUtil){
       },
       "学习": {
         "Redis": {
-          "部署以及功能测试": {_f: 0.5, _dl: "7 12:00"},
+          "部署以及功能测试": {_f: true, _dl: "7 12:00"},
           "问题深入分析与总结": {},
           _dl: "7 18:00"
         },
