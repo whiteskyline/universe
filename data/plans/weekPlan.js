@@ -16,8 +16,8 @@ app.run(function(storage, weeklyUtil){
             "passport chain测试": {_f: true},
             "relocation chain测试": {_f: true}
           },
-          "环境切换过程Review": {},
-          "Batch流程Review": {}
+          "环境切换过程Review": {_f: true},
+          "Batch流程Review": {_f: true}
         },
         "UserMappingId转换接口": {
           _c: "提供micloud-infra-api进行所有的一些内部请求的处理"
