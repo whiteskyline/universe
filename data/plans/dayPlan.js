@@ -41,7 +41,10 @@ app.run(function(storage, dailyUtil){
             "购票API": {_f: true},
             "票务列表API": {},
             "用票API": {_c: "生成票面信息"},
-            "登录API": {},
+            "登录API": {
+              "弄明白微信的用户授权流程": {},
+              "设计登录API": {}
+            },
             "获取用户信息API": {}
           }
         }
