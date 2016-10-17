@@ -6,10 +6,16 @@ app.run(function(storage, dailyUtil){
       "工作": {
         "ClientSDK": {
           "EnvNode的详细测试": {_dl: "11:30", _f: true},
-          "RelocationNode的详细测试": {_dl: "14"},
-          "PassportNode的详细测试": {_dl: "17"},
-          "NetworkNode的详细测试": {_dl: "20"}
-        }
+          "Mock测试框架学习": {_dl: "16:30", _f: true},
+          "RelocationNode的详细测试": {
+            "HostListManager测试": {_f: true},
+            "Relocation本身逻辑测试": {_f: true},
+            _dl: "17"
+          },
+          "PassportNode的详细测试": {_dl: "21", _f: true},
+          "NetworkNode的详细测试": {_dl: "22", _f: true}
+        },
+        "添加设备列表Host": {}
       },
       "学习": {
         "Redis-Sentinel部署": {},

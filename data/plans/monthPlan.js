@@ -25,6 +25,9 @@ app.run(function(storage, monthlyUtil){
         },
         "UserIdHolder接口提供": {
 
+        },
+        "micloud-infra-rose升级大版本": {
+          "修改hbase-client的版本": {}
         }
       },
       "学习": {

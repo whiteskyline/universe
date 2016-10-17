@@ -22,3 +22,24 @@
 "环境切换过程Review": {_dl: "18:30", _f: true},
 "Batch过程Review": {_dl: "22:00", _f: true},
 "全部代码Check": {_dl: "20:00", _f: true}
+
+"项目细化与时间估计": {_dl: "Sun", _f: true},
+"PassportChain的common实现": {_dl: "Sat", _f: true},
+"RelocationChain的common实现": {_dl: "Sat", _f: true},
+"PassportChaint的test实现": {_dl: "Sun", _f: true},
+"RelocationChain的test实现": {_dl: "Sun", _f: true},
+
+_dl: "Sun",
+"relocation chain 测试": {_f: true},
+"passport chain测试": {_f: true},
+"relocation chain测试": {_f: true}
+
+"环境切换过程Review": {_f: true},
+"Batch流程Review": {_f: true}
+
+"ExecutorService完成": {
+  _f: true,
+  _dl: "Tue 22:00"
+},
+
+"SnowFlake服务架构": {_dl: "Sat 12:00", _f: true},
