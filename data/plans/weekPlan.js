@@ -13,8 +13,11 @@ app.run(function(storage, weeklyUtil) {
                             "Network测试": {_f: true},
                             _dl: "Tue"
                         },
-                        "客户端Review": {_dl: "Wed"},
-                        "Swift类型参数生成": {_dl: "Wed"}
+                        "Comments修改": {_f: true},
+                        "客户端Review": {_dl: "Wed", _f: true},
+                        "Swift类型参数生成": {_dl: "Wed"},
+                        "多账户实现确认": {_f: true},
+                        "Play框架生成初步": {}
                     },
                     "Play端": {
                       "生成框架": {},

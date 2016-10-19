@@ -5,15 +5,18 @@ app.run(function(storage, dailyUtil){
     "日事项":{
       "工作": {
         "ClientSDK": {
-          "EnvNode的详细测试": {_dl: "11:30", _f: true},
-          "Mock测试框架学习": {_dl: "16:30", _f: true},
-          "RelocationNode的详细测试": {
-            "HostListManager测试": {_f: true},
-            "Relocation本身逻辑测试": {_f: true},
-            _dl: "17"
+          "Comments修改": {
+            "Netty的Pipeling命名方式": {_f: true},
+            "修改责任链命名": {_f: true},
+            "简化日志框架": {_f: true},
+            "验证QueryString和Form区分": {_f: true},
+            "合并Passport的实现": {_f: true},
+            "将Executor取消,合并为Request,并且生成两种方法,一种是直接调用": {_f: true},
+            "更改用户获取的逻辑，表现为从上层传入": {_f: true},
+            "解决Request的类型问题": {_f: true},
+            "param列表更改": {_f: true}
           },
-          "PassportNode的详细测试": {_dl: "21", _f: true},
-          "NetworkNode的详细测试": {_dl: "22", _f: true}
+          "多账户实现": {_f: true}
         },
         "添加设备列表Host": {}
       },
@@ -22,38 +25,6 @@ app.run(function(storage, dailyUtil){
         "机器学习第一章完成": {_dl: "18:00", _f: 0.8}
       },
       "商业": {
-        "webus页面": {
-          _dl: "23",
-          "页面": {
-            "主页面": {
-              "主要按钮": {_f: true},
-              "边栏项目": {}
-            },
-            "购票页面": {_f: true},
-            "验票页面": {_f: true},
-            "登录页面": {}
-          },
-          "脚本": {
-            "购票页面脚本": {
-              "页面内部逻辑脚本": {_f: true},
-              "页面API脚本": {}
-            },
-            "验票页面脚本": {
-              "页面内部逻辑脚本": {},
-              "页面API脚本": {}
-            }
-          },
-          "API编写": {
-            "购票API": {_f: true},
-            "票务列表API": {},
-            "用票API": {_c: "生成票面信息"},
-            "登录API": {
-              "弄明白微信的用户授权流程": {},
-              "设计登录API": {}
-            },
-            "获取用户信息API": {}
-          }
-        }
       }
     }
   };

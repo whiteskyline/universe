@@ -14,23 +14,23 @@ app.run(function(storage) {
                     "Passport协议实现": {_f: true},
                     "Relocation协议实现": {_f: true},
                     "Network协议实现": {_f: true},
-                    "Comments更改": {}
+                    "Comments更改": {_f: true}
                 },
                 "Test环境实现": {
                   "责任链": {_f: true},
                   "Passport实现": {_f: true},
                   "Relocation协议实现": {_f: true},
                   "Network协议实现": {_f: true},
-                  "comments更改": {}
+                  "comments更改": {_f: 0.8}
                 },
                 "客户端": {
-                  "架构Review": {}
+                  "架构Review": {_f: 0.4}
                 },
                 "架构测试": {
                   "Unit测试": {
-                    "Passport测试": {},
-                    "Relocation测试": {},
-                    "Network测试": {},
+                    "Passport测试": {_f: true},
+                    "Relocation测试": {_f: true},
+                    "Network测试": {_f: true},
                     _dl: "16 10/18"
                   }
                 }

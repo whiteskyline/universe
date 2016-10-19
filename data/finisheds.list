@@ -43,3 +43,10 @@ _dl: "Sun",
 },
 
 "SnowFlake服务架构": {_dl: "Sat 12:00", _f: true},
+          "EnvNode的详细测试": {_dl: "11:30", _f: true},
+          "Mock测试框架学习": {_dl: "16:30", _f: true},
+            "HostListManager测试": {_f: true},
+            "Relocation本身逻辑测试": {_f: true},
+            _dl: "17"
+          "PassportNode的详细测试": {_dl: "21", _f: true},
+          "NetworkNode的详细测试": {_dl: "22", _f: true}
