@@ -52,6 +52,9 @@ app.run(function(storage, weeklyUtil) {
                   "75%": {
                     _dl: "Thu"
                   }
+                },
+                "知乎Live": {
+                  "李笑来": {}
                 }
             }
         }

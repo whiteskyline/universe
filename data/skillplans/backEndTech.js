@@ -51,11 +51,14 @@ app.run(function(storage){
         "代码质量": {
           "Coverity": {
             _c: "https://www.coverity.com/, 用于代码的检查"
+          },
+          "代码测试": {
+            "Mock测试技术": {_c: "JMockit", _f: true}
           }
         },
         "DEBUG技术":{
-          "远程DEBUG技术":{},
-          "Intellij DEBUG技术":{}
+          "远程DEBUG技术":{_f: true},
+          "Intellij DEBUG技术":{_f: true}
         }
       },
       <!-- end of 开发 -->

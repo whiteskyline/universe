@@ -16,13 +16,18 @@ app.run(function(storage, dailyUtil){
             "解决Request的类型问题": {_f: true},
             "param列表更改": {_f: true}
           },
-          "多账户实现": {_f: true}
+          "多账户实现": {_f: true},
+          "Play生成": {
+            "当前Wifi-FE的形成分析": {_f: true},
+            "模板定义内容分析": {_f: true}
+          }
         },
         "添加设备列表Host": {}
       },
       "学习": {
         "Redis-Sentinel部署": {},
-        "机器学习第一章完成": {_dl: "18:00", _f: 0.8}
+        "机器学习第一章完成": {_dl: "18:00", _f: 0.8},
+        "李笑来-Live": {}
       },
       "商业": {
       }
