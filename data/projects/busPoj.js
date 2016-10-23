@@ -17,14 +17,17 @@ app.run(function(storage){
       },
       "技术实现": {
         "Version 1": {
+          "流程打通": {
+            "买票": {},
+            "登录": {},
+            "车票列表": {}
+          }
           "支付": {
             "打通微信公众号接口": {
               "使用基础组件做一个简单页面": {_f: true},
               "开通微信公众号": {_f: true},
               "阅读微信公众号文档": {_f: true},
-              "微信页面支付": {},
-              "网页支付宝支付": {},
-              "APP支付": {},
+              "微信页面支付": {_f: 0.5},
               _dl: "2016/10/13"
             },
             "两种支付方式支持": {
@@ -32,7 +35,12 @@ app.run(function(storage){
               "单次票务支付": {},
               _dl: "2016/10/14"
             },
-            "用户登录API": {}
+            "用户登录API": {
+              _ac: true,
+              "微信登录支持": {},
+              "升级登录验证方式": {},
+              "API-Interceptor实现": {}
+            }
           },
           "设置目标地址": {
             "获取当前地铁站": {},
@@ -43,8 +51,7 @@ app.run(function(storage){
             "买票流程": {
               "买票页面": {_f: true},
               "买票脚本": {},
-              "买票API": {},
-              _f: 0.5
+              "买票API": {_f: true}
             },
             "验票流程": {
               "验票页面": {_f: true},
@@ -70,5 +77,5 @@ app.run(function(storage){
     }
   };
 
-  storage.register("Bus服务", exeServPoj, false, "2016/10/12", "2016/10/20", storage.LEVEL_POJ);
+  storage.register("Bus服务", exeServPoj, false, "2016/10/12", "2016/10/30", storage.LEVEL_POJ);
 });
