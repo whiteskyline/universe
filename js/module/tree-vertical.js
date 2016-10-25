@@ -97,7 +97,7 @@ d3.chart.architectureTree = function() {
         node.append("circle")
             .attr("r", function(d) { return 6.0 * (d.size || 1); })
             .attr("class", function(d) {
-              if (typeof(d.detail.active) !== "undefined") {
+              if (typeof(d.detail.active) !== "undefined" && !d.detail.finished) {
                 return "active";
               } else {
                 return "";

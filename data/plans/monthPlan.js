@@ -26,6 +26,15 @@ app.run(function(storage, monthlyUtil){
         "UserIdHolder接口提供": {
 
         },
+        "公共库测试oAuth": {
+
+        },
+        "推动Passport使用统一的Request": {
+
+        },
+        "去除Relocation的URL/去除相关的userId": {
+          
+        },
         "micloud-infra-rose升级大版本": {
           "修改hbase-client的版本": {}
         }

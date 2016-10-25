@@ -4,25 +4,18 @@ app.run(function(storage, dailyUtil){
   var mondayPlanData = {
     "日事项":{
       "工作": {
-        "ClientSDK": {
-          "Comments修改": {
-            "Netty的Pipeling命名方式": {_f: true},
-            "修改责任链命名": {_f: true},
-            "简化日志框架": {_f: true},
-            "验证QueryString和Form区分": {_f: true},
-            "合并Passport的实现": {_f: true},
-            "将Executor取消,合并为Request,并且生成两种方法,一种是直接调用": {_f: true},
-            "更改用户获取的逻辑，表现为从上层传入": {_f: true},
-            "解决Request的类型问题": {_f: true},
-            "param列表更改": {_f: true}
-          },
-          "多账户实现": {_f: true},
-          "Play生成": {
-            "当前Wifi-FE的形成分析": {_f: true},
-            "模板定义内容分析": {_f: true}
-          }
+        "去除Relocation的userId": {
+          _dl: "12:00",
+          _ac: true,
+          _f: true
         },
-        "添加设备列表Host": {}
+        "ClientSDK": {
+          "使用框架生成Wifi服务": {_dl: "16:00"},
+          "修改框架": {_dl: "18:00"}
+        },
+        "添加设备列表Host": {
+          "为超哥的服务添加列表": {_dl: "19:00"}
+        }
       },
       "学习": {
         "Redis-Sentinel部署": {},
