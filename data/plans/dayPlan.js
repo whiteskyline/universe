@@ -23,6 +23,7 @@ app.run(function(storage, dailyUtil){
         "李笑来-Live": {}
       },
       "商业": {
+        "购票API对接": {_ac: true}
       }
     }
   };
