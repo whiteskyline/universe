@@ -189,6 +189,10 @@ app.run(function(storage){
               "SQL":{
                 "MySQL":{
                   "基础使用": {"_f": true, "_dl": "2016/5/1"},
+                  "数据库框架": {
+                    "Paoding-Rose-Jade": {_ac: true},
+                    "Hibernate": {}
+                  },
                   "分库分表实战": {},
                   _dl: "2016/9/15",
                   _ac: true
